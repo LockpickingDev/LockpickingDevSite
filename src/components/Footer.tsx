@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="footer-brand">
           <div className="footer-name">LockpickingDev</div>
-          <div className="footer-sub">// Gateway Locksport Founder · St. Louis, MO</div>
+          <div className="footer-sub">Gateway Locksport Founder · St. Louis, MO</div>
         </div>
         <ul className="footer-social">
           <li>
@@ -24,7 +24,7 @@ export default function Footer() {
           </li>
           <li>
             <a href="https://www.gatewaylocksport.com" target="_blank" rel="noreferrer">
-              gateway_locksport
+              Gateway Locksport
             </a>
           </li>
         </ul>

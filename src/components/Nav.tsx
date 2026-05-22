@@ -15,7 +15,7 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
       <a href="/" className="nav-logo">
-        <span className="prompt">~$</span> LockpickingDev
+        LockpickingDev
       </a>
       <ul className="nav-links">
         {onLab ? (
@@ -38,7 +38,7 @@ export default function Nav() {
         )}
       </ul>
       <a href={onLab ? '/#contact' : '#contact'} className="nav-cta">
-        &gt; request_session
+        Book a Session
       </a>
     </nav>
   )

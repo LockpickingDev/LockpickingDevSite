@@ -3,7 +3,7 @@ export default function Hero() {
     <section className="hero" id="home">
       <div className="hero-content">
         <div className="lock-wrapper">
-          <svg className="lock-svg" viewBox="0 0 100 130" aria-hidden="true">
+          <svg className="lock-svg" viewBox="0 -30 100 160" aria-hidden="true">
             <rect className="lock-body-rect" x="10" y="55" width="80" height="65" rx="6" />
             <path className="lock-shackle-path" d="M 28 55 L 28 34 A 22 22 0 0 1 72 34 L 72 55" />
             <circle cx="50" cy="82" r="10" fill="var(--cyan)" opacity="0.15" />
@@ -20,7 +20,6 @@ export default function Hero() {
           <span className="hero-cursor" />
         </h1>
         <p className="hero-subtitle">
-          <span className="comment">// </span>
           Gateway Locksport Founder · Security Educator · Event Specialist
         </p>
         <p className="hero-desc">
@@ -28,8 +27,8 @@ export default function Hero() {
           conventions, and events. Groups of 5 to 500.
         </p>
         <div className="hero-buttons">
-          <a href="#contact" className="btn-terminal btn-primary-t">&gt; request_session</a>
-          <a href="#services" className="btn-terminal btn-secondary-t">&gt; view_services</a>
+          <a href="#contact" className="btn-terminal btn-primary-t">Book a Session</a>
+          <a href="#services" className="btn-terminal btn-secondary-t">View Services</a>
         </div>
       </div>
     </section>

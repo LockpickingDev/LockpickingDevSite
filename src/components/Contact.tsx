@@ -35,79 +35,68 @@ export default function Contact() {
               </a>
             </div>
             <div className="payment-note">
-              <span className="cyan-text">// payment_info</span>
+              <strong className="payment-note-title">Payment Info</strong>
               <br />No transactions on this site.
               <br />Payment via <span className="cyan-text">PayPal</span> or{' '}
               <span className="cyan-text">Venmo</span> after confirming details by email.
             </div>
           </div>
           <div>
-            <div className="t-form">
-              <div className="t-form-header">
-                <span className="terminal-dot t-red" />
-                <span className="terminal-dot t-yellow" />
-                <span className="terminal-dot t-green" />
-                <span className="terminal-title">request_session.sh</span>
-              </div>
-              <div className="t-form-body">
-                <div className="t-form-line">
-                  <span className="prompt-sym">$</span> ./request_session --interactive
+            <div className="contact-form-card">
+              {submitted ? (
+                <div className="form-success">
+                  <div className="form-success-icon">✓</div>
+                  <div className="form-success-msg">Your request has been sent!</div>
+                  <div className="form-success-sub">I'll get back to you within 24–48 hours.</div>
                 </div>
-                {submitted ? (
-                  <div className="t-success">
-                    <div className="t-success-msg">[OK] Request transmitted successfully.</div>
-                    <div className="t-success-sub">Awaiting response: 24–48 hours</div>
-                    <div className="t-cursor">$ _</div>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <div className="t-form-row">
+                    <div className="t-group">
+                      <label className="t-label">Name</label>
+                      <input className="t-input" type="text" placeholder="Your name" required />
+                    </div>
+                    <div className="t-group">
+                      <label className="t-label">Email</label>
+                      <input className="t-input" type="email" placeholder="your@email.com" required />
+                    </div>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit}>
-                    <div className="t-form-row">
-                      <div className="t-group">
-                        <label className="t-label">name:</label>
-                        <input className="t-input" type="text" placeholder="your name" required />
-                      </div>
-                      <div className="t-group">
-                        <label className="t-label">email:</label>
-                        <input className="t-input" type="email" placeholder="your@email.com" required />
-                      </div>
-                    </div>
-                    <div className="t-form-row">
-                      <div className="t-group">
-                        <label className="t-label">group_size:</label>
-                        <select className="t-select">
-                          <option value="">select...</option>
-                          <option>1–5 people</option>
-                          <option>6–15 people</option>
-                          <option>16–25 people</option>
-                          <option>25+ people</option>
-                        </select>
-                      </div>
-                      <div className="t-group">
-                        <label className="t-label">event_type:</label>
-                        <select className="t-select">
-                          <option value="">select...</option>
-                          <option>Private Lesson</option>
-                          <option>Birthday Party</option>
-                          <option>Corporate Team-Building</option>
-                          <option>Conference / Convention</option>
-                          <option>Cybersecurity Meetup</option>
-                          <option>Educational Workshop</option>
-                          <option>Other</option>
-                        </select>
-                      </div>
+                  <div className="t-form-row">
+                    <div className="t-group">
+                      <label className="t-label">Group Size</label>
+                      <select className="t-select">
+                        <option value="">Select...</option>
+                        <option>1–5 people</option>
+                        <option>6–15 people</option>
+                        <option>16–25 people</option>
+                        <option>25+ people</option>
+                      </select>
                     </div>
                     <div className="t-group">
-                      <label className="t-label">preferred_date:</label>
-                      <input className="t-input" type="text" placeholder="e.g. July 2025, weekends preferred" />
+                      <label className="t-label">Event Type</label>
+                      <select className="t-select">
+                        <option value="">Select...</option>
+                        <option>Private Lesson</option>
+                        <option>Birthday Party</option>
+                        <option>Corporate Team-Building</option>
+                        <option>Conference / Convention</option>
+                        <option>Cybersecurity Meetup</option>
+                        <option>Educational Workshop</option>
+                        <option>Other</option>
+                      </select>
                     </div>
-                    <div className="t-group">
-                      <label className="t-label">message:</label>
-                      <textarea className="t-textarea" placeholder="describe your event, group experience level, location..." />
-                    </div>
-                    <button type="submit" className="t-submit">&gt; send_request</button>
-                  </form>
-                )}
-              </div>
+                  </div>
+                  <div className="t-group">
+                    <label className="t-label">Preferred Date</label>
+                    <input className="t-input" type="text" placeholder="e.g. July 2025, weekends preferred" />
+                  </div>
+                  <div className="t-group">
+                    <label className="t-label">Message</label>
+                    <textarea className="t-textarea" placeholder="Describe your event, group experience level, location..." />
+                  </div>
+                  <button type="submit" className="t-submit">Send Request</button>
+                </form>
+              )}
             </div>
           </div>
         </div>

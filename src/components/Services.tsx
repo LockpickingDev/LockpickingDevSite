@@ -45,47 +45,32 @@ export default function Services() {
   return (
     <section className="services-section" id="services">
       <div className="container">
-        <div className="terminal-box">
-          <div className="terminal-header">
-            <span className="terminal-dot t-red" />
-            <span className="terminal-dot t-yellow" />
-            <span className="terminal-dot t-green" />
-            <span className="terminal-title">services.sh — pricing_table</span>
-          </div>
-          <div className="terminal-body">
-            <div className="section-label">services</div>
-            <h2 className="section-title">Lessons &amp; Event Experiences</h2>
-            <div className="section-divider" />
-            <p className="terminal-cmd">
-              <span className="cmd-prompt">$</span>{' '}
-              ./list_packages --location="St. Louis, MO" --travel=true
-            </p>
-            <div className="services-grid">
-              {TIERS.map(t => (
-                <div key={t.slug} className={`service-card${t.featured ? ' featured' : ''}`}>
-                  <div className="service-tier">{t.slug}</div>
-                  <div className="service-name">{t.name}</div>
-                  <div className="service-size">{t.size}</div>
-                  {t.isContact ? (
-                    <div className="service-price contact-text">contact_for_pricing()</div>
-                  ) : (
-                    <div className="service-price">
-                      <span className="dollar">$</span>{t.price}
-                    </div>
-                  )}
-                  <ul className="service-features">
-                    {t.features.map(f => <li key={f}>{f}</li>)}
-                  </ul>
+        <div className="section-label">services</div>
+        <h2 className="section-title">Lessons &amp; Event Experiences</h2>
+        <div className="section-divider" />
+        <div className="services-grid">
+          {TIERS.map(t => (
+            <div key={t.slug} className={`service-card${t.featured ? ' featured' : ''}`}>
+              <div className="service-name">{t.name}</div>
+              <div className="service-size">{t.size}</div>
+              {t.isContact ? (
+                <div className="service-price contact-text">Contact for pricing</div>
+              ) : (
+                <div className="service-price">
+                  <span className="dollar">$</span>{t.price}
                 </div>
-              ))}
+              )}
+              <ul className="service-features">
+                {t.features.map(f => <li key={f}>{f}</li>)}
+              </ul>
             </div>
-            <div className="terminal-note">
-              <span>// <strong>location:</strong> St. Louis, MO</span>
-              <span>// <strong>travel:</strong> available</span>
-              <span>// <strong>payment:</strong> PayPal | Venmo</span>
-              <span>// <strong>equipment:</strong> all provided</span>
-            </div>
-          </div>
+          ))}
+        </div>
+        <div className="services-info-row">
+          <span><strong>Location:</strong> St. Louis, MO</span>
+          <span><strong>Travel:</strong> Available</span>
+          <span><strong>Payment:</strong> PayPal · Venmo</span>
+          <span><strong>Equipment:</strong> All provided</span>
         </div>
       </div>
     </section>

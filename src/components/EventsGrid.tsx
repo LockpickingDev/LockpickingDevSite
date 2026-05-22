@@ -1,7 +1,6 @@
 interface GridEvent {
   id: string
-  period: string
-  status: 'auth' | 'classified'
+  eyebrow: string
   name: string
   desc: string
   badge?: string
@@ -10,65 +9,50 @@ interface GridEvent {
 const EVENTS: GridEvent[] = [
   {
     id: 'defcon',
-    period: 'ANNUAL',
-    status: 'auth',
+    eyebrow: 'Security Conference · Annual · Las Vegas, NV',
     name: 'DEF CON',
-    desc: "Lockpicking village instructor at the world's largest hacker conference. Las Vegas, NV. Running the locksport village and teaching hundreds of attendees each year.",
+    desc: 'Previously taught lockpicking and ran the locksport village. Now teaching bypass techniques with the Physical Security Village.',
   },
   {
     id: 'zdq',
-    period: 'INVITE ONLY',
-    status: 'classified',
+    eyebrow: 'Invite Only · Microsoft',
     name: 'Microsoft\nZero Day Quest',
-    desc: 'Exclusive invite-only event for vulnerability researchers. Lockpicking experience specialist at one of the most selective security events in the world.',
-    badge: 'INVITE ONLY',
+    desc: 'Exclusive invite-only event for vulnerability researchers. Lockpicking and key impressioning experience specialist at one of the most selective security events in the world.',
+    badge: 'Invite Only',
   },
   {
     id: 'bluehat',
-    period: 'CORPORATE',
-    status: 'auth',
+    eyebrow: 'Corporate Conference · Microsoft',
     name: 'Microsoft Blue Hat',
     desc: "Lockpicking demos & workshops at Microsoft's internal security conference.",
   },
   {
-    id: 'bsides-kc',
-    period: 'MIDWEST',
-    status: 'auth',
+    id: 'bskc',
+    eyebrow: 'Community Conference · Midwest',
     name: 'BSides Kansas City',
     desc: 'Locksport village instructor at the community cybersecurity conference.',
   },
   {
-    id: 'bsides-sea',
-    period: 'PACIFIC NW',
-    status: 'auth',
+    id: 'bssea',
+    eyebrow: 'Community Conference · Redmond, WA',
     name: 'BSides Seattle',
     desc: 'Locksport instructor on the Microsoft campus in Redmond, WA.',
   },
   {
     id: 'paxwest',
-    period: 'GAMING',
-    status: 'auth',
-    name: 'PAX West Gaming Convention',
-    desc: "Brought locksport to gaming audiences at one of North America's largest gaming expos. Seattle, WA.",
+    eyebrow: 'Gaming Expo · Seattle, WA',
+    name: 'PAX West',
+    desc: "Gave a presentation on lockpicking in video games followed by a hands-on lockpicking instructional, teaching attendees to pick locks and experience the real thing. Brought locksport to gaming audiences at one of North America's largest gaming expos.",
   },
   {
     id: 'hushcon',
-    period: 'SECURITY',
-    status: 'auth',
+    eyebrow: 'Security Community · Pacific NW',
     name: 'HushCon Seattle',
-    desc: 'Workshop facilitator at the Pacific NW security community conference.',
-  },
-  {
-    id: 'campout',
-    period: 'OUTDOOR',
-    status: 'auth',
-    name: 'Hacker Campout Seattle',
-    desc: "Locksport instructor at Seattle's outdoor hacker camping event — picking locks under the stars.",
+    desc: 'Locksport instructor at the Pacific NW security community conference.',
   },
   {
     id: 'umsl',
-    period: 'EDU',
-    status: 'auth',
+    eyebrow: 'University · St. Louis, MO',
     name: "UMSL Women's Hackathon",
     desc: 'Educational locksport for students at the University of Missouri–St. Louis.',
   },
@@ -78,28 +62,20 @@ export default function EventsGrid() {
   return (
     <section className="events-grid-section" id="clearance">
       <div className="container">
-        <div className="clearance-banner">
-          <span>■ OPERATOR CLEARANCE RECORD</span>
-        </div>
-        <div className="section-label">event_history</div>
+        <div className="section-label">appearances</div>
         <h2 className="section-title">Events &amp; Operations</h2>
         <div className="section-divider" />
-        <div className="events-bento">
+        <div className="events-magazine">
           {EVENTS.map(e => (
-            <div key={e.id} className={`event-card eb-${e.id}`}>
-              <div className="event-card-top">
-                <span className="event-period">{e.period}</span>
-                <span className={`event-status status-${e.status}`}>
-                  {e.status === 'auth' ? 'AUTHORIZED' : 'CLASSIFIED'}
-                </span>
-              </div>
-              <div className="event-name">
+            <div key={e.id} className={`event-card-new em-${e.id}`}>
+              <div className="ec-eyebrow">{e.eyebrow}</div>
+              <div className="ec-name">
                 {e.name.split('\n').map((line, i) => (
                   <span key={i}>{line}{i < e.name.split('\n').length - 1 && <br />}</span>
                 ))}
               </div>
-              <div className="event-desc">{e.desc}</div>
-              {e.badge && <div className="event-badge">{e.badge}</div>}
+              <div className="ec-desc">{e.desc}</div>
+              {e.badge && <div className="ec-badge">{e.badge}</div>}
             </div>
           ))}
         </div>
