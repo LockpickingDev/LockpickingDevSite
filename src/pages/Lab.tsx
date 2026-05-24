@@ -1,13 +1,31 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 // Add your favorite YouTube video IDs here.
 // Get the ID from the URL: youtube.com/watch?v=VIDEO_ID
 const VIDEOS = [
-  { id: 'REPLACE_ME', title: 'Add your favorite video title here' },
-  { id: 'REPLACE_ME', title: 'Add your favorite video title here' },
-  { id: 'REPLACE_ME', title: 'Add your favorite video title here' },
-  { id: 'REPLACE_ME', title: 'Add your favorite video title here' },
+  { id: 'JwEFbeoMijg', title: '100 Lockpicking Hiking Locations Compilation' },
+  { id: 'j036yjyKlmQ', title: 'How to Pick Handcuffs with a Bobby Pin' },
+  { id: 'qc5ulBP_lgc', title: 'How to Shim & Bypass Handcuffs' },
+  { id: '3mShtKSY5tY', title: 'Making Custom Lockpicks Part 1' },
+  { id: 'i7gy1KSPJqg', title: 'Assa 600 Picked and Gutted' },
+  { id: 'xe-fdHeNf5o', title: 'Mul-T-Lock Interactive with Serrated Drivers Picked and Gutted' },
+  { id: 'BkpNt4auWRs', title: 'Assa Desmo Picked and Gutted' },
+  { id: 'kBj3VXKfLHc', title: 'Mul-T-Lock C-13 Padlock Picked' },
+  { id: 'P8XHhY9uow0', title: 'Master Lock 570 Picked AND Gutted! How to make a 570/575 Practice Lock' },
+  { id: '-49I4SM0kfY', title: 'Master Lock 575 Picked AND Gutted' },
+  { id: 'QVmBfQVxYmk', title: 'American Lock 1100 Speed Picking' },
+  { id: 'PqZeR26oxVo', title: 'Rifkin Co ArcoLock, 7-Pin Bank Deposit Bag Lock Picked' },
+  { id: 'kwtmc6kMVTs', title: 'Abus Titalium 80TI 50 Picked AND Gutted & How to Make a Titalium Practice Lock' },
+  { id: 'hqdmQIjxE-k', title: 'How to Make Multi-Dong Picks (Honest Dong Shi Handle w Multipick tips)' },
+  { id: 'Ki1nydPQO3U', title: '3D Printing, Silicone Molds, & Craft Resin for Locksport' },
+  { id: 'PufrnWWWlKY', title: 'Lockpicks Handles - Thickness, Density, and Feedback' },
+  { id: '6j8hKs6R0q4', title: 'How to Make Interchangeable Lockpick Handles' },
+  { id: 'np33mdyEa5g', title: 'Silver Bird Padlock Picked with Different Homebrew Turner Tools' },
 ]
+
+const VIDEOS_INITIAL = 4
+const VIDEOS_PAGE = 8
 
 interface Project {
   name: string
@@ -59,21 +77,23 @@ const STATUS_COLOR: Record<Project['status'], string> = {
 }
 
 export default function Lab() {
+  const [videoCount, setVideoCount] = useState(VIDEOS_INITIAL)
+  const visibleVideos = VIDEOS.slice(0, videoCount)
+  const videoRemaining = VIDEOS.length - videoCount
+
   return (
     <>
       {/* LAB HERO */}
       <section className="lab-hero">
         <div className="lab-hero-content">
           <div className="lab-breadcrumb">
-            <Link to="/" className="lab-back">&lt; cd ..</Link>
+            <Link to="/" className="lab-back">← Back to Home</Link>
           </div>
-          <div className="lab-eyebrow">$ cd /lab</div>
           <h1 className="lab-title">
             The <span className="cyan">Lab</span>
             <span className="hero-cursor" />
           </h1>
           <p className="lab-subtitle">
-            <span className="comment">// </span>
             Not selling anything here. Just sharing what I enjoy.
           </p>
           <p className="lab-desc">
@@ -94,14 +114,8 @@ export default function Lab() {
           </p>
 
           <div className="videos-grid">
-            {VIDEOS.map((v, i) => (
+            {visibleVideos.map((v, i) => (
               <div key={i} className="video-card">
-                <div className="video-terminal-bar">
-                  <span className="terminal-dot t-red" />
-                  <span className="terminal-dot t-yellow" />
-                  <span className="terminal-dot t-green" />
-                  <span className="terminal-title">{v.title}</span>
-                </div>
                 {v.id === 'REPLACE_ME' ? (
                   <div className="video-placeholder">
                     <div className="video-placeholder-icon">▶</div>
@@ -118,12 +132,28 @@ export default function Lab() {
                     allowFullScreen
                   />
                 )}
+                <div className="video-caption">{v.title}</div>
               </div>
             ))}
           </div>
 
+          {VIDEOS.length > VIDEOS_INITIAL && (
+            videoRemaining > 0 ? (
+              <button
+                className="show-more-btn"
+                onClick={() => setVideoCount(c => Math.min(c + VIDEOS_PAGE, VIDEOS.length))}
+              >
+                {`Show More · ${Math.min(VIDEOS_PAGE, videoRemaining)} more video${Math.min(VIDEOS_PAGE, videoRemaining) === 1 ? '' : 's'} ↓`}
+              </button>
+            ) : (
+              <button className="show-more-btn" onClick={() => setVideoCount(VIDEOS_INITIAL)}>
+                Show Less ↑
+              </button>
+            )
+          )}
+
           <div className="lab-channel-link">
-            <span className="comment">// see everything →</span>
+            <span>See everything →</span>
             <a
               href="https://www.youtube.com/@LockpickingDev"
               target="_blank"

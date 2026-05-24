@@ -9,17 +9,17 @@ export default function Footer() {
         <ul className="footer-social">
           <li>
             <a href="https://www.youtube.com/@LockpickingDev" target="_blank" rel="noreferrer">
-              youtube
+              YouTube
             </a>
           </li>
           <li>
             <a href="https://www.facebook.com/LockpickingDevOfficial/" target="_blank" rel="noreferrer">
-              facebook
+              Facebook
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/lockpickingdev/" target="_blank" rel="noreferrer">
-              instagram
+              Instagram
             </a>
           </li>
           <li>
