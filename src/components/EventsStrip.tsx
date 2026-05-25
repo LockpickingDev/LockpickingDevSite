@@ -5,7 +5,6 @@ const EVENTS = [
   'BSides Kansas City',
   'BSides Seattle',
   'HushCon Seattle',
-  'Hacker Campout Seattle',
   'PAX West',
   "UMSL Women's Hackathon",
 ]

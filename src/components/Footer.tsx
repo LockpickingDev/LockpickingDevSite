@@ -4,27 +4,27 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="footer-brand">
           <div className="footer-name">LockpickingDev</div>
-          <div className="footer-sub">// Gateway Locksport Founder · St. Louis, MO</div>
+          <div className="footer-sub">Gateway Locksport Founder · St. Louis, MO</div>
         </div>
         <ul className="footer-social">
           <li>
             <a href="https://www.youtube.com/@LockpickingDev" target="_blank" rel="noreferrer">
-              youtube
+              YouTube
             </a>
           </li>
           <li>
             <a href="https://www.facebook.com/LockpickingDevOfficial/" target="_blank" rel="noreferrer">
-              facebook
+              Facebook
             </a>
           </li>
           <li>
             <a href="https://www.instagram.com/lockpickingdev/" target="_blank" rel="noreferrer">
-              instagram
+              Instagram
             </a>
           </li>
           <li>
             <a href="https://www.gatewaylocksport.com" target="_blank" rel="noreferrer">
-              gateway_locksport
+              Gateway Locksport
             </a>
           </li>
         </ul>

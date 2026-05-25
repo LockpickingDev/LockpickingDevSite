@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\src\" -Recurse)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)",
+      "PowerShell(Copy-Item \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\src\\\\public\\\\Animated Logo.gif\" \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\public\\\\animated-logo.gif\")",
+      "PowerShell(Copy-Item \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\src\\\\public\\\\Logo Lock Power Button - Colored.png\" \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\public\\\\logo.png\")"
+    ]
+  }
+}

@@ -26,17 +26,15 @@ export default function About() {
             </p>
           </div>
           <div className="profile-card">
-            <div className="profile-card-header">$ cat profile.json</div>
+            <div className="profile-card-header">Quick Facts</div>
             <div className="profile-card-body">
-              <div><span className="pkey">"alias"</span>: <span className="pval">"LockpickingDev"</span>,</div>
-              <div><span className="pkey">"location"</span>: <span className="pval">"St. Louis, MO"</span>,</div>
-              <div><span className="pkey">"role"</span>: <span className="pval">"Locksport Educator"</span>,</div>
-              <div><span className="pkey">"community"</span>: <span className="pval">"Gateway Locksport"</span>,</div>
-              <div><span className="pkey">"events"</span>: <span className="pnum">9+</span>,</div>
-              <div><span className="pkey">"students_taught"</span>: <span className="pval">"500+"</span>,</div>
-              <div><span className="pkey">"travel"</span>: <span className="pbool">true</span>,</div>
-              <div><span className="pkey">"ethical"</span>: <span className="pbool">true</span></div>
-              <div className="profile-cursor">$ _</div>
+              <div className="profile-row"><span className="pkey">Based in</span><span className="pval">St. Louis, MO</span></div>
+              <div className="profile-row"><span className="pkey">Role</span><span className="pval">Locksport Educator</span></div>
+              <div className="profile-row"><span className="pkey">Community</span><span className="pval">Gateway Locksport</span></div>
+              <div className="profile-row"><span className="pkey">Events</span><span className="pnum">9+ major events</span></div>
+              <div className="profile-row"><span className="pkey">Students Taught</span><span className="pval">500+</span></div>
+              <div className="profile-row"><span className="pkey">Travel</span><span className="pval">Available</span></div>
+              <div className="profile-row"><span className="pkey">All Equipment</span><span className="pval">Provided</span></div>
             </div>
           </div>
         </div>

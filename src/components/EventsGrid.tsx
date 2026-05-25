@@ -1,76 +1,75 @@
 interface GridEvent {
   id: string
-  period: string
-  status: 'auth' | 'classified'
+  category: string
   name: string
+  location?: string
   desc: string
   badge?: string
+  featured?: boolean
+  special?: boolean
+  watchUrl?: string
 }
 
 const EVENTS: GridEvent[] = [
   {
     id: 'defcon',
-    period: 'ANNUAL',
-    status: 'auth',
+    category: 'Security Conference · Annual',
     name: 'DEF CON',
-    desc: "Lockpicking village instructor at the world's largest hacker conference. Las Vegas, NV. Running the locksport village and teaching hundreds of attendees each year.",
+    location: 'Las Vegas, NV',
+    desc: "Started by teaching hundreds of attendees each year how to pick their first lock at the Locksport Village, later stepping into a leadership role helping run the village. Currently working with the Physical Security Village, teaching lock bypass techniques at DEF CON — one of the world\’s most recognized hacker conferences.",
+    featured: true,
   },
   {
     id: 'zdq',
-    period: 'INVITE ONLY',
-    status: 'classified',
-    name: 'Microsoft\nZero Day Quest',
-    desc: 'Exclusive invite-only event for vulnerability researchers. Lockpicking experience specialist at one of the most selective security events in the world.',
-    badge: 'INVITE ONLY',
-  },
-  {
-    id: 'bluehat',
-    period: 'CORPORATE',
-    status: 'auth',
-    name: 'Microsoft Blue Hat',
-    desc: "Lockpicking demos & workshops at Microsoft's internal security conference.",
-  },
-  {
-    id: 'bsides-kc',
-    period: 'MIDWEST',
-    status: 'auth',
-    name: 'BSides Kansas City',
-    desc: 'Locksport village instructor at the community cybersecurity conference.',
-  },
-  {
-    id: 'bsides-sea',
-    period: 'PACIFIC NW',
-    status: 'auth',
-    name: 'BSides Seattle',
-    desc: 'Locksport instructor on the Microsoft campus in Redmond, WA.',
+    category: 'Invite Only · Microsoft',
+    name: 'Microsoft Zero Day Quest',
+    location: 'Redmond, WA',
+    desc: "Invited to participate in Microsoft Zero Day Quest, an exclusive, invitation-only event for top vulnerability researchers. Served as the lockpicking and key impressioning specialist, providing hands-on physical security insight alongside cutting-edge digital research.",
+    special: true,
+    badge: 'Invite Only',
   },
   {
     id: 'paxwest',
-    period: 'GAMING',
-    status: 'auth',
-    name: 'PAX West Gaming Convention',
-    desc: "Brought locksport to gaming audiences at one of North America's largest gaming expos. Seattle, WA.",
+    category: 'Gaming Expo',
+    name: 'PAX West',
+    location: 'Seattle, WA',
+    desc: "Presented at PAX West, one of North America’s largest gaming conventions (100,000+ attendees), delivering a talk on the realism of lockpicking mechanics in video games. Followed by hands-on workshops where attendees learned to pick real locks.",
+    watchUrl: 'https://www.youtube.com/watch?v=xhBGZLzKN-Q',
+  },
+  {
+    id: 'bluehat',
+    category: 'Corporate Conference · Microsoft',
+    name: 'Microsoft Blue Hat',
+    location: 'Redmond, WA',
+    desc: "Microsoft's internal security conference for their own engineering and research teams. Ran lockpicking demos and hands-on workshops, giving Microsoft's security professionals a real-world look at what physical lock security actually feels like.",
+  },
+  {
+    id: 'bssea',
+    category: 'Community Conference',
+    name: 'BSides Seattle',
+    location: 'Redmond, WA',
+    desc: "Community security conference hosted on the Microsoft campus in Redmond. Ran locksport instruction for a mix of security industry veterans and curious first-timers.",
+  },
+  {
+    id: 'bskc',
+    category: 'Community Conference',
+    name: 'BSides Kansas City',
+    location: 'Kansas City, MO',
+    desc: "BSides events are community-run security conferences held outside the big-budget show circuit. Ran the locksport village and taught hands-on picking sessions at the Kansas City edition.",
   },
   {
     id: 'hushcon',
-    period: 'SECURITY',
-    status: 'auth',
+    category: 'Security Community',
     name: 'HushCon Seattle',
-    desc: 'Workshop facilitator at the Pacific NW security community conference.',
-  },
-  {
-    id: 'campout',
-    period: 'OUTDOOR',
-    status: 'auth',
-    name: 'Hacker Campout Seattle',
-    desc: "Locksport instructor at Seattle's outdoor hacker camping event — picking locks under the stars.",
+    location: 'Seattle, WA',
+    desc: "An intimate Pacific NW security conference where everyone in the room is passionate about what they do. Ran locksport instruction for a tight-knit community of security enthusiasts.",
   },
   {
     id: 'umsl',
-    period: 'EDU',
-    status: 'auth',
+    category: 'University',
     name: "UMSL Women's Hackathon",
-    desc: 'Educational locksport for students at the University of Missouri–St. Louis.',
+    location: 'St. Louis, MO',
+    desc: "Led an educational locksport workshop at the University of Missouri - St. Louis.  The key idea: digital security means nothing if physical security is overlooked.",
   },
 ]
 
@@ -78,28 +77,29 @@ export default function EventsGrid() {
   return (
     <section className="events-grid-section" id="clearance">
       <div className="container">
-        <div className="clearance-banner">
-          <span>■ OPERATOR CLEARANCE RECORD</span>
-        </div>
-        <div className="section-label">event_history</div>
+        <div className="section-label">appearances</div>
         <h2 className="section-title">Events &amp; Operations</h2>
         <div className="section-divider" />
-        <div className="events-bento">
+        <div className="events-list">
           {EVENTS.map(e => (
-            <div key={e.id} className={`event-card eb-${e.id}`}>
-              <div className="event-card-top">
-                <span className="event-period">{e.period}</span>
-                <span className={`event-status status-${e.status}`}>
-                  {e.status === 'auth' ? 'AUTHORIZED' : 'CLASSIFIED'}
-                </span>
+            <div
+              key={e.id}
+              className={`event-row${e.featured ? ' ev-featured' : ''}${e.special ? ' ev-special' : ''}`}
+            >
+              <div className="ev-left">
+                <div className="ev-category">{e.category}</div>
+                <div className="ev-name">{e.name}</div>
+                {e.location && <div className="ev-location">{e.location}</div>}
               </div>
-              <div className="event-name">
-                {e.name.split('\n').map((line, i) => (
-                  <span key={i}>{line}{i < e.name.split('\n').length - 1 && <br />}</span>
-                ))}
+              <div className="ev-right">
+                <div className="ev-desc">{e.desc}</div>
+                {e.watchUrl && (
+                  <a href={e.watchUrl} className="ev-watch-link" target="_blank" rel="noreferrer">
+                    ▶ Watch the Talk on YouTube
+                  </a>
+                )}
+                {e.badge && <div className="ev-badge">{e.badge}</div>}
               </div>
-              <div className="event-desc">{e.desc}</div>
-              {e.badge && <div className="event-badge">{e.badge}</div>}
             </div>
           ))}
         </div>
