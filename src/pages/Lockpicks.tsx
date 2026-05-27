@@ -119,6 +119,17 @@ export default function Lockpicks() {
         <title>Custom Lockpicks — Handmade Collection | LockpickingDev</title>
         <meta name="description" content="Over 100 handmade custom lockpicks by LockpickingDev — spring steel, titanium, brass, and more. Available for purchase via Covert Instruments. Plus picks gifted from the locksport community." />
         <link rel="canonical" href="https://lockpicking.dev/lockpicks" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lockpicking.dev/lockpicks" />
+        <meta property="og:title" content="Custom Lockpick Collection — LockpickingDev" />
+        <meta property="og:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
+        <meta property="og:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta property="og:site_name" content="LockpickingDev" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://lockpicking.dev/lockpicks" />
+        <meta name="twitter:title" content="Custom Lockpick Collection — LockpickingDev" />
+        <meta name="twitter:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
+        <meta name="twitter:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
       </Helmet>
 
       {lightboxItem && <Lightbox item={lightboxItem} onClose={closeLightbox} />}

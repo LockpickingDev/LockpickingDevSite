@@ -718,9 +718,61 @@ export default function Prints() {
   return (
     <>
       <Helmet>
-        <title>3D Prints — Lock Display Stands &amp; More | LockpickingDev</title>
-        <meta name="description" content="Free STL files for 3D printable lock display stands and locksport tools by LockpickingDev. Community staples used at meetups and in collections worldwide." />
+        <title>Free 3D Printable Locksport Models — Lock Display Stands &amp; More | LockpickingDev</title>
+        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants — community staples used at meetups worldwide." />
         <link rel="canonical" href="https://lockpicking.dev/prints" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://lockpicking.dev/prints" />
+        <meta property="og:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
+        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants." />
+        <meta property="og:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta property="og:image:alt" content="LockpickingDev 3D printable locksport models" />
+        <meta property="og:site_name" content="LockpickingDev" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://lockpicking.dev/prints" />
+        <meta name="twitter:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
+        <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple variants." />
+        <meta name="twitter:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": "https://lockpicking.dev/prints",
+          "url": "https://lockpicking.dev/prints",
+          "name": "Free 3D Printable Locksport Models — LockpickingDev",
+          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants.",
+          "publisher": { "@id": "https://lockpicking.dev/#business" },
+          "author": { "@id": "https://lockpicking.dev/#person" },
+          "isPartOf": { "@id": "https://lockpicking.dev/#website" },
+          "mainEntity": {
+            "@type": "ItemList",
+            "name": "3D Printable Locksport Models",
+            "numberOfItems": 22,
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1,  "name": "Padlock Stand — Large Flat",         "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 2,  "name": "Padlock Stand — Medium Flat",        "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 3,  "name": "Padlock Stand — Large Concave",      "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 4,  "name": "Padlock Stand — Medium Concave",     "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 5,  "name": "Full Euro Cylinder Stand",           "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 6,  "name": "Half Euro Cylinder Stand",           "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 7,  "name": "30/30 Euro Cylinder Stand",          "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 8,  "name": "Key-in-Knob (KiK) Stand",            "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 9,  "name": "Euro Dimple Cylinder Stand",         "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 10, "name": "6-Pin Oval Stand",                   "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 11, "name": "7-Pin Oval Stand",                   "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 12, "name": "17.8mm Oval Stand",                  "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 13, "name": "6-Pin Mortise Stand",                "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 14, "name": "7-Pin Mortise Stand",                "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 15, "name": "Miwa Mortise Stand",                 "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 16, "name": "Mogul Cylinder Stand",               "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 17, "name": "5x Euro Display Base",               "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 18, "name": "Wall-Mount Key Holder",              "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 19, "name": "Pick Handles w/ Knurl",              "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 20, "name": "Impressioning Key Line Guides",      "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 21, "name": "Zip Tie Cuff Adaptors",              "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 22, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" }
+            ]
+          }
+        })}</script>
       </Helmet>
 
       {activeModel && activeModel.variant.kind !== 'single' && (
