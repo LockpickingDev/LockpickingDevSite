@@ -44,11 +44,12 @@ const T0 = '/3dprinting/TempPics/Padlock%20Display%20Stand%20-%20Large%20Flat.jp
 const T1 = '/3dprinting/TempPics/Padlock%20Display%20Stand%20-%20Large%20w%20Concave.jpg'
 const T2 = '/3dprinting/TempPics/Padlock%20Display%20Stands%20-%20Medium%20Flat.jpg'
 const T3 = '/3dprinting/TempPics/3d-printed-lock-display-stands-v0-f5hbto1giqta1.webp'
-const TEMP_PICS = [T0, T1, T2, T3]
-function tp(n: number) { return TEMP_PICS[n % 4] }
-
 function stl(folder: string, filename: string) {
   return `/3dprinting/${folder}/${filename.replace(/ /g, '%20')}`
+}
+
+function img(folder: string, filename: string) {
+  return `/3dprinting/${folder}/${filename.replace(/ /g, '%20').replace(/\.stl$/, '.png')}`
 }
 
 function stdMatrix(
@@ -56,18 +57,20 @@ function stdMatrix(
   prefix: string,
   rows: string[] = ['Small', 'Medium', 'Large'],
   baseFile?: { label: string; url: string },
-  imgOffset = 0,
 ): MatrixVariant {
   const files: Record<string, Record<string, string>> = {}
   const variantImages: Record<string, Record<string, string>> = {}
-  let i = imgOffset
   for (const row of rows) {
     files[row] = {
       Left:   stl(folder, `${prefix} - ${row} Key - Offset Left.stl`),
       Center: stl(folder, `${prefix} - ${row} Key - Centered.stl`),
       Right:  stl(folder, `${prefix} - ${row} Key - Offset Right.stl`),
     }
-    variantImages[row] = { Left: tp(i++), Center: tp(i++), Right: tp(i++) }
+    variantImages[row] = {
+      Left:   img(folder, `${prefix} - ${row} Key - Offset Left.stl`),
+      Center: img(folder, `${prefix} - ${row} Key - Centered.stl`),
+      Right:  img(folder, `${prefix} - ${row} Key - Offset Right.stl`),
+    }
   }
   return { kind: 'matrix', rows, cols: ['Left', 'Center', 'Right'], rowLabel: 'KEY SIZE', colLabel: 'KEY POSITION', files, variantImages, baseFile }
 }
@@ -126,7 +129,7 @@ const MODELS: PrintModel[] = [
     variant: stdMatrix('PadlockLarge', 'Large Padlock', undefined, {
       label: 'Base (no key slot)',
       url: stl('PadlockLarge', 'Padlock Large Base.stl'),
-    }, 0),
+    }),
   },
   {
     id: 'padlock-medium',
@@ -137,7 +140,7 @@ const MODELS: PrintModel[] = [
     variant: stdMatrix('PadlockMedium', 'Medium Padlock', undefined, {
       label: 'Base (no key slot)',
       url: stl('PadlockMedium', 'Medium Padlock Base.stl'),
-    }, 2),
+    }),
   },
   {
     id: 'padlock-concave-large',
@@ -148,7 +151,7 @@ const MODELS: PrintModel[] = [
     variant: stdMatrix('PadlockConcaveLarge', 'Concave Large', undefined, {
       label: 'Base (no key slot)',
       url: stl('PadlockConcaveLarge', 'Concave Large Padlock Base.stl'),
-    }, 1),
+    }),
   },
   {
     id: 'padlock-concave-medium',
@@ -159,7 +162,7 @@ const MODELS: PrintModel[] = [
     variant: stdMatrix('PadlockConcaveMedium', 'Concave Medium', undefined, {
       label: 'Base (no key slot)',
       url: stl('PadlockConcaveMedium', 'Concave Medium Padlock Base.stl'),
-    }, 3),
+    }),
   },
 
   // ── Lock Display Stands — Euro Cylinder ─────────────────────────────────
@@ -169,7 +172,7 @@ const MODELS: PrintModel[] = [
     desc: 'Stand for full-length euro cylinders (90mm). Pin tumbler profile, 9 key size and position variants.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler', undefined, undefined, 0),
+    variant: stdMatrix('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler'),
   },
   {
     id: 'half-euro-cylinder',
@@ -177,7 +180,7 @@ const MODELS: PrintModel[] = [
     desc: 'Stand for half euro profile cylinders. Same clean design, scaled for shorter barrels.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler', undefined, undefined, 1),
+    variant: stdMatrix('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler'),
   },
   {
     id: '3030-euro-cylinder',
@@ -185,7 +188,7 @@ const MODELS: PrintModel[] = [
     desc: 'Stand for 30/30 euro cylinders — the most common length. Pin tumbler profile.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('3030EuroCylinderPinTumbler', '30 30 Euro Cylinder Pin Tumbler', undefined, undefined, 2),
+    variant: stdMatrix('3030EuroCylinderPinTumbler', '30 30 Euro Cylinder Pin Tumbler'),
   },
   {
     id: 'kik',
@@ -193,7 +196,7 @@ const MODELS: PrintModel[] = [
     desc: 'Display stand sized and profiled for key-in-knob lock cylinders.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('KiK', 'KiK Display', undefined, undefined, 3),
+    variant: stdMatrix('KiK', 'KiK Display'),
   },
   {
     id: 'euro-dimple',
@@ -225,9 +228,21 @@ const MODELS: PrintModel[] = [
         },
       },
       variantImages: {
-        'Half (40mm)':  { '10×3mm': tp(0), '10.5×3.5mm': tp(1), '11×4mm': tp(2) },
-        '30/30 (65mm)': { '10×3mm': tp(3), '10.5×3.5mm': tp(0), '11×4mm': tp(1) },
-        'Full (90mm)':  { '10×3mm': tp(2), '10.5×3.5mm': tp(3), '11×4mm': tp(0) },
+        'Half (40mm)': {
+          '10×3mm':     img('EuroCylinderDimple', 'Half Euro Euro Dimple Lock Display Stand - 40mm Long - 10x3mm Keyhole.stl'),
+          '10.5×3.5mm': img('EuroCylinderDimple', 'Half Euro Euro Dimple Lock Display Stand - 40mm - 10.5x3.5mm.stl'),
+          '11×4mm':     img('EuroCylinderDimple', 'Half Euro Euro Dimple Lock Display Stand - 40mm - 11x4mm.stl'),
+        },
+        '30/30 (65mm)': {
+          '10×3mm':     img('EuroCylinderDimple', '30 30 Euro Dimple Lock Display Stand - 65mm Long - 10x3mm Keyhole.stl'),
+          '10.5×3.5mm': img('EuroCylinderDimple', '30 30 Euro Dimple Lock Display Stand - 65mm Long - 10.5x3.5mm Keyhole.stl'),
+          '11×4mm':     img('EuroCylinderDimple', '30 30 Euro Dimple Lock Display Stand - 65mm Long - 11x4mm Keyhole.stl'),
+        },
+        'Full (90mm)': {
+          '10×3mm':     img('EuroCylinderDimple', 'Full Euro Dimple Lock Display Stand - 90mm - 10x3mm Keyhole.stl'),
+          '10.5×3.5mm': img('EuroCylinderDimple', 'Full Euro Dimple Lock Display Stand - 90mm - 10.5x3.5mm.stl'),
+          '11×4mm':     img('EuroCylinderDimple', 'Full Euro Dimple Lock Display Stand - 90mm - 11x4mm.stl'),
+        },
       },
     },
   },
@@ -239,7 +254,7 @@ const MODELS: PrintModel[] = [
     desc: 'Display stand for 6-pin oval profile cylinders. Full 3×3 size and position matrix.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('6PinOval', '6 Pin Oval', undefined, undefined, 0),
+    variant: stdMatrix('6PinOval', '6 Pin Oval'),
   },
   {
     id: '7-pin-oval',
@@ -247,7 +262,7 @@ const MODELS: PrintModel[] = [
     desc: 'Stand for 7-pin oval cylinders. Available in medium and large key sizes.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('7PinOval', '7 Pin Oval', ['Medium', 'Large'], undefined, 1),
+    variant: stdMatrix('7PinOval', '7 Pin Oval', ['Medium', 'Large']),
   },
   {
     id: '178mm-oval',
@@ -255,7 +270,7 @@ const MODELS: PrintModel[] = [
     desc: 'Stand for the 17.8mm oval cylinder format. Medium and large key sizes.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('17_8mmOval', '17.8mm Oval', ['Medium', 'Large'], undefined, 2),
+    variant: stdMatrix('17_8mmOval', '17.8mm Oval', ['Medium', 'Large']),
   },
   {
     id: '6-pin-mortise',
@@ -263,7 +278,7 @@ const MODELS: PrintModel[] = [
     desc: 'Display stand for 6-pin mortise cylinders. Full 3×3 size and position matrix.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('6PinMortise', '6 pin Mortise', undefined, undefined, 3),
+    variant: stdMatrix('6PinMortise', '6 pin Mortise'),
   },
   {
     id: '7-pin-mortise',
@@ -271,7 +286,7 @@ const MODELS: PrintModel[] = [
     desc: 'Stand for 7-pin mortise cylinders. Full range of key sizes and positions.',
     group: 'Lock Display Stands',
     image: T3,
-    variant: stdMatrix('7PinMortise', '7 pin Mortise', undefined, undefined, 0),
+    variant: stdMatrix('7PinMortise', '7 pin Mortise'),
   },
 
   // ── Lock Display Stands — Specialty ─────────────────────────────────────
@@ -319,9 +334,9 @@ const MODELS: PrintModel[] = [
         Large:  { Left: stl('KeyHolder', 'Key Holder - Large Left.stl'),  Center: stl('KeyHolder', 'Key Holder - Large.stl'),  Right: stl('KeyHolder', 'Key Holder - Large Right.stl')  },
       },
       variantImages: {
-        Small:  { Left: tp(1), Center: tp(2), Right: tp(3) },
-        Medium: { Left: tp(0), Center: tp(1), Right: tp(2) },
-        Large:  { Left: tp(3), Center: tp(0), Right: tp(1) },
+        Small:  { Left: img('KeyHolder', 'Key Holder - Small Left.stl'),  Center: img('KeyHolder', 'Key Holder - Small.stl'),  Right: img('KeyHolder', 'Key Holder - Small Right.stl')  },
+        Medium: { Left: img('KeyHolder', 'Key Holder - Medium Left.stl'), Center: img('KeyHolder', 'Key Holder - Medium.stl'), Right: img('KeyHolder', 'Key Holder - Medium Right.stl') },
+        Large:  { Left: img('KeyHolder', 'Key Holder - Large Left.stl'),  Center: img('KeyHolder', 'Key Holder - Large.stl'),  Right: img('KeyHolder', 'Key Holder - Large Right.stl')  },
       },
     },
   },
@@ -336,13 +351,13 @@ const MODELS: PrintModel[] = [
     variant: {
       kind: 'list',
       files: [
-        { label: '.025" Pick Handle (w/ holes)',   url: stl('PickHandlesWKnurl', '0.025 Pick Handle w Holes.stl'),                   image: tp(0) },
-        { label: 'Metal Handle Picks — Standard',  url: stl('PickHandlesWKnurl', 'Handle for Picks with Metal Handles.stl'),         image: tp(1) },
-        { label: 'Metal Handle Picks — w/ Holes',  url: stl('PickHandlesWKnurl', 'Handle w Holes for Picks with Metal Handles.stl'), image: tp(2) },
-        { label: 'LLT .025" Handle (w/ holes)',    url: stl('PickHandlesWKnurl', 'LLT 0.025 Handle w Holes.stl'),                   image: tp(3) },
-        { label: 'Southord Pocket Pen Picks',      url: stl('PickHandlesWKnurl', 'Southord Pocket Pen Picks Handle.stl'),           image: tp(0) },
-        { label: 'Wiper Blade — Full Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Full Tang.stl'),     image: tp(1) },
-        { label: 'Wiper Blade — Half Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Half Tang.stl'),     image: tp(2) },
+        { label: '.025" Pick Handle (w/ holes)',   url: stl('PickHandlesWKnurl', '0.025 Pick Handle w Holes.stl'),                   image: img('PickHandlesWKnurl', '0.025 Pick Handle w Holes.stl') },
+        { label: 'Metal Handle Picks — Standard',  url: stl('PickHandlesWKnurl', 'Handle for Picks with Metal Handles.stl'),         image: img('PickHandlesWKnurl', 'Handle for Picks with Metal Handles.stl') },
+        { label: 'Metal Handle Picks — w/ Holes',  url: stl('PickHandlesWKnurl', 'Handle w Holes for Picks with Metal Handles.stl'), image: img('PickHandlesWKnurl', 'Handle w Holes for Picks with Metal Handles.stl') },
+        { label: 'LLT .025" Handle (w/ holes)',    url: stl('PickHandlesWKnurl', 'LLT 0.025 Handle w Holes.stl'),                   image: img('PickHandlesWKnurl', 'LLT 0.025 Handle w Holes.stl') },
+        { label: 'Southord Pocket Pen Picks',      url: stl('PickHandlesWKnurl', 'Southord Pocket Pen Picks Handle.stl'),           image: img('PickHandlesWKnurl', 'Southord Pocket Pen Picks Handle.stl') },
+        { label: 'Wiper Blade — Full Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Full Tang.stl'),     image: img('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Full Tang.stl') },
+        { label: 'Wiper Blade — Half Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Half Tang.stl'),     image: img('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Half Tang.stl') },
       ],
     },
   },
@@ -357,9 +372,9 @@ const MODELS: PrintModel[] = [
     variant: {
       kind: 'list',
       files: [
-        { label: 'C83 Key',        url: stl('ImpressioningKeyLineGuides', 'C83 Key Line Guide for Impressioning.stl'),     image: tp(0) },
-        { label: 'SC1 / SC4 Keys', url: stl('ImpressioningKeyLineGuides', 'SC1 SC4 Key Line Guide for Impressioning.stl'), image: tp(1) },
-        { label: 'Y1 / Y2 Keys',   url: stl('ImpressioningKeyLineGuides', 'Y1 Y2 Key Line Guide for Impressioning.stl'),  image: tp(2) },
+        { label: 'C83 Key',        url: stl('ImpressioningKeyLineGuides', 'C83 Key Line Guide for Impressioning.stl'),     image: img('ImpressioningKeyLineGuides', 'C83 Key Line Guide for Impressioning.stl') },
+        { label: 'SC1 / SC4 Keys', url: stl('ImpressioningKeyLineGuides', 'SC1 SC4 Key Line Guide for Impressioning.stl'), image: img('ImpressioningKeyLineGuides', 'SC1 SC4 Key Line Guide for Impressioning.stl') },
+        { label: 'Y1 / Y2 Keys',   url: stl('ImpressioningKeyLineGuides', 'Y1 Y2 Key Line Guide for Impressioning.stl'),  image: img('ImpressioningKeyLineGuides', 'Y1 Y2 Key Line Guide for Impressioning.stl') },
       ],
     },
   },
@@ -372,8 +387,8 @@ const MODELS: PrintModel[] = [
     variant: {
       kind: 'list',
       files: [
-        { label: 'Cuff Adaptor (0.35" zip ties)',      url: stl('ZipTieCuffAdaptor', 'Zip Handcuff Adaptor for 0.35 inch thick Zip Ties.stl'), image: tp(3) },
-        { label: 'Pull Ring w/ Built-in Zip Tie Head', url: stl('ZipTieCuffAdaptor', 'Zip Tie Cuff Pull Ring w Built in Zip Tie Head.stl'),    image: tp(0) },
+        { label: 'Cuff Adaptor (0.35" zip ties)',      url: stl('ZipTieCuffAdaptor', 'Zip Handcuff Adaptor for 0.35 inch thick Zip Ties.stl'), image: img('ZipTieCuffAdaptor', 'Zip Handcuff Adaptor for 0.35 inch thick Zip Ties.stl') },
+        { label: 'Pull Ring w/ Built-in Zip Tie Head', url: stl('ZipTieCuffAdaptor', 'Zip Tie Cuff Pull Ring w Built in Zip Tie Head.stl'),    image: img('ZipTieCuffAdaptor', 'Zip Tie Cuff Pull Ring w Built in Zip Tie Head.stl') },
       ],
     },
   },
@@ -413,11 +428,15 @@ function MatrixContent({
   v,
   selectedCell,
   onSelect,
+  selectedBase,
+  onSelectBase,
   sizes,
 }: {
   v: MatrixVariant
   selectedCell: [string, string] | null
   onSelect: (row: string, col: string, img: string | undefined) => void
+  selectedBase: boolean
+  onSelectBase: (img: string) => void
   sizes: Record<string, number>
 }) {
   const maxRowLen = Math.max(...v.rows.map(r => r.length))
@@ -426,8 +445,12 @@ function MatrixContent({
   const allUrls = v.rows.flatMap(row => v.cols.map(col => v.files[row][col]))
   const allDownloads = v.baseFile ? [...allUrls, v.baseFile.url] : allUrls
 
-  const selectedUrl   = selectedCell ? v.files[selectedCell[0]][selectedCell[1]] : null
-  const selectedLabel = selectedCell ? `${selectedCell[0]} / ${selectedCell[1]}` : null
+  const selectedUrl   = selectedBase && v.baseFile
+    ? v.baseFile.url
+    : selectedCell ? v.files[selectedCell[0]][selectedCell[1]] : null
+  const selectedLabel = selectedBase && v.baseFile
+    ? v.baseFile.label
+    : selectedCell ? `${selectedCell[0]} / ${selectedCell[1]}` : null
 
   const totalBytes  = allDownloads.reduce((sum, url) => sum + (sizes[url] ?? 0), 0)
   const totalSizeOk = allDownloads.every(url => (sizes[url] ?? 0) > 0)
@@ -467,6 +490,24 @@ function MatrixContent({
             })}
           </Fragment>
         ))}
+        {v.baseFile && (() => {
+          const baseImg = v.baseFile.url.replace(/\.stl$/, '.png')
+          const size = formatSize(sizes[v.baseFile.url] ?? 0)
+          return (
+            <Fragment key="__base__">
+              <div className="version-matrix-row-label version-matrix-row-label--base">Base</div>
+              <button
+                className={`version-sel-btn version-sel-btn--base${selectedBase ? ' version-sel-btn--active' : ''}`}
+                style={{ gridColumn: `span ${v.cols.length}` }}
+                onClick={e => { e.stopPropagation(); onSelectBase(baseImg) }}
+              >
+                <span className="version-sel-icon">{selectedBase ? '✓' : '○'}</span>
+                <span className="version-sel-base-label">{v.baseFile.label}</span>
+                {size && <span className="version-sel-size">{size}</span>}
+              </button>
+            </Fragment>
+          )
+        })()}
       </div>
 
       <div className="modal-dl-section">
@@ -489,20 +530,6 @@ function MatrixContent({
           ↓ Download All ({allDownloads.length} files{totalLabel ? ` — ${totalLabel}` : ''})
         </button>
       </div>
-
-      {v.baseFile && (
-        <div className="version-modal-base">
-          <div className="version-modal-label">ALSO AVAILABLE</div>
-          <a
-            href={v.baseFile.url}
-            download
-            className="version-base-btn"
-            onClick={e => e.stopPropagation()}
-          >
-            ↓ {v.baseFile.label}{sizes[v.baseFile.url] ? ` (${formatSize(sizes[v.baseFile.url])})` : ''}
-          </a>
-        </div>
-      )}
     </>
   )
 }
@@ -577,6 +604,7 @@ function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void
   const v = model.variant
   const [displayImg, setDisplayImg]     = useState(model.image)
   const [selectedCell, setSelectedCell] = useState<[string, string] | null>(null)
+  const [selectedBase, setSelectedBase] = useState(false)
   const [selectedIdx, setSelectedIdx]   = useState<number | null>(null)
 
   const allUrls = useMemo(() => {
@@ -593,7 +621,14 @@ function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void
 
   function handleMatrixSelect(row: string, col: string, img: string | undefined) {
     setSelectedCell([row, col])
+    setSelectedBase(false)
     setDisplayImg(img ?? model.image)
+  }
+
+  function handleBaseSelect(img: string) {
+    setSelectedBase(true)
+    setSelectedCell(null)
+    setDisplayImg(img)
   }
 
   function handleListSelect(idx: number, img: string | undefined) {
@@ -608,7 +643,7 @@ function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void
         <div className="version-modal-header">{model.name}</div>
         <img src={displayImg} alt={model.name} className="version-modal-img" />
         {v.kind === 'matrix' && (
-          <MatrixContent v={v} selectedCell={selectedCell} onSelect={handleMatrixSelect} sizes={sizes} />
+          <MatrixContent v={v} selectedCell={selectedCell} onSelect={handleMatrixSelect} selectedBase={selectedBase} onSelectBase={handleBaseSelect} sizes={sizes} />
         )}
         {v.kind === 'list' && (
           <ListContent v={v} selectedIdx={selectedIdx} onSelect={handleListSelect} sizes={sizes} />

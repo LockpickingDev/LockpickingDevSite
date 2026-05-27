@@ -720,6 +720,24 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 }
 .version-sel-btn--active .version-sel-size { color: rgba(0,255,136,0.8); }
 
+/* Base row button — spans all columns, horizontal layout */
+.version-sel-btn--base {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+}
+.version-matrix-row-label--base {
+  align-self: center;
+}
+.version-sel-base-label {
+  flex: 1;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: inherit;
+}
+
 /* List selection buttons (full-width row toggles) */
 .list-sel-btn {
   display: flex;
