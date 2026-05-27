@@ -11,14 +11,19 @@ for (let mins = 9 * 60; mins <= 22 * 60; mins += 5) {
 }
 
 const GROUP_SIZES = ['1–5 people', '6–15 people', '16–25 people', '25+ people']
-const EVENT_TYPES = ['Private Lesson', 'Birthday Party', 'Corporate Team-Building', 'Conference / Convention', 'Cybersecurity Meetup', 'Educational Workshop', 'Other']
+const EVENT_TYPES = ['Private Lesson', 'Group Lesson', 'Meetup Event', 'Corporate Team-Building', 'Conference / Convention', 'Educational Workshop', 'Party', 'Other (Please describe in message)']
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MAX = { name: 100, email: 254, message: 2000 }
 
-// Strip HTML tags and trim — prevents XSS if data is ever rendered server-side
+// Encode all HTML-special characters — protects against XSS if data is rendered in any HTML context
 function sanitize(value: string): string {
-  return value.trim().replace(/<[^>]*>/g, '').replace(/&/g, '&amp;').replace(/"/g, '&quot;')
+  return value.trim()
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
 }
 
 function isAllowed(value: string, allowed: string[]): boolean {
@@ -63,8 +68,8 @@ export default function Contact() {
 
   function validate(): Errors {
     const errs: Errors = {}
-    const name = sanitize(fields.name)
-    const email = sanitize(fields.email)
+    const name = fields.name.trim()
+    const email = fields.email.trim()
     if (!name) errs.name = 'Name is required'
     else if (name.length > MAX.name) errs.name = `Max ${MAX.name} characters`
     if (!email) errs.email = 'Email is required'
@@ -74,6 +79,18 @@ export default function Contact() {
     if (fields.preferredTime && !isAllowed(fields.preferredTime, TIMES)) errs.preferredTime = 'Invalid selection'
     if (fields.message.trim().length > MAX.message) errs.message = `Max ${MAX.message} characters`
     return errs
+  }
+
+  function buildPayload() {
+    return {
+      name: sanitize(fields.name).slice(0, MAX.name),
+      email: fields.email.trim().slice(0, MAX.email),
+      groupSize: fields.groupSize,
+      eventType: fields.eventType,
+      preferredDate: selectedDate?.toLocaleDateString() ?? '',
+      preferredTime: fields.preferredTime,
+      message: sanitize(fields.message).slice(0, MAX.message),
+    }
   }
 
   function handleSubmit(e: FormEvent) {
@@ -91,18 +108,9 @@ export default function Contact() {
       return
     }
 
-    // TODO: send to your backend or email service (e.g. Formspree, EmailJS)
-    // Server-side validation and rate limiting should also be applied there.
-    // Sanitized payload shape:
-    // {
-    //   name: sanitize(fields.name).slice(0, MAX.name),
-    //   email: fields.email.trim().slice(0, MAX.email),
-    //   groupSize: fields.groupSize,
-    //   eventType: fields.eventType,
-    //   preferredDate: selectedDate?.toLocaleDateString() ?? '',
-    //   preferredTime: fields.preferredTime,
-    //   message: sanitize(fields.message).slice(0, MAX.message),
-    // }
+    // TODO: send payload to your backend or email service (e.g. Formspree, EmailJS).
+    // Server-side validation and rate limiting must also be applied there.
+    buildPayload()
 
     setLastSubmit(Date.now())
     setSubmitted(true)
@@ -117,24 +125,10 @@ export default function Contact() {
             <h2 className="section-title">Open a Session</h2>
             <div className="section-divider" />
             <p className="contact-desc">
-              Submit your request and I'll respond within 3 business days to work out the details. All
+              Submit your request and I'll respond within 3-5 business days to work out the details. All
               sessions confirmed via email before any payment is arranged.
             </p>
-            <div className="contact-links">
-              <a href="https://www.youtube.com/@LockpickingDev" className="contact-link" target="_blank" rel="noreferrer">
-                YouTube · @LockpickingDev
-              </a>
-              <a href="https://www.facebook.com/LockpickingDevOfficial/" className="contact-link" target="_blank" rel="noreferrer">
-                Facebook · LockpickingDevOfficial
-              </a>
-              <a href="https://www.instagram.com/lockpickingdev/" className="contact-link" target="_blank" rel="noreferrer">
-                Instagram · @lockpickingdev
-              </a>
-              <a href="https://www.gatewaylocksport.com" className="contact-link" target="_blank" rel="noreferrer">
-                GatewayLocksport.com
-              </a>
-            </div>
-            <div className="payment-note">
+<div className="payment-note">
               <strong className="payment-note-title">Payment Info</strong>
               <br />No transactions on this site.
               <br />Payment via <span className="cyan-text">PayPal</span> or{' '}
@@ -226,6 +220,7 @@ export default function Contact() {
                         <option value="">Select a time...</option>
                         {TIMES.map(t => <option key={t}>{t}</option>)}
                       </select>
+                      {errors.preferredTime && <div className="t-error">{errors.preferredTime}</div>}
                     </div>
                   </div>
 

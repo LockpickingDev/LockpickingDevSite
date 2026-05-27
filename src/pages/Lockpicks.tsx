@@ -1,38 +1,57 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 
 // Replace '' with the path or URL to each photo.
 // Example: { src: '/picks/my-snake-rake.jpg', caption: 'Snake Rake — spring steel' }
 const MY_PICKS = [
-  { src: 'src/public/lockpicks/2019 Spring - First Batch made.jpg', caption: 'Add photo' },
-  { src: 'src/public/lockpicks/2020 Spring Picks.jpg', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
+  { src: '/mycustompicks/2019 Spring - First Batch of Lock Picks Ever Made.JPG', caption: '2019 Spring Picks - First Batch made' },
+  { src: '/mycustompicks/2020 Spring Picks.JPG', caption: '2020 Spring Picks' },
+  { src: '/mycustompicks/Brass Dimple Picks for Multipick Flags.jpg', caption: 'Brass Dimple Picks for Multipick Flags' },
+  { src: '/mycustompicks/Goth Chicks.JPG', caption: 'Goth Chicks' },
+  { src: '/mycustompicks/2022 Spring Picks (1).JPG', caption: '2022 Spring Picks' },
+  { src: '/mycustompicks/Burl with resin filled gaps (1).JPG', caption: 'Burl with resin filled gaps' },
+  { src: '/mycustompicks/Custom Moki Interchangeable Handles (304 Steel).png', caption: 'Custom Moki Interchangeable Handles (304 Steel)' },
+  { src: '/mycustompicks/Aluminum Bronze & Aluminum Interchangleable Handles.JPG', caption: 'Aluminum Bronze & Aluminum Interchangleable Handles' },
+  { src: '/mycustompicks/Keys and Skulls in Resin (2).jpg', caption: 'Keys & Skulls in Resin' },
+  { src: '/mycustompicks/Keys and Skulls in Resin (1).jpg', caption: 'Keys & Skulls in Resin' },  
+  { src: '/mycustompicks/Gaboon Ebony Wood, Brass Pins, and Brass Inlay.jpg', caption: 'Gaboon Ebony Wood, Brass Pins, and Brass Inlay' },
+  { src: '/mycustompicks/Burl, Ebony, and Brass Dimple Picks.JPG', caption: 'Burl, Ebony, and Brass Dimple Picks' },
+  { src: '/mycustompicks/Mammoth Tusk Pick.jpg', caption: 'Mammoth Tusk Pick' },
+  { src: '/mycustompicks/Padauk, Ancient Bog Oak handle with Polycrylic Finish.jpg', caption: 'Padauk, Ancient Bog Oak handle with Polycrylic Finish' },
+  { src: '/mycustompicks/Spalted Maple - Hattori Owned.JPG', caption: 'Spalted Maple - Hattori Owned' },
+  { src: '/mycustompicks/Ambrosia Wood Handle with CA Glue Finish.JPG', caption: 'Ambrosia Wood Handle with CA Glue Finish' },
+  { src: '/mycustompicks/Multi-Dong Dimple Pick.JPG', caption: 'Multi-Dong Dimple Pick - Honest Dong Shi Handle Converted to use MultiPick Flags' },
+  { src: '/mycustompicks/Zebra Wood CA Glue Finish.jpg', caption: 'Zebra Wood CA Glue Finish' },
+  { src: '/mycustompicks/Burl with Brass Inlay - Gifted to PickSmith (2).JPG', caption: 'Burl with Brass Inlay - Gifted to PickSmith (2)' },
+  { src: '/mycustompicks/Burl with Brass Inlay - Gifted to PickSmith (1).JPG', caption: 'Burl with Brass Inlay - Gifted to PickSmith (1)' },
+  { src: '/mycustompicks/Padauk.JPG', caption: 'Padauk' },
+  { src: '/mycustompicks/LPU RAFL Donation.JPG', caption: 'LPU RAFL Donation' },
+  { src: '/mycustompicks/LPU RAFL Donation 2.JPG', caption: 'LPU RAFL Donation 2' },
+  { src: '/mycustompicks/Green Burl Buckeye with Medeco Lifter.jpg', caption: 'Green Burl Buckeye with Medeco Lifter' },
+  { src: '/mycustompicks/Burl with Brass Inlay - LPU RAFL Donation.JPG', caption: 'Burl with Brass Inlay - LPU RAFL Donation' },
+  { src: '/mycustompicks/Ancient Bog Oak, Highly Figured Walnut, Brass.JPG', caption: 'Ancient Bog Oak, Highly Figured Walnut, Brass' },
+  { src: '/mycustompicks/Purple Heart.JPG', caption: 'Purple Heart' },
+  { src: '/mycustompicks/Curly Mango .016 med hook full tang, CA Glue finish - Lambda2 (Lambda Due on YouTube) (3).jpg', caption: 'Curly Mango CA Glue finish - Gifted to Lambda2' },
+  { src: '/mycustompicks/Another Burl.JPG', caption: 'Another Burl' },
+  { src: '/mycustompicks/LPU RAFL 2026.JPG', caption: 'LPU RAFL 2026' },
+  { src: '/mycustompicks/Ancient Bog Oak, Paduak, African Blackwood, Brass.JPG', caption: 'Ancient Bog Oak, Paduak, African Blackwood, Brass' },
+  { src: '/mycustompicks/LPU RAFL 2023.JPG', caption: 'LPU RAFL 2023' },
+  { src: '/mycustompicks/Deer Leg Pick.JPG', caption: 'Deer Leg Pick' },
+  { src: '/mycustompicks/Mt. Rainier Picture in Resin Pick.JPG', caption: 'Mt. Rainier Picture in Resin Pick' },
+  { src: '/mycustompicks/Googley Eye Glow in the Dark.jpg', caption: 'Googley Eye Glow in the Dark' },
+  { src: '', caption: 'Add' },
 ]
 
 const OTHERS_PICKS = [
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
-  { src: '', caption: 'Add photo' },
+  { src: '/picksfromothers/Matts Lock Pit.jpg', caption: 'Matt\'s Lock Pit' },
+  { src: '/picksfromothers/Rob Lawn Lockpicks.jpg', caption: 'Rob Lawn' },
+  { src: '/picksfromothers/Aluminum Interchangeable Handles - Machined by Max.jpg', caption: 'Aluminum Interchangeable Handles - Machined by Max' },
 ]
 
 const MINE_INITIAL = 9
 const OTHERS_INITIAL = 6
-const PICKS_PAGE = 8
+const PICKS_PAGE = 9
 
 interface PickItem { src: string; caption: string }
 
@@ -96,6 +115,12 @@ export default function Lockpicks() {
 
   return (
     <>
+      <Helmet>
+        <title>Custom Lockpicks — Handmade Collection | LockpickingDev</title>
+        <meta name="description" content="Over 100 handmade custom lockpicks by LockpickingDev — spring steel, titanium, brass, and more. Available for purchase via Covert Instruments. Plus picks gifted from the locksport community." />
+        <link rel="canonical" href="https://lockpicking.dev/lockpicks" />
+      </Helmet>
+
       {lightboxItem && <Lightbox item={lightboxItem} onClose={closeLightbox} />}
 
       {/* HERO */}

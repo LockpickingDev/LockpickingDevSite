@@ -5,8 +5,9 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
   const isHome = pathname === '/'
-  const onLab = pathname === '/lab'
+  const onResources = pathname === '/resources'
   const onLockpicks = pathname === '/lockpicks'
+  const onPrints = pathname === '/prints'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80)
@@ -27,8 +28,9 @@ export default function Nav() {
         <li><a href={a('clearance')}>Record</a></li>
         <li><a href={a('services')}>Services</a></li>
         <li><a href={a('contact')}>Contact</a></li>
-        <li><Link to="/lab" className={onLab ? 'nav-link-active' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Lab</Link></li>
+        <li><Link to="/resources" className={onResources ? 'nav-link-active' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Resources</Link></li>
         <li><Link to="/lockpicks" className={onLockpicks ? 'nav-link-active' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Lockpicks</Link></li>
+        <li><Link to="/prints" className={onPrints ? 'nav-link-active' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>3D Prints</Link></li>
       </ul>
       <a href={isHome ? '#contact' : '/#contact'} className="nav-cta">
         Book a Session
