@@ -10,6 +10,7 @@ type MatrixVariant = {
   cols: string[]
   rowLabel: string
   colLabel: string
+  rowDisplayLabels?: Record<string, string>
   files: Record<string, Record<string, string>>
   variantImages?: Record<string, Record<string, string>>
   baseFile?: { label: string; url: string }
@@ -74,7 +75,12 @@ function stdMatrix(
       Right:  img(folder, `${prefix} - ${row} Key - Offset Right.stl`),
     }
   }
-  return { kind: 'matrix', rows, cols: ['Left', 'Center', 'Right'], rowLabel: 'KEY SIZE', colLabel: 'KEY POSITION', files, variantImages, baseFile }
+  const rowDisplayLabels: Record<string, string> = {
+    Small:  'Small (52mm)',
+    Medium: 'Medium (60mm)',
+    Large:  'Large (69mm)',
+  }
+  return { kind: 'matrix', rows, cols: ['Left', 'Center', 'Right'], rowLabel: 'KEY LENGTH', colLabel: 'KEY POSITION', files, variantImages, baseFile, rowDisplayLabels }
 }
 
 function useSizes(urls: string[]): Record<string, number> {
@@ -125,7 +131,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'padlock-medium',
     name: 'Padlock Stand - Medium Flat',
-    desc: 'Flat-base stand scaled for medium padlocks. Same stable footprint, three key slot positions.',
+    desc: 'Padlock display stands for medium sized padlocks with a flat style body.',
     group: 'Lock Display Stands',
     image: '/3dprinting/PadlockMedium/PadlockMedium.jpg',
     variant: stdMatrix('PadlockMedium', 'Medium Padlock', undefined, {
@@ -136,7 +142,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'padlock-large',
     name: 'Padlock Stand - Large Flat',
-    desc: 'Flat-base stand for large padlocks. Three key slot positions. One of the most-printed locksport designs in the community.',
+    desc: 'Padlock display stands for large sized padlocks with a flat style body.',
     group: 'Lock Display Stands',
     image: '/3dprinting/PadlockLarge/PadlockLarge.png',
     variant: stdMatrix('PadlockLarge', 'Large Padlock', undefined, {
@@ -147,7 +153,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'padlock-concave-medium',
     name: 'Padlock Stand - Medium Concave',
-    desc: 'Concave cradle for medium padlocks. Lower profile, snugger hold.',
+    desc: 'Padlock display stands for medium sized padlocks with a curved body.',
     group: 'Lock Display Stands',
     image: '/3dprinting/PadlockConcaveMedium/PadlockConcaveMedium.jpg',
     variant: stdMatrix('PadlockConcaveMedium', 'Concave Medium', undefined, {
@@ -158,7 +164,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'padlock-concave-large',
     name: 'Padlock Stand - Large Concave',
-    desc: 'Concave cradle that holds large padlocks snugly. Cleaner visual presentation than the flat variant.',
+    desc: 'Padlock display stands for large sized padlocks with a curved body.',
     group: 'Lock Display Stands',
     image: '/3dprinting/PadlockConcaveLarge/PadlockConcaveLarge.jpg',
     variant: stdMatrix('PadlockConcaveLarge', 'Concave Large', undefined, {
@@ -170,7 +176,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'full-euro-cylinder',
     name: 'Full Euro Cylinder Pin Tumbler Stand',
-    desc: 'Stand for full-length euro cylinders (90mm). Pin tumbler profile, 9 key size and position variants.',
+    desc: 'Display stand for full-length euro cylinders (90mm). Pin tumbler profile.',
     group: 'Lock Display Stands',
     image: '/3dprinting/FullEuroCylinderPinTumbler/FullEuroCylinderPinTumbler.jpg',
     variant: stdMatrix('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler'),
@@ -178,7 +184,7 @@ const MODELS: PrintModel[] = [
   {
     id: '3030-euro-cylinder',
     name: '30/30 Euro Cylinder Pin Tumbler Stand',
-    desc: 'Stand for 30/30 euro cylinders - the most common length. Pin tumbler profile.',
+    desc: 'Display stand for 30/30 length euro cylinders (65mm). Pin tumbler profile.',
     group: 'Lock Display Stands',
     image: '',
     variant: stdMatrix('3030EuroCylinderPinTumbler', '30 30 Euro Cylinder Pin Tumbler'),
@@ -186,7 +192,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'half-euro-cylinder',
     name: 'Half Euro Cylinder Pin Tumbler Stand',
-    desc: 'Stand for half euro profile cylinders. Same clean design, scaled for shorter barrels.',
+    desc: 'Display stand for half-length euro cylinders (40mm). Pin tumbler profile.',
     group: 'Lock Display Stands',
     image: '',
     variant: stdMatrix('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler'),
@@ -194,7 +200,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'euro-dimple',
     name: 'Euro Dimple Cylinder Stand',
-    desc: 'Stand for euro-profile dimple locks. Choose by cylinder length and keyhole dimensions for a precise fit.',
+    desc: 'Display stand for euro-profile dimple locks. Choose by cylinder length and keyhole dimensions for a precise fit.',
     group: 'Lock Display Stands',
     image: '/3dprinting/EuroCylinderDimple/EuroCylinderDimple.jpg',
     variant: {
@@ -244,7 +250,7 @@ const MODELS: PrintModel[] = [
   {
     id: '6-pin-oval',
     name: '6-Pin Oval Stand',
-    desc: 'Display stand for 6-pin oval profile cylinders. Full 3×3 size and position matrix.',
+    desc: 'Display stand for 6-pin oval profile cylinders.',
     group: 'Lock Display Stands',
     image: '/3dprinting/6PinOval/6PinOval.jpg',
     variant: stdMatrix('6PinOval', '6 Pin Oval'),
@@ -252,7 +258,7 @@ const MODELS: PrintModel[] = [
   {
     id: '7-pin-oval',
     name: '7-Pin Oval Stand',
-    desc: 'Stand for 7-pin oval cylinders. Available in medium and large key sizes.',
+    desc: 'Display stand for 7-pin oval cylinders.',
     group: 'Lock Display Stands',
     image: '',
     variant: stdMatrix('7PinOval', '7 Pin Oval', ['Medium', 'Large']),
@@ -260,7 +266,7 @@ const MODELS: PrintModel[] = [
   {
     id: '178mm-oval',
     name: '17.8mm Oval Stand',
-    desc: 'Stand for the 17.8mm oval cylinder format. Medium and large key sizes.',
+    desc: 'Display stand for the 17.8mm oval cylinder format.',
     group: 'Lock Display Stands',
     image: '/3dprinting/17_8mmOval/17_8mmOval.jpg',
     variant: stdMatrix('17_8mmOval', '17.8mm Oval', ['Medium', 'Large']),
@@ -268,17 +274,17 @@ const MODELS: PrintModel[] = [
   {
     id: '6-pin-mortise',
     name: '6-Pin Mortise Stand',
-    desc: 'Display stand for 6-pin mortise cylinders. Full 3×3 size and position matrix.',
+    desc: 'Display stand for 6-pin mortise cylinders.',
     group: 'Lock Display Stands',
-    image: '',
+    image: '/3dprinting/6PinMortise/6PinMortise.jpg',
     variant: stdMatrix('6PinMortise', '6 pin Mortise'),
   },
   {
     id: '7-pin-mortise',
     name: '7-Pin Mortise Stand',
-    desc: 'Stand for 7-pin mortise cylinders. Full range of key sizes and positions.',
+    desc: 'Display stand for 7-pin mortise cylinders.',
     group: 'Lock Display Stands',
-    image: '/3dprinting/7PinMortise/7PinMortise.jpg',
+    image: '',
     variant: stdMatrix('7PinMortise', '7 pin Mortise'),
   },
 
@@ -286,7 +292,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'miwa-mortise',
     name: 'Miwa Mortise Stand',
-    desc: 'Display stand for Miwa mortise cylinders. Offset key slot for proper display angle.',
+    desc: 'Display stand for Miwa mortise cylinders. Single variant with offset key position.',
     group: 'Lock Display Stands',
     image: '/3dprinting/MiwaMortise/MiwaMortise.JPG',
     variant: { kind: 'single', url: stl('MiwaMortise', 'Miwa Display Stand - Medium Key - Offset Right.stl') },
@@ -302,7 +308,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'kik',
     name: 'Key-in-Knob (KiK) Stand',
-    desc: 'Display stand sized and profiled for key-in-knob lock cylinders.',
+    desc: 'Display stand sized for key-in-knob (KiK) lock cylinders.',
     group: 'Lock Display Stands',
     image: '/3dprinting/KiK/KiK Cylinder Lock Display Stand.jpg',
     variant: stdMatrix('KiK', 'KiK Display'),
@@ -346,7 +352,7 @@ const MODELS: PrintModel[] = [
   {
     id: 'pick-handles',
     name: 'Pick Handles w/ Knurl',
-    desc: 'Printable handles for wiper blade picks, .025" picks, metal-handle picks, and Southord pocket pen picks.',
+    desc: 'Handles for the common metal-handled picks, 0.025" picks without handles, wiper blade picks, Law Lock Tools, and Southord pocket pen picks.',
     group: 'Pick Handles',
     image: '/3dprinting/PickHandlesWKnurl/PickHandlesWKnurl.png',
     variant: {
@@ -473,7 +479,7 @@ function MatrixContent({
         ))}
         {v.rows.map(row => (
           <Fragment key={row}>
-            <div className="version-matrix-row-label">{row}</div>
+            <div className="version-matrix-row-label">{v.rowDisplayLabels?.[row] ?? row}</div>
             {v.cols.map(col => {
               const isActive = selectedCell?.[0] === row && selectedCell?.[1] === col
               const url = v.files[row][col]
@@ -728,14 +734,16 @@ export default function Prints() {
         <meta property="og:url" content="https://lockpicking.dev/prints" />
         <meta property="og:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
         <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants." />
-        <meta property="og:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta property="og:image" content="https://lockpicking.dev/og-prints.svg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="LockpickingDev 3D printable locksport models" />
         <meta property="og:site_name" content="LockpickingDev" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/prints" />
         <meta name="twitter:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
         <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple variants." />
-        <meta name="twitter:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta name="twitter:image" content="https://lockpicking.dev/og-prints.svg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
@@ -837,7 +845,6 @@ export default function Prints() {
           <div className="section-divider" />
           <p className="lab-section-desc">
             Click any model to browse versions and download the STL.
-            Single-file models download directly.
           </p>
           <div className="prints-grid">
             {grouped.map(({ group, models }) => (

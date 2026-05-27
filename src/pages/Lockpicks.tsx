@@ -5,11 +5,11 @@ import { Helmet } from 'react-helmet-async'
 // Replace '' with the path or URL to each photo.
 // Example: { src: '/picks/my-snake-rake.jpg', caption: 'Snake Rake - spring steel' }
 const MY_PICKS = [
+  { src: '/mycustompicks/2022 Spring Picks (1).JPG', caption: '2022 Spring Picks' },
+  { src: '/mycustompicks/Goth Chicks.JPG', caption: 'Goth Chicks' },
+  { src: '/mycustompicks/Brass Dimple Picks for Multipick Flags.jpg', caption: 'Brass Dimple Picks for Multipick Flags' },
   { src: '/mycustompicks/2019 Spring - First Batch of Lock Picks Ever Made.JPG', caption: '2019 Spring Picks - First Batch made' },
   { src: '/mycustompicks/2020 Spring Picks.JPG', caption: '2020 Spring Picks' },
-  { src: '/mycustompicks/Brass Dimple Picks for Multipick Flags.jpg', caption: 'Brass Dimple Picks for Multipick Flags' },
-  { src: '/mycustompicks/Goth Chicks.JPG', caption: 'Goth Chicks' },
-  { src: '/mycustompicks/2022 Spring Picks (1).JPG', caption: '2022 Spring Picks' },
   { src: '/mycustompicks/Burl with resin filled gaps (1).JPG', caption: 'Burl with resin filled gaps' },
   { src: '/mycustompicks/Custom Moki Interchangeable Handles (304 Steel).png', caption: 'Custom Moki Interchangeable Handles (304 Steel)' },
   { src: '/mycustompicks/Aluminum Bronze & Aluminum Interchangleable Handles.JPG', caption: 'Aluminum Bronze & Aluminum Interchangleable Handles' },
@@ -123,13 +123,15 @@ export default function Lockpicks() {
         <meta property="og:url" content="https://lockpicking.dev/lockpicks" />
         <meta property="og:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta property="og:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
-        <meta property="og:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta property="og:image" content="https://lockpicking.dev/og-lockpicks.svg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="LockpickingDev" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/lockpicks" />
         <meta name="twitter:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta name="twitter:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
-        <meta name="twitter:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta name="twitter:image" content="https://lockpicking.dev/og-lockpicks.svg" />
       </Helmet>
 
       {lightboxItem && <Lightbox item={lightboxItem} onClose={closeLightbox} />}
@@ -151,6 +153,14 @@ export default function Lockpicks() {
             Over 100 custom lockpicks made by hand over the years - plus picks gifted
             from talented makers in the locksport community.
           </p>
+          <a
+            href="https://youtube.com/playlist?list=PLZoVNaGe89lHO06kIjTeidULphDiErcZx"
+            target="_blank"
+            rel="noreferrer"
+            className="picks-yt-link"
+          >
+            ▶ Watch: How I Make Custom Lockpicks - Full Tutorial Series
+          </a>
         </div>
       </section>
 
