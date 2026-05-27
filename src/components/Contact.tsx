@@ -16,7 +16,7 @@ const EVENT_TYPES = ['Private Lesson', 'Group Lesson', 'Meetup Event', 'Corporat
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const MAX = { name: 100, email: 254, message: 2000 }
 
-// Encode all HTML-special characters — protects against XSS if data is rendered in any HTML context
+// Encode all HTML-special characters - protects against XSS if data is rendered in any HTML context
 function sanitize(value: string): string {
   return value.trim()
     .replace(/&/g, '&amp;')
@@ -145,7 +145,7 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
-                  {/* Honeypot — hidden from humans, filled by bots */}
+                  {/* Honeypot - hidden from humans, filled by bots */}
                   <div className="t-honeypot" aria-hidden="true">
                     <input
                       type="text"

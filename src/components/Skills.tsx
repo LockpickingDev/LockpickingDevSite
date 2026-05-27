@@ -15,7 +15,7 @@ const SKILLS: Skill[] = [
   {
     icon: '🔑',
     name: 'Bypass Techniques',
-    desc: 'Non-destructive entry methods — shimming, decoding, and other non-pick bypass approaches.',
+    desc: 'Non-destructive entry methods - shimming, decoding, and other non-pick bypass approaches.',
     level: 4,
   },
   {

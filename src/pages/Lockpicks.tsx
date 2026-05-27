@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
 // Replace '' with the path or URL to each photo.
-// Example: { src: '/picks/my-snake-rake.jpg', caption: 'Snake Rake — spring steel' }
+// Example: { src: '/picks/my-snake-rake.jpg', caption: 'Snake Rake - spring steel' }
 const MY_PICKS = [
   { src: '/mycustompicks/2019 Spring - First Batch of Lock Picks Ever Made.JPG', caption: '2019 Spring Picks - First Batch made' },
   { src: '/mycustompicks/2020 Spring Picks.JPG', caption: '2020 Spring Picks' },
@@ -116,18 +116,18 @@ export default function Lockpicks() {
   return (
     <>
       <Helmet>
-        <title>Custom Lockpicks — Handmade Collection | LockpickingDev</title>
-        <meta name="description" content="Over 100 handmade custom lockpicks by LockpickingDev — spring steel, titanium, brass, and more. Available for purchase via Covert Instruments. Plus picks gifted from the locksport community." />
+        <title>Custom Lockpicks - Handmade Collection | LockpickingDev</title>
+        <meta name="description" content="Over 100 handmade custom lockpicks by LockpickingDev - spring steel, titanium, brass, and more. Available for purchase via Covert Instruments. Plus picks gifted from the locksport community." />
         <link rel="canonical" href="https://lockpicking.dev/lockpicks" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/lockpicks" />
-        <meta property="og:title" content="Custom Lockpick Collection — LockpickingDev" />
+        <meta property="og:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta property="og:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
         <meta property="og:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
         <meta property="og:site_name" content="LockpickingDev" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/lockpicks" />
-        <meta name="twitter:title" content="Custom Lockpick Collection — LockpickingDev" />
+        <meta name="twitter:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta name="twitter:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
         <meta name="twitter:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
       </Helmet>
@@ -148,7 +148,7 @@ export default function Lockpicks() {
             Custom picks I've made and treasured pieces received from others.
           </p>
           <p className="lab-desc">
-            Over 100 custom lockpicks made by hand over the years — plus picks gifted
+            Over 100 custom lockpicks made by hand over the years - plus picks gifted
             from talented makers in the locksport community.
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function Lockpicks() {
               <strong>Available to Purchase</strong>
               <p>
                 A selection of my custom handmade lockpicks is available for sale through Covert
-                Instruments' Chop Shop — a curated marketplace for handcrafted picks from makers
+                Instruments' Chop Shop - a curated marketplace for handcrafted picks from makers
                 in the locksport community. Each pick is one of a kind.
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function Lockpicks() {
           <h2 className="section-title">My Custom Picks</h2>
           <div className="section-divider" />
           <p className="lab-section-desc">
-            Over 100 custom lockpicks made by hand over the years — from functional
+            Over 100 custom lockpicks made by hand over the years - from functional
             daily carries to artistic pieces. Spring steel, titanium, brass, and more.
           </p>
           <div className="picks-grid">

@@ -38,18 +38,20 @@ interface PrintModel {
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
-const PLACEHOLDER = '/imageplaceholder.svg'
-
-const T0 = '/3dprinting/TempPics/Padlock%20Display%20Stand%20-%20Large%20Flat.jpg'
-const T1 = '/3dprinting/TempPics/Padlock%20Display%20Stand%20-%20Large%20w%20Concave.jpg'
-const T2 = '/3dprinting/TempPics/Padlock%20Display%20Stands%20-%20Medium%20Flat.jpg'
-const T3 = '/3dprinting/TempPics/3d-printed-lock-display-stands-v0-f5hbto1giqta1.webp'
 function stl(folder: string, filename: string) {
   return `/3dprinting/${folder}/${filename.replace(/ /g, '%20')}`
 }
 
 function img(folder: string, filename: string) {
   return `/3dprinting/${folder}/${filename.replace(/ /g, '%20').replace(/\.stl$/, '.png')}`
+}
+
+function cardImage(model: PrintModel): string {
+  if (model.image) return model.image
+  const v = model.variant
+  if (v.kind === 'matrix') return v.variantImages?.[v.rows[0]]?.[v.cols[0]] ?? ''
+  if (v.kind === 'list')   return v.files[0]?.image ?? ''
+  return v.url.replace(/\.stl$/, '.png')
 }
 
 function stdMatrix(
@@ -119,91 +121,82 @@ function triggerDownloads(urls: string[]) {
 // ── Model data ─────────────────────────────────────────────────────────────
 
 const MODELS: PrintModel[] = [
-  // ── Lock Display Stands — Padlock ───────────────────────────────────────
-  {
-    id: 'padlock-large',
-    name: 'Padlock Stand — Large Flat',
-    desc: 'Flat-base stand for large padlocks. Three key slot positions. One of the most-printed locksport designs in the community.',
-    group: 'Lock Display Stands',
-    image: T0,
-    variant: stdMatrix('PadlockLarge', 'Large Padlock', undefined, {
-      label: 'Base (no key slot)',
-      url: stl('PadlockLarge', 'Padlock Large Base.stl'),
-    }),
-  },
+  // ── Lock Display Stands - Padlock ───────────────────────────────────────
   {
     id: 'padlock-medium',
-    name: 'Padlock Stand — Medium Flat',
+    name: 'Padlock Stand - Medium Flat',
     desc: 'Flat-base stand scaled for medium padlocks. Same stable footprint, three key slot positions.',
     group: 'Lock Display Stands',
-    image: T2,
+    image: '/3dprinting/PadlockMedium/PadlockMedium.jpg',
     variant: stdMatrix('PadlockMedium', 'Medium Padlock', undefined, {
       label: 'Base (no key slot)',
       url: stl('PadlockMedium', 'Medium Padlock Base.stl'),
     }),
   },
   {
-    id: 'padlock-concave-large',
-    name: 'Padlock Stand — Large Concave',
-    desc: 'Concave cradle that holds large padlocks snugly. Cleaner visual presentation than the flat variant.',
+    id: 'padlock-large',
+    name: 'Padlock Stand - Large Flat',
+    desc: 'Flat-base stand for large padlocks. Three key slot positions. One of the most-printed locksport designs in the community.',
     group: 'Lock Display Stands',
-    image: T1,
-    variant: stdMatrix('PadlockConcaveLarge', 'Concave Large', undefined, {
+    image: '/3dprinting/PadlockLarge/PadlockLarge.png',
+    variant: stdMatrix('PadlockLarge', 'Large Padlock', undefined, {
       label: 'Base (no key slot)',
-      url: stl('PadlockConcaveLarge', 'Concave Large Padlock Base.stl'),
+      url: stl('PadlockLarge', 'Padlock Large Base.stl'),
     }),
   },
   {
     id: 'padlock-concave-medium',
-    name: 'Padlock Stand — Medium Concave',
+    name: 'Padlock Stand - Medium Concave',
     desc: 'Concave cradle for medium padlocks. Lower profile, snugger hold.',
     group: 'Lock Display Stands',
-    image: T2,
+    image: '/3dprinting/PadlockConcaveMedium/PadlockConcaveMedium.jpg',
     variant: stdMatrix('PadlockConcaveMedium', 'Concave Medium', undefined, {
       label: 'Base (no key slot)',
       url: stl('PadlockConcaveMedium', 'Concave Medium Padlock Base.stl'),
     }),
   },
-
-  // ── Lock Display Stands — Euro Cylinder ─────────────────────────────────
+  {
+    id: 'padlock-concave-large',
+    name: 'Padlock Stand - Large Concave',
+    desc: 'Concave cradle that holds large padlocks snugly. Cleaner visual presentation than the flat variant.',
+    group: 'Lock Display Stands',
+    image: '/3dprinting/PadlockConcaveLarge/PadlockConcaveLarge.jpg',
+    variant: stdMatrix('PadlockConcaveLarge', 'Concave Large', undefined, {
+      label: 'Base (no key slot)',
+      url: stl('PadlockConcaveLarge', 'Concave Large Padlock Base.stl'),
+    }),
+  },
+  // ── Lock Display Stands - Euro Cylinder ─────────────────────────────────
   {
     id: 'full-euro-cylinder',
-    name: 'Full Euro Cylinder Stand',
+    name: 'Full Euro Cylinder Pin Tumbler Stand',
     desc: 'Stand for full-length euro cylinders (90mm). Pin tumbler profile, 9 key size and position variants.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '/3dprinting/FullEuroCylinderPinTumbler/FullEuroCylinderPinTumbler.jpg',
     variant: stdMatrix('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler'),
   },
   {
-    id: 'half-euro-cylinder',
-    name: 'Half Euro Cylinder Stand',
-    desc: 'Stand for half euro profile cylinders. Same clean design, scaled for shorter barrels.',
-    group: 'Lock Display Stands',
-    image: T3,
-    variant: stdMatrix('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler'),
-  },
-  {
     id: '3030-euro-cylinder',
-    name: '30/30 Euro Cylinder Stand',
-    desc: 'Stand for 30/30 euro cylinders — the most common length. Pin tumbler profile.',
+    name: '30/30 Euro Cylinder Pin Tumbler Stand',
+    desc: 'Stand for 30/30 euro cylinders - the most common length. Pin tumbler profile.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '',
     variant: stdMatrix('3030EuroCylinderPinTumbler', '30 30 Euro Cylinder Pin Tumbler'),
   },
   {
-    id: 'kik',
-    name: 'Key-in-Knob (KiK) Stand',
-    desc: 'Display stand sized and profiled for key-in-knob lock cylinders.',
+    id: 'half-euro-cylinder',
+    name: 'Half Euro Cylinder Pin Tumbler Stand',
+    desc: 'Stand for half euro profile cylinders. Same clean design, scaled for shorter barrels.',
     group: 'Lock Display Stands',
-    image: T3,
-    variant: stdMatrix('KiK', 'KiK Display'),
+    image: '',
+    variant: stdMatrix('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler'),
   },
   {
     id: 'euro-dimple',
     name: 'Euro Dimple Cylinder Stand',
     desc: 'Stand for euro-profile dimple locks. Choose by cylinder length and keyhole dimensions for a precise fit.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '/3dprinting/EuroCylinderDimple/EuroCylinderDimple.jpg',
     variant: {
       kind: 'matrix',
       rows: ['Half (40mm)', '30/30 (65mm)', 'Full (90mm)'],
@@ -247,13 +240,13 @@ const MODELS: PrintModel[] = [
     },
   },
 
-  // ── Lock Display Stands — Oval & Mortise ────────────────────────────────
+  // ── Lock Display Stands - Oval & Mortise ────────────────────────────────
   {
     id: '6-pin-oval',
     name: '6-Pin Oval Stand',
     desc: 'Display stand for 6-pin oval profile cylinders. Full 3×3 size and position matrix.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '/3dprinting/6PinOval/6PinOval.jpg',
     variant: stdMatrix('6PinOval', '6 Pin Oval'),
   },
   {
@@ -261,7 +254,7 @@ const MODELS: PrintModel[] = [
     name: '7-Pin Oval Stand',
     desc: 'Stand for 7-pin oval cylinders. Available in medium and large key sizes.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '',
     variant: stdMatrix('7PinOval', '7 Pin Oval', ['Medium', 'Large']),
   },
   {
@@ -269,7 +262,7 @@ const MODELS: PrintModel[] = [
     name: '17.8mm Oval Stand',
     desc: 'Stand for the 17.8mm oval cylinder format. Medium and large key sizes.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '/3dprinting/17_8mmOval/17_8mmOval.jpg',
     variant: stdMatrix('17_8mmOval', '17.8mm Oval', ['Medium', 'Large']),
   },
   {
@@ -277,7 +270,7 @@ const MODELS: PrintModel[] = [
     name: '6-Pin Mortise Stand',
     desc: 'Display stand for 6-pin mortise cylinders. Full 3×3 size and position matrix.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '',
     variant: stdMatrix('6PinMortise', '6 pin Mortise'),
   },
   {
@@ -285,17 +278,17 @@ const MODELS: PrintModel[] = [
     name: '7-Pin Mortise Stand',
     desc: 'Stand for 7-pin mortise cylinders. Full range of key sizes and positions.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '/3dprinting/7PinMortise/7PinMortise.jpg',
     variant: stdMatrix('7PinMortise', '7 pin Mortise'),
   },
 
-  // ── Lock Display Stands — Specialty ─────────────────────────────────────
+  // ── Lock Display Stands - Specialty ─────────────────────────────────────
   {
     id: 'miwa-mortise',
     name: 'Miwa Mortise Stand',
     desc: 'Display stand for Miwa mortise cylinders. Offset key slot for proper display angle.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '/3dprinting/MiwaMortise/MiwaMortise.JPG',
     variant: { kind: 'single', url: stl('MiwaMortise', 'Miwa Display Stand - Medium Key - Offset Right.stl') },
   },
   {
@@ -303,25 +296,33 @@ const MODELS: PrintModel[] = [
     name: 'Mogul Cylinder Stand',
     desc: 'Display stand for the Mogul cylinder profile. Single variant with offset key position.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '/3dprinting/MogulCylinder/MogulCylinder.jpg',
     variant: { kind: 'single', url: stl('MogulCylinder', 'Mogul Cylinder Display Stand - Key Offset Right.stl') },
+  },
+  {
+    id: 'kik',
+    name: 'Key-in-Knob (KiK) Stand',
+    desc: 'Display stand sized and profiled for key-in-knob lock cylinders.',
+    group: 'Lock Display Stands',
+    image: '/3dprinting/KiK/KiK Cylinder Lock Display Stand.jpg',
+    variant: stdMatrix('KiK', 'KiK Display'),
   },
   {
     id: '5x-euro-display',
     name: '5× Euro Display Base',
     desc: 'Base for displaying five euro cylinders side by side. Great for showcasing a collection.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '',
     variant: { kind: 'single', url: stl('5xEuroDisplay', '5x Euro Display Bottom.stl') },
   },
 
-  // ── Lock Display Stands — Key Holders ───────────────────────────────────
+  // ── Lock Display Stands - Key Holders ───────────────────────────────────
   {
     id: 'key-holder',
-    name: 'Wall-Mount Key Holder',
-    desc: 'Wall-mountable key holder in three sizes. Hook on left, center, or right.',
+    name: 'Key Holder',
+    desc: 'Key holder in three sizes. Hook on left, center, or right.',
     group: 'Lock Display Stands',
-    image: T3,
+    image: '',
     variant: {
       kind: 'matrix',
       rows: ['Small', 'Medium', 'Large'],
@@ -347,17 +348,17 @@ const MODELS: PrintModel[] = [
     name: 'Pick Handles w/ Knurl',
     desc: 'Printable handles for wiper blade picks, .025" picks, metal-handle picks, and Southord pocket pen picks.',
     group: 'Pick Handles',
-    image: PLACEHOLDER,
+    image: '/3dprinting/PickHandlesWKnurl/PickHandlesWKnurl.png',
     variant: {
       kind: 'list',
       files: [
-        { label: '.025" Pick Handle (w/ holes)',   url: stl('PickHandlesWKnurl', '0.025 Pick Handle w Holes.stl'),                   image: img('PickHandlesWKnurl', '0.025 Pick Handle w Holes.stl') },
-        { label: 'Metal Handle Picks — Standard',  url: stl('PickHandlesWKnurl', 'Handle for Picks with Metal Handles.stl'),         image: img('PickHandlesWKnurl', 'Handle for Picks with Metal Handles.stl') },
-        { label: 'Metal Handle Picks — w/ Holes',  url: stl('PickHandlesWKnurl', 'Handle w Holes for Picks with Metal Handles.stl'), image: img('PickHandlesWKnurl', 'Handle w Holes for Picks with Metal Handles.stl') },
-        { label: 'LLT .025" Handle (w/ holes)',    url: stl('PickHandlesWKnurl', 'LLT 0.025 Handle w Holes.stl'),                   image: img('PickHandlesWKnurl', 'LLT 0.025 Handle w Holes.stl') },
-        { label: 'Southord Pocket Pen Picks',      url: stl('PickHandlesWKnurl', 'Southord Pocket Pen Picks Handle.stl'),           image: img('PickHandlesWKnurl', 'Southord Pocket Pen Picks Handle.stl') },
-        { label: 'Wiper Blade — Full Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Full Tang.stl'),     image: img('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Full Tang.stl') },
-        { label: 'Wiper Blade — Half Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Half Tang.stl'),     image: img('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Half Tang.stl') },
+        { label: 'Handle for Picks with Metal Handles',  url: stl('PickHandlesWKnurl', 'Handle for Picks with Metal Handles.stl'),         image: img('PickHandlesWKnurl', 'Handle for Picks with Metal Handles.stl') },
+        { label: 'Handle for Picks with Metal Handles (w/ Holes)',  url: stl('PickHandlesWKnurl', 'Handle w Holes for Picks with Metal Handles.stl'), image: img('PickHandlesWKnurl', 'Handle w Holes for Picks with Metal Handles.stl') },
+        { label: 'Handle for .025" Picks w/o Handles (w/ holes)',   url: stl('PickHandlesWKnurl', '0.025 Pick Handle w Holes.stl'),                   image: img('PickHandlesWKnurl', '0.025 Pick Handle w Holes.stl') },
+        { label: 'Law Lock Tools .025" Handle (w/ holes)',    url: stl('PickHandlesWKnurl', 'LLT 0.025 Handle w Holes.stl'),                   image: img('PickHandlesWKnurl', 'LLT 0.025 Handle w Holes.stl') },
+        { label: 'Southord Pocket Pen Pick Handle',      url: stl('PickHandlesWKnurl', 'Southord Pocket Pen Picks Handle.stl'),           image: img('PickHandlesWKnurl', 'Southord Pocket Pen Picks Handle.stl') },
+        { label: 'Handle for Wiper Blade - Full Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Full Tang.stl'),     image: img('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Full Tang.stl') },
+        { label: 'Handle for Wiper Blade - Half Tang',        url: stl('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Half Tang.stl'),     image: img('PickHandlesWKnurl', 'Wiper Blade Handle w knurl - Half Tang.stl') },
       ],
     },
   },
@@ -368,27 +369,13 @@ const MODELS: PrintModel[] = [
     name: 'Impressioning Key Line Guides',
     desc: 'Precision line guides for key impressioning. Covers C83, SC1/SC4, and Y1/Y2 key profiles.',
     group: 'Tools & Accessories',
-    image: PLACEHOLDER,
+    image: '/3dprinting/ImpressioningKeyLineGuides/ImpressioningKeyLineGuides.png',
     variant: {
       kind: 'list',
       files: [
-        { label: 'C83 Key',        url: stl('ImpressioningKeyLineGuides', 'C83 Key Line Guide for Impressioning.stl'),     image: img('ImpressioningKeyLineGuides', 'C83 Key Line Guide for Impressioning.stl') },
-        { label: 'SC1 / SC4 Keys', url: stl('ImpressioningKeyLineGuides', 'SC1 SC4 Key Line Guide for Impressioning.stl'), image: img('ImpressioningKeyLineGuides', 'SC1 SC4 Key Line Guide for Impressioning.stl') },
-        { label: 'Y1 / Y2 Keys',   url: stl('ImpressioningKeyLineGuides', 'Y1 Y2 Key Line Guide for Impressioning.stl'),  image: img('ImpressioningKeyLineGuides', 'Y1 Y2 Key Line Guide for Impressioning.stl') },
-      ],
-    },
-  },
-  {
-    id: 'zip-tie-cuff',
-    name: 'Zip Tie Cuff Adaptors',
-    desc: 'Cuff adaptor for 0.35" zip ties and a pull ring with built-in zip tie head.',
-    group: 'Tools & Accessories',
-    image: PLACEHOLDER,
-    variant: {
-      kind: 'list',
-      files: [
-        { label: 'Cuff Adaptor (0.35" zip ties)',      url: stl('ZipTieCuffAdaptor', 'Zip Handcuff Adaptor for 0.35 inch thick Zip Ties.stl'), image: img('ZipTieCuffAdaptor', 'Zip Handcuff Adaptor for 0.35 inch thick Zip Ties.stl') },
-        { label: 'Pull Ring w/ Built-in Zip Tie Head', url: stl('ZipTieCuffAdaptor', 'Zip Tie Cuff Pull Ring w Built in Zip Tie Head.stl'),    image: img('ZipTieCuffAdaptor', 'Zip Tie Cuff Pull Ring w Built in Zip Tie Head.stl') },
+        { label: 'C83 Key Guide',        url: stl('ImpressioningKeyLineGuides', 'C83 Key Line Guide for Impressioning.stl'),     image: img('ImpressioningKeyLineGuides', 'C83 Key Line Guide for Impressioning.stl') },
+        { label: 'SC1 / SC4 Key Guide', url: stl('ImpressioningKeyLineGuides', 'SC1 SC4 Key Line Guide for Impressioning.stl'), image: img('ImpressioningKeyLineGuides', 'SC1 SC4 Key Line Guide for Impressioning.stl') },
+        { label: 'Y1 / Y2 Key Guide',   url: stl('ImpressioningKeyLineGuides', 'Y1 Y2 Key Line Guide for Impressioning.stl'),  image: img('ImpressioningKeyLineGuides', 'Y1 Y2 Key Line Guide for Impressioning.stl') },
       ],
     },
   },
@@ -397,8 +384,22 @@ const MODELS: PrintModel[] = [
     name: 'Mini Pinning Tray',
     desc: 'Compact tray for organizing lock pins during rekeying or pinning sessions.',
     group: 'Tools & Accessories',
-    image: PLACEHOLDER,
+    image: '',
     variant: { kind: 'single', url: stl('MiniPinningTray', 'Mini Pinning Tray.stl') },
+  },
+  {
+    id: 'zip-tie-cuff',
+    name: 'Zip Tie (Riot) Cuff Adaptors',
+    desc: 'Cuff adaptor for 0.35" zip ties and a pull ring with built-in zip tie head.',
+    group: 'Tools & Accessories',
+    image: '/3dprinting/ZipTieCuffAdaptor/ZipTieCuffAdaptor.jpg',
+    variant: {
+      kind: 'list',
+      files: [
+        { label: 'Cuff Adaptor (0.35" zip ties)',      url: stl('ZipTieCuffAdaptor', 'Zip Handcuff Adaptor for 0.35 inch thick Zip Ties.stl'), image: img('ZipTieCuffAdaptor', 'Zip Handcuff Adaptor for 0.35 inch thick Zip Ties.stl') },
+        { label: 'Pull Ring w/ Built-in Zip Tie Head', url: stl('ZipTieCuffAdaptor', 'Zip Tie Cuff Pull Ring w Built in Zip Tie Head.stl'),    image: img('ZipTieCuffAdaptor', 'Zip Tie Cuff Pull Ring w Built in Zip Tie Head.stl') },
+      ],
+    },
   },
 ]
 
@@ -518,7 +519,7 @@ function MatrixContent({
             className="modal-dl-selected"
             onClick={e => e.stopPropagation()}
           >
-            ↓ Download — {selectedLabel}{sizes[selectedUrl] ? ` (${formatSize(sizes[selectedUrl])})` : ''}
+            ↓ Download - {selectedLabel}{sizes[selectedUrl] ? ` (${formatSize(sizes[selectedUrl])})` : ''}
           </a>
         ) : (
           <div className="modal-dl-prompt">Select a version above to download</div>
@@ -527,7 +528,7 @@ function MatrixContent({
           className="modal-dl-all"
           onClick={e => { e.stopPropagation(); triggerDownloads(allDownloads) }}
         >
-          ↓ Download All ({allDownloads.length} files{totalLabel ? ` — ${totalLabel}` : ''})
+          ↓ Download All ({allDownloads.length} files{totalLabel ? ` - ${totalLabel}` : ''})
         </button>
       </div>
     </>
@@ -581,7 +582,7 @@ function ListContent({
             className="modal-dl-selected"
             onClick={e => e.stopPropagation()}
           >
-            ↓ Download — {selectedFile.label}{sizes[selectedFile.url] ? ` (${formatSize(sizes[selectedFile.url])})` : ''}
+            ↓ Download - {selectedFile.label}{sizes[selectedFile.url] ? ` (${formatSize(sizes[selectedFile.url])})` : ''}
           </a>
         ) : (
           <div className="modal-dl-prompt">Select a file above to download</div>
@@ -590,10 +591,23 @@ function ListContent({
           className="modal-dl-all"
           onClick={e => { e.stopPropagation(); triggerDownloads(allDownloads) }}
         >
-          ↓ Download All ({allDownloads.length} files{totalLabel ? ` — ${totalLabel}` : ''})
+          ↓ Download All ({allDownloads.length} files{totalLabel ? ` - ${totalLabel}` : ''})
         </button>
       </div>
     </>
+  )
+}
+
+// ── Single modal content ───────────────────────────────────────────────────
+
+function SingleContent({ v, sizes }: { v: SingleVariant; sizes: Record<string, number> }) {
+  const size = formatSize(sizes[v.url] ?? 0)
+  return (
+    <div className="modal-dl-section">
+      <a href={v.url} download className="modal-dl-selected" onClick={e => e.stopPropagation()}>
+        ↓ Download STL{size ? ` (${size})` : ''}
+      </a>
+    </div>
   )
 }
 
@@ -602,7 +616,7 @@ function ListContent({
 function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void }) {
   useModalClose(onClose)
   const v = model.variant
-  const [displayImg, setDisplayImg]     = useState(model.image)
+  const [displayImg, setDisplayImg]     = useState(cardImage(model))
   const [selectedCell, setSelectedCell] = useState<[string, string] | null>(null)
   const [selectedBase, setSelectedBase] = useState(false)
   const [selectedIdx, setSelectedIdx]   = useState<number | null>(null)
@@ -614,7 +628,7 @@ function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void
       return urls
     }
     if (v.kind === 'list') return v.files.map(f => f.url)
-    return []
+    return [v.url]
   }, [model]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const sizes = useSizes(allUrls)
@@ -648,6 +662,9 @@ function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void
         {v.kind === 'list' && (
           <ListContent v={v} selectedIdx={selectedIdx} onSelect={handleListSelect} sizes={sizes} />
         )}
+        {v.kind === 'single' && (
+          <SingleContent v={v} sizes={sizes} />
+        )}
       </div>
     </div>
   )
@@ -668,27 +685,13 @@ function PrintCard({ model, onOpen }: { model: PrintModel; onOpen?: () => void }
 
   const imageBlock = (
     <div className="print-card-visual">
-      <img src={model.image} alt={model.name} className="print-card-img" />
+      <img src={cardImage(model)} alt={model.name} className="print-card-img" />
       <div className="print-card-badges">
         <span className="print-card-badge">{badge}</span>
         {hasBase && <span className="print-card-badge print-card-badge--dim">+ BASE</span>}
-        {v.kind === 'single' && <span className="print-card-dl-glyph">↓</span>}
       </div>
     </div>
   )
-
-  if (v.kind === 'single') {
-    return (
-      <a className="print-card" href={v.url} download aria-label={`Download ${model.name}`}>
-        {imageBlock}
-        <div className="print-card-body">
-          <div className="print-card-name">{model.name}</div>
-          <div className="print-card-desc">{model.desc}</div>
-          <div className="print-card-cta">↓ Download STL</div>
-        </div>
-      </a>
-    )
-  }
 
   return (
     <button className="print-card" onClick={onOpen} aria-label={model.name}>
@@ -697,7 +700,7 @@ function PrintCard({ model, onOpen }: { model: PrintModel; onOpen?: () => void }
         <div className="print-card-name">{model.name}</div>
         <div className="print-card-desc">{model.desc}</div>
         <div className="print-card-cta">
-          {v.kind === 'list' ? 'Browse files →' : 'Choose version →'}
+          {v.kind === 'list' ? 'Browse files →' : v.kind === 'single' ? 'Download STL →' : 'Choose version →'}
         </div>
       </div>
     </button>
@@ -718,8 +721,8 @@ export default function Prints() {
   return (
     <>
       <Helmet>
-        <title>Free 3D Printable Locksport Models — Lock Display Stands &amp; More | LockpickingDev</title>
-        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants — community staples used at meetups worldwide." />
+        <title>Free 3D Printable Locksport Models - Lock Display Stands &amp; More | LockpickingDev</title>
+        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants - community staples used at meetups worldwide." />
         <link rel="canonical" href="https://lockpicking.dev/prints" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/prints" />
@@ -738,7 +741,7 @@ export default function Prints() {
           "@type": "CollectionPage",
           "@id": "https://lockpicking.dev/prints",
           "url": "https://lockpicking.dev/prints",
-          "name": "Free 3D Printable Locksport Models — LockpickingDev",
+          "name": "Free 3D Printable Locksport Models - LockpickingDev",
           "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants.",
           "publisher": { "@id": "https://lockpicking.dev/#business" },
           "author": { "@id": "https://lockpicking.dev/#person" },
@@ -748,10 +751,10 @@ export default function Prints() {
             "name": "3D Printable Locksport Models",
             "numberOfItems": 22,
             "itemListElement": [
-              { "@type": "ListItem", "position": 1,  "name": "Padlock Stand — Large Flat",         "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 2,  "name": "Padlock Stand — Medium Flat",        "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 3,  "name": "Padlock Stand — Large Concave",      "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 4,  "name": "Padlock Stand — Medium Concave",     "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 1,  "name": "Padlock Stand - Large Flat",         "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 2,  "name": "Padlock Stand - Medium Flat",        "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 3,  "name": "Padlock Stand - Large Concave",      "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 4,  "name": "Padlock Stand - Medium Concave",     "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 5,  "name": "Full Euro Cylinder Stand",           "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 6,  "name": "Half Euro Cylinder Stand",           "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 7,  "name": "30/30 Euro Cylinder Stand",          "url": "https://lockpicking.dev/prints" },
@@ -775,7 +778,7 @@ export default function Prints() {
         })}</script>
       </Helmet>
 
-      {activeModel && activeModel.variant.kind !== 'single' && (
+      {activeModel && (
         <ModelModal model={activeModel} onClose={closeModal} />
       )}
 
@@ -790,7 +793,7 @@ export default function Prints() {
             <span className="hero-cursor" />
           </h1>
           <p className="lab-subtitle">
-            Lock display stands, tools, and hardware — all free to print.
+            Lock display stands, tools, and hardware - all free to print.
           </p>
           <p className="lab-desc">
             Original 3D printable designs built for the locksport community.
@@ -801,7 +804,7 @@ export default function Prints() {
 
       {/* COMMUNITY CALLOUT */}
       <section className="picks-section" style={{ background: 'var(--bg)', paddingTop: '3rem', paddingBottom: '3rem' }}>
-        <div className="container">
+        <div className="container" style={{ textAlign: 'center' }}>
           <div className="covert-banner">
             <div className="covert-banner-text">
               <strong>Community Staples</strong>
@@ -811,14 +814,17 @@ export default function Prints() {
                 good chance it came from these files.
               </p>
             </div>
-            <a
-              href="https://www.thingiverse.com/LockpickingDev/designs"
-              target="_blank"
-              rel="noreferrer"
-              className="covert-link-btn"
-            >
-              View All on Thingiverse →
-            </a>
+            <div className="prints-platform-btns">
+              <a href="https://www.thingiverse.com/LockpickingDev/designs" target="_blank" rel="noreferrer" className="covert-link-btn">
+                Thingiverse →
+              </a>
+              <a href="https://www.printables.com/@LockpickingDev" target="_blank" rel="noreferrer" className="covert-link-btn">
+                Printables →
+              </a>
+              <a href="https://makerworld.com/en/@LockpickingDev" target="_blank" rel="noreferrer" className="covert-link-btn">
+                MakerWorld →
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -841,7 +847,7 @@ export default function Prints() {
                   <PrintCard
                     key={model.id}
                     model={model}
-                    onOpen={model.variant.kind !== 'single' ? () => openModal(model) : undefined}
+                    onOpen={() => openModal(model)}
                   />
                 ))}
               </Fragment>

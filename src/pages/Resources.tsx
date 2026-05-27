@@ -158,19 +158,19 @@ export default function Resources() {
   return (
     <>
       <Helmet>
-        <title>Resources — Gear, Creators &amp; Videos | LockpickingDev</title>
-        <meta name="description" content="Curated locksport resources from LockpickingDev — recommended gear, creators, communities, and videos worth your time." />
+        <title>Resources - Gear, Creators &amp; Videos | LockpickingDev</title>
+        <meta name="description" content="Curated locksport resources from LockpickingDev - recommended gear, creators, communities, and videos worth your time." />
         <link rel="canonical" href="https://lockpicking.dev/resources" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/resources" />
-        <meta property="og:title" content="Locksport Resources — Gear, Creators &amp; Videos | LockpickingDev" />
-        <meta property="og:description" content="Curated locksport resources from LockpickingDev — recommended gear companies, community creators, and videos worth your time." />
+        <meta property="og:title" content="Locksport Resources - Gear, Creators &amp; Videos | LockpickingDev" />
+        <meta property="og:description" content="Curated locksport resources from LockpickingDev - recommended gear companies, community creators, and videos worth your time." />
         <meta property="og:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
         <meta property="og:site_name" content="LockpickingDev" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/resources" />
-        <meta name="twitter:title" content="Locksport Resources — Gear, Creators &amp; Videos | LockpickingDev" />
-        <meta name="twitter:description" content="Curated locksport resources from LockpickingDev — recommended gear, creators, and videos worth your time." />
+        <meta name="twitter:title" content="Locksport Resources - Gear, Creators &amp; Videos | LockpickingDev" />
+        <meta name="twitter:description" content="Curated locksport resources from LockpickingDev - recommended gear, creators, and videos worth your time." />
         <meta name="twitter:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
       </Helmet>
 
@@ -188,7 +188,7 @@ export default function Resources() {
             Where I buy. Who I watch. What I'd tell a friend.
           </p>
           <p className="lab-desc">
-            A curated set of recommendations from someone deep in the locksport community —
+            A curated set of recommendations from someone deep in the locksport community -
             gear worth buying, creators worth following, and videos worth watching.
             No fluff, just what I'd actually point you to.
           </p>
@@ -236,7 +236,7 @@ export default function Resources() {
             <h2 className="section-title">Recommended Locksporters</h2>
             <div className="section-divider" />
             <p className="lab-section-desc">
-              Creators and communities I'd point any picker to — whether you're just starting
+              Creators and communities I'd point any picker to - whether you're just starting
               out or looking to go deeper.
             </p>
             <div className="locksporters-grid">
