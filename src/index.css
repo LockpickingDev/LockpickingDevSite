@@ -535,6 +535,22 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 /* 3D PRINTS PAGE */
 .prints-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
 
+/* Group label — spans full grid width */
+.prints-group-label {
+  grid-column: 1 / -1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 1.5rem 0 0.4rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.1rem;
+}
+.prints-group-label:first-child { padding-top: 0; }
+
+/* Card — shared by both button and <a> variants */
 .print-card {
   background: var(--bg3);
   border: 1px solid var(--border);
@@ -544,32 +560,79 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   flex-direction: column;
   text-align: left;
   padding: 0;
+  text-decoration: none;
+  color: inherit;
 }
 .print-card:hover { border-color: rgba(0,229,255,0.4); transform: translateY(-2px); }
-.print-card-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
-.print-card-body { padding: 1.1rem; display: flex; flex-direction: column; flex: 1; }
-.print-card-name { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
-.print-card-desc { font-size: 0.82rem; color: var(--light-gray); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
-.print-card-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: var(--cyan); }
 
-/* VERSION MODAL */
+/* Card visual area — image wrapper with badge overlay */
+.print-card-visual {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--terminal);
+}
+.print-card-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.print-card-badges {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.print-card-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--cyan);
+  padding: 0.2rem 0.5rem;
+  letter-spacing: 0.07em;
+  white-space: nowrap;
+}
+.print-card-badge--dim { background: var(--gray); color: var(--light-gray); }
+.print-card-dl-glyph {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--cyan);
+  padding: 0.2rem 0.5rem;
+  letter-spacing: 0.07em;
+}
+
+.print-card-body { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
+.print-card-name { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; color: var(--white); margin-bottom: 0.45rem; }
+.print-card-desc { font-size: 0.81rem; color: var(--light-gray); line-height: 1.6; flex: 1; margin-bottom: 0.9rem; }
+.print-card-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700; color: var(--cyan); }
+
+/* VERSION MODAL — matrix + base */
 .version-modal {
   background: var(--bg2);
   border: 1px solid rgba(0,229,255,0.25);
   max-width: 500px;
   width: 100%;
-  padding: 2rem;
+  padding: 1.25rem;
   position: relative;
+  overflow-y: auto;
+  max-height: calc(90vh - 2rem);
 }
-.version-modal-header { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--cyan); margin-bottom: 1rem; }
-.version-modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; margin-bottom: 1.5rem; }
-.version-modal-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--light-gray); letter-spacing: 0.1em; margin-bottom: 0.75rem; }
+.version-modal-header { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--cyan); margin-bottom: 0.65rem; }
+.version-modal-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-bottom: 0.75rem; }
+.version-modal-label { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--light-gray); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
 
-.version-matrix { display: grid; grid-template-columns: 4rem repeat(3, 1fr); gap: 0.4rem; }
-.version-matrix-axis-header { grid-column: span 3; font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--cyan); text-align: center; padding-bottom: 0.2rem; letter-spacing: 0.08em; }
+.version-matrix { display: grid; gap: 0.4rem; }
+.version-matrix-axis-header { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--cyan); text-align: center; padding-bottom: 0.2rem; letter-spacing: 0.08em; }
 .version-matrix-axis-side { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--cyan); display: flex; align-items: center; letter-spacing: 0.08em; }
-.version-matrix-col-header { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--gray); text-align: center; padding-bottom: 0.25rem; }
-.version-matrix-row-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--light-gray); display: flex; align-items: center; }
+.version-matrix-col-header { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--gray); text-align: center; padding-bottom: 0.25rem; }
+.version-matrix-row-label { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; color: var(--light-gray); display: flex; align-items: center; }
 .version-dl-btn {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
@@ -583,6 +646,156 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   transition: box-shadow 0.2s;
 }
 .version-dl-btn:hover { box-shadow: 0 0 12px var(--cyan-glow); }
+.version-dl-btn--active { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--cyan), 0 0 14px var(--cyan-glow); }
+
+/* Base file section inside matrix modal */
+.version-modal-base { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.version-base-btn {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: rgba(0,229,255,0.55);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.version-base-btn:hover { background: var(--cyan); box-shadow: 0 0 12px var(--cyan-glow); }
+
+/* List modal */
+.list-modal-files { display: flex; flex-direction: column; gap: 0.35rem; }
+.list-dl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--white);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 0.65rem 0.8rem;
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s;
+  gap: 1rem;
+}
+.list-dl-btn:hover { border-color: rgba(0,229,255,0.4); background: var(--terminal); }
+.list-dl-btn--active { border-color: var(--cyan); background: var(--terminal); }
+.list-dl-btn--active .list-dl-icon { color: var(--green); }
+.list-dl-label { color: var(--light-gray); flex: 1; }
+.list-dl-icon { font-weight: 700; color: var(--cyan); white-space: nowrap; }
+
+/* Matrix selection buttons (cell toggles) */
+.version-sel-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--light-gray);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.version-sel-btn:hover { border-color: rgba(0,229,255,0.35); color: var(--white); }
+.version-sel-btn--active {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(0,255,136,0.07);
+}
+.version-sel-icon { line-height: 1; }
+.version-sel-size {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--light-gray);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.version-sel-btn--active .version-sel-size { color: rgba(0,255,136,0.8); }
+
+/* List selection buttons (full-width row toggles) */
+.list-sel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--white);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 0.65rem 0.8rem;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  gap: 1rem;
+  text-align: left;
+}
+.list-sel-btn:hover { border-color: rgba(0,229,255,0.4); background: var(--terminal); }
+.list-sel-btn--active { border-color: var(--green); background: var(--terminal); }
+.list-sel-btn--active .list-sel-icon { color: var(--green); }
+.list-sel-label { color: var(--light-gray); flex: 1; }
+.list-sel-size {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--light-gray);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.list-sel-btn--active .list-sel-size { color: rgba(0,255,136,0.8); }
+.list-sel-icon { font-weight: 700; color: var(--gray); white-space: nowrap; }
+
+/* Download section below the selector */
+.modal-dl-section {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.modal-dl-selected {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--green);
+  padding: 0.55rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s;
+}
+.modal-dl-selected:hover { box-shadow: 0 0 16px rgba(0,255,136,0.45); }
+.modal-dl-prompt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--gray);
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px dashed var(--border);
+}
+.modal-dl-all {
+  display: block;
+  width: 100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cyan);
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.modal-dl-all:hover { border-color: var(--cyan); background: var(--cyan-dim); }
 
 @media(max-width:900px) { .prints-grid { grid-template-columns: repeat(2, 1fr); } }
 @media(max-width:540px) { .prints-grid { grid-template-columns: 1fr; } }

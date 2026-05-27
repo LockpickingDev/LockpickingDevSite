@@ -5,7 +5,8 @@
       "Bash(Select-Object -ExpandProperty FullName)",
       "Bash(Sort-Object)",
       "PowerShell(Copy-Item \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\src\\\\public\\\\Animated Logo.gif\" \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\public\\\\animated-logo.gif\")",
-      "PowerShell(Copy-Item \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\src\\\\public\\\\Logo Lock Power Button - Colored.png\" \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\public\\\\logo.png\")"
+      "PowerShell(Copy-Item \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\src\\\\public\\\\Logo Lock Power Button - Colored.png\" \"c:\\\\Users\\\\dan7g\\\\source\\\\repos\\\\LockpickingDevSite\\\\public\\\\logo.png\")",
+      "Bash(Get-ChildItem \"C:\\\\Program Files\\\\Blender Foundation\\\\\" -ErrorAction SilentlyContinue | Select-Object Name)"
     ]
   }
 }
