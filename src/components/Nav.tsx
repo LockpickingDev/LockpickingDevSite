@@ -20,7 +20,7 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
       <a href="/" className="nav-logo">
-        <img src="/animated-logo.gif" alt="" className="nav-logo-img" />
+        <img src="/brand/animated-logo.gif" alt="" className="nav-logo-img" />
         LockpickingDev
       </a>
       <ul className="nav-links">

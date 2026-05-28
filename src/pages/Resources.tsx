@@ -165,13 +165,13 @@ export default function Resources() {
         <meta property="og:url" content="https://lockpicking.dev/resources" />
         <meta property="og:title" content="Locksport Resources - Gear, Creators &amp; Videos | LockpickingDev" />
         <meta property="og:description" content="Curated locksport resources from LockpickingDev - recommended gear companies, community creators, and videos worth your time." />
-        <meta property="og:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta property="og:image" content="https://lockpicking.dev/brand/android-chrome-512x512.png" />
         <meta property="og:site_name" content="LockpickingDev" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/resources" />
         <meta name="twitter:title" content="Locksport Resources - Gear, Creators &amp; Videos | LockpickingDev" />
         <meta name="twitter:description" content="Curated locksport resources from LockpickingDev - recommended gear, creators, and videos worth your time." />
-        <meta name="twitter:image" content="https://lockpicking.dev/android-chrome-512x512.png" />
+        <meta name="twitter:image" content="https://lockpicking.dev/brand/android-chrome-512x512.png" />
       </Helmet>
 
       {/* HERO */}

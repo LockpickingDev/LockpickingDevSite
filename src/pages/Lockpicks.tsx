@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
 // Replace '' with the path or URL to each photo.
-// Example: { src: '/picks/my-snake-rake.jpg', caption: 'Snake Rake - spring steel' }
+// Example: { src: 'path', caption: 'words' }
 const MY_PICKS = [
   { src: '/mycustompicks/2022 Spring Picks (1).JPG', caption: '2022 Spring Picks' },
   { src: '/mycustompicks/Goth Chicks.JPG', caption: 'Goth Chicks' },
@@ -13,39 +13,49 @@ const MY_PICKS = [
   { src: '/mycustompicks/Burl with resin filled gaps (1).JPG', caption: 'Burl with resin filled gaps' },
   { src: '/mycustompicks/Custom Moki Interchangeable Handles (304 Steel).png', caption: 'Custom Moki Interchangeable Handles (304 Steel)' },
   { src: '/mycustompicks/Aluminum Bronze & Aluminum Interchangleable Handles.JPG', caption: 'Aluminum Bronze & Aluminum Interchangleable Handles' },
-  { src: '/mycustompicks/Keys and Skulls in Resin (2).jpg', caption: 'Keys & Skulls in Resin' },
-  { src: '/mycustompicks/Keys and Skulls in Resin (1).jpg', caption: 'Keys & Skulls in Resin' },  
+  { src: '/mycustompicks/Keys and Skulls in Resin (2).jpg', caption: 'Keys & Skulls in Resin' }, 
   { src: '/mycustompicks/Gaboon Ebony Wood, Brass Pins, and Brass Inlay.jpg', caption: 'Gaboon Ebony Wood, Brass Pins, and Brass Inlay' },
   { src: '/mycustompicks/Burl, Ebony, and Brass Dimple Picks.JPG', caption: 'Burl, Ebony, and Brass Dimple Picks' },
   { src: '/mycustompicks/Mammoth Tusk Pick.jpg', caption: 'Mammoth Tusk Pick' },
   { src: '/mycustompicks/Padauk, Ancient Bog Oak handle with Polycrylic Finish.jpg', caption: 'Padauk, Ancient Bog Oak handle with Polycrylic Finish' },
   { src: '/mycustompicks/Spalted Maple - Hattori Owned.JPG', caption: 'Spalted Maple - Hattori Owned' },
-  { src: '/mycustompicks/Ambrosia Wood Handle with CA Glue Finish.JPG', caption: 'Ambrosia Wood Handle with CA Glue Finish' },
-  { src: '/mycustompicks/Multi-Dong Dimple Pick.JPG', caption: 'Multi-Dong Dimple Pick - Honest Dong Shi Handle Converted to use MultiPick Flags' },
+  { src: '/mycustompicks/Interchangeable Aluminum Handles Engraved (1).JPG', caption: 'Interchangeable Aluminum Handles Engraved' },
+  { src: '/mycustompicks/Interchangeable Aluminum Handles Engraved (2).JPG', caption: 'Interchangeable Aluminum Handles Engraved' },  
   { src: '/mycustompicks/Zebra Wood CA Glue Finish.jpg', caption: 'Zebra Wood CA Glue Finish' },
-  { src: '/mycustompicks/Burl with Brass Inlay - Gifted to PickSmith (2).JPG', caption: 'Burl with Brass Inlay - Gifted to PickSmith (2)' },
-  { src: '/mycustompicks/Burl with Brass Inlay - Gifted to PickSmith (1).JPG', caption: 'Burl with Brass Inlay - Gifted to PickSmith (1)' },
-  { src: '/mycustompicks/Padauk.JPG', caption: 'Padauk' },
-  { src: '/mycustompicks/LPU RAFL Donation.JPG', caption: 'LPU RAFL Donation' },
-  { src: '/mycustompicks/LPU RAFL Donation 2.JPG', caption: 'LPU RAFL Donation 2' },
-  { src: '/mycustompicks/Green Burl Buckeye with Medeco Lifter.jpg', caption: 'Green Burl Buckeye with Medeco Lifter' },
+  { src: '/mycustompicks/Burl with Brass Inlay - Gifted to PickSmith (2).JPG', caption: 'Burl with Brass Inlay - Gifted to PickSmith' },
   { src: '/mycustompicks/Burl with Brass Inlay - LPU RAFL Donation.JPG', caption: 'Burl with Brass Inlay - LPU RAFL Donation' },
-  { src: '/mycustompicks/Ancient Bog Oak, Highly Figured Walnut, Brass.JPG', caption: 'Ancient Bog Oak, Highly Figured Walnut, Brass' },
-  { src: '/mycustompicks/Purple Heart.JPG', caption: 'Purple Heart' },
+  { src: '/mycustompicks/Malle Burl Green Resin.JPG', caption: 'Malle Burl - Green Resin' },
+  { src: '/mycustompicks/Malle Burl Red Resin - Sold CI.JPG', caption: 'Malle Burl Red Resin - Sold via Covert Instruments' },
+  { src: '/mycustompicks/Alder Burl - Sold CI.JPG', caption: 'Alder Burl - Sold via Covert Instruments' },
+  { src: '/mycustompicks/Black palm - Sold CI.JPG', caption: 'Black Palm - Sold via Covert Instruments' },
+  { src: '/mycustompicks/Small burl - Sold CI.JPG', caption: 'Small Burl - Sold via Covert Instruments' },
+  { src: '/mycustompicks/LPU RAFL Donation.JPG', caption: 'LPU RAFL Donation' },
+  { src: '/mycustompicks/Ambrosia Wood Handle with CA Glue Finish.JPG', caption: 'Ambrosia Wood Handle with CA Glue Finish' },
   { src: '/mycustompicks/Curly Mango .016 med hook full tang, CA Glue finish - Lambda2 (Lambda Due on YouTube) (3).jpg', caption: 'Curly Mango CA Glue finish - Gifted to Lambda2' },
   { src: '/mycustompicks/Another Burl.JPG', caption: 'Another Burl' },
-  { src: '/mycustompicks/LPU RAFL 2026.JPG', caption: 'LPU RAFL 2026' },
   { src: '/mycustompicks/Ancient Bog Oak, Paduak, African Blackwood, Brass.JPG', caption: 'Ancient Bog Oak, Paduak, African Blackwood, Brass' },
+{ src: '/mycustompicks/Multi-Dong Dimple Pick.JPG', caption: 'Multi-Dong Dimple Pick - Honest Dong Shi Handle Converted to use MultiPick Flags' },
+  { src: '/mycustompicks/Star Wars in Resin (1).JPG', caption: 'Star Wars in Resin' },
+  { src: '/mycustompicks/Star Wars in Resin (2).JPG', caption: 'Star Wars in Resin' },
+  { src: '/mycustompicks/Padauk.JPG', caption: 'Padauk' },
+  { src: '/mycustompicks/Purple Heart.JPG', caption: 'Purple Heart' },
+  { src: '/mycustompicks/Ancient Bog Oak, Highly Figured Walnut, Brass.JPG', caption: 'Ancient Bog Oak, Highly Figured Walnut, Brass' },
+  { src: '/mycustompicks/Medeco Lifter with Acryllic Handle.JPG', caption: 'Medeco Lifter with Acrylic Handle' },
+  { src: '/mycustompicks/Interchangeable Aluminum Handles for Jimy Longs Modular Picks.JPG', caption: "Interchangeable Aluminum Handles for Jimy Long's Modular Picks" },
   { src: '/mycustompicks/LPU RAFL 2023.JPG', caption: 'LPU RAFL 2023' },
   { src: '/mycustompicks/Deer Leg Pick.JPG', caption: 'Deer Leg Pick' },
-  { src: '/mycustompicks/Mt. Rainier Picture in Resin Pick.JPG', caption: 'Mt. Rainier Picture in Resin Pick' },
+  { src: '/mycustompicks/Googley Eye Lockpicks (1).JPG', caption: 'Googley Eye Lockpicks' },
   { src: '/mycustompicks/Googley Eye Glow in the Dark.jpg', caption: 'Googley Eye Glow in the Dark' },
-  { src: '', caption: 'Add' },
 ]
 
 const OTHERS_PICKS = [
-  { src: '/picksfromothers/Matts Lock Pit.jpg', caption: 'Matt\'s Lock Pit' },
+  { src: 'public/picksfromothers/Bones by PickSmith (1).JPG', caption: '\"Bones\" by PickSmith' },
+  { src: 'public/picksfromothers/Bones by PickSmith (2).JPG', caption: '\"Bones\" by PickSmith' },
+  { src: 'public/picksfromothers/Caimon Pick by Lambda2 Lockpick Italy (1).JPG', caption: 'Caimon Pick by Lambda2 Lockpick Italy' },
+  { src: 'public/picksfromothers/Caimon Pick by Lambda2 Lockpick Italy (2).JPG', caption: 'Caimon Pick by Lambda2 Lockpick Italy' },
   { src: '/picksfromothers/Rob Lawn Lockpicks.jpg', caption: 'Rob Lawn' },
+  { src: '/picksfromothers/Matts Lock Pit.jpg', caption: 'Matt\'s Lock Pit' },
+  { src: 'public/picksfromothers/Matt\'s Lock Pit 2.JPG', caption: 'Matt\'s Lock Pit' },
   { src: '/picksfromothers/Aluminum Interchangeable Handles - Machined by Max.jpg', caption: 'Aluminum Interchangeable Handles - Machined by Max' },
 ]
 
@@ -123,7 +133,7 @@ export default function Lockpicks() {
         <meta property="og:url" content="https://lockpicking.dev/lockpicks" />
         <meta property="og:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta property="og:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
-        <meta property="og:image" content="https://lockpicking.dev/og-lockpicks.svg" />
+        <meta property="og:image" content="https://lockpicking.dev/brand/og-lockpicks.svg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="LockpickingDev" />
@@ -131,7 +141,7 @@ export default function Lockpicks() {
         <meta name="twitter:url" content="https://lockpicking.dev/lockpicks" />
         <meta name="twitter:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta name="twitter:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
-        <meta name="twitter:image" content="https://lockpicking.dev/og-lockpicks.svg" />
+        <meta name="twitter:image" content="https://lockpicking.dev/brand/og-lockpicks.svg" />
       </Helmet>
 
       {lightboxItem && <Lightbox item={lightboxItem} onClose={closeLightbox} />}
