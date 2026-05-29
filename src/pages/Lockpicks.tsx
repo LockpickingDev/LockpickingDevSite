@@ -34,7 +34,7 @@ const MY_PICKS = [
   { src: '/mycustompicks/Curly Mango .016 med hook full tang, CA Glue finish - Lambda2 (Lambda Due on YouTube) (3).jpg', caption: 'Curly Mango CA Glue finish - Gifted to Lambda2' },
   { src: '/mycustompicks/Another Burl.JPG', caption: 'Another Burl' },
   { src: '/mycustompicks/Ancient Bog Oak, Paduak, African Blackwood, Brass.JPG', caption: 'Ancient Bog Oak, Paduak, African Blackwood, Brass' },
-{ src: '/mycustompicks/Multi-Dong Dimple Pick.JPG', caption: 'Multi-Dong Dimple Pick - Honest Dong Shi Handle Converted to use MultiPick Flags' },
+  { src: '/mycustompicks/Multi-Dong Dimple Pick.JPG', caption: 'Multi-Dong Dimple Pick - Honest Dong Shi Handle Converted to use MultiPick Flags' },
   { src: '/mycustompicks/Star Wars in Resin (1).JPG', caption: 'Star Wars in Resin' },
   { src: '/mycustompicks/Star Wars in Resin (2).JPG', caption: 'Star Wars in Resin' },
   { src: '/mycustompicks/Padauk.JPG', caption: 'Padauk' },
@@ -49,13 +49,13 @@ const MY_PICKS = [
 ]
 
 const OTHERS_PICKS = [
-  { src: 'public/picksfromothers/Bones by PickSmith (1).JPG', caption: '\"Bones\" by PickSmith' },
-  { src: 'public/picksfromothers/Bones by PickSmith (2).JPG', caption: '\"Bones\" by PickSmith' },
-  { src: 'public/picksfromothers/Caimon Pick by Lambda2 Lockpick Italy (1).JPG', caption: 'Caimon Pick by Lambda2 Lockpick Italy' },
-  { src: 'public/picksfromothers/Caimon Pick by Lambda2 Lockpick Italy (2).JPG', caption: 'Caimon Pick by Lambda2 Lockpick Italy' },
+  { src: '/picksfromothers/Bones by PickSmith (1).JPG', caption: '\"Bones\" by PickSmith' },
+  { src: '/picksfromothers/Bones by PickSmith (2).JPG', caption: '\"Bones\" by PickSmith' },
+  { src: '/picksfromothers/Caimon Pick by Lambda2 Lockpick Italy (1).JPG', caption: 'Caimon Pick by Lambda2 Lockpick Italy' },
+  { src: '/picksfromothers/Caimon Pick by Lambda2 Lockpick Italy (2).JPG', caption: 'Caimon Pick by Lambda2 Lockpick Italy' },
   { src: '/picksfromothers/Rob Lawn Lockpicks.jpg', caption: 'Rob Lawn' },
   { src: '/picksfromothers/Matts Lock Pit.jpg', caption: 'Matt\'s Lock Pit' },
-  { src: 'public/picksfromothers/Matt\'s Lock Pit 2.JPG', caption: 'Matt\'s Lock Pit' },
+  { src: '/picksfromothers/Matt\'s Lock Pit 2.JPG', caption: 'Matt\'s Lock Pit' },
   { src: '/picksfromothers/Aluminum Interchangeable Handles - Machined by Max.jpg', caption: 'Aluminum Interchangeable Handles - Machined by Max' },
 ]
 
