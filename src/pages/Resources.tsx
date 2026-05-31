@@ -49,32 +49,20 @@ const LOCKSPORTERS: Locksporter[] = [
   { 
     name: 'LockpickingLawyer', 
     type: 'YouTube', 
-    desc: 'Why you recommend them.', 
+    desc: 'Straight to the point. No BS. If a lock has a weakness, LPL exposes it and show you exactly how fast it fails. There’s a reason people check his channel before buying anything.', 
     url: 'https://www.youtube.com/@lockpickinglawyer'
   },
   { 
     name: 'LockNoob', 
     type: 'YouTube', 
-    desc: 'Why you recommend them.', 
+    desc: 'A long-time locksporter who covers a bit of everything - a wide mix of picking, experiments, weird locks you didn’t know existed, and deep dives from someone who clearly enjoys the craft.', 
     url: 'https://www.youtube.com/@LockNoob'
   },
   { 
     name: 'Artichoke 2000', 
     type: 'YouTube', 
-    desc: 'Why you recommend them.', 
+    desc: 'Detailed, methodical, and incredibly informative. If you want to understand high-security locks at a deeper level, this is a great place to start.', 
     url: 'https://www.youtube.com/@ArtichokeTwoThousand'
-  },
-  { 
-    name: 'Isaac Hashman', 
-    type: 'YouTube', 
-    desc: 'Why you recommend them.', 
-    url: 'https://www.youtube.com/@IsaacHashman'
-  },
-  { 
-    name: 'Michael Gilchrest', 
-    type: 'YouTube', 
-    desc: 'Why you recommend them.', 
-    url: 'https://www.youtube.com/@norlin76'
   },
 ]
 
