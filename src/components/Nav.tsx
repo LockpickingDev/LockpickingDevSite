@@ -20,7 +20,10 @@ export default function Nav() {
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
       <a href="/" className="nav-logo">
-        <img src="/brand/animated-logo.gif" alt="" className="nav-logo-img" />
+        <picture>
+          <source media="(max-width: 900px)" srcSet="/brand/android-chrome-192x192.png" />
+          <img src="/brand/animated-logo.gif" alt="" className="nav-logo-img" />
+        </picture>
         LockpickingDev
       </a>
       <ul className="nav-links">

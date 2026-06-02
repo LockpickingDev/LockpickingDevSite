@@ -1,56 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="302" height="98" viewBox="0 0 302 98">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 302 98" preserveAspectRatio="none">
   <rect width="302" height="98" fill="#080c10"/>
 
-  <!-- Title -->
-  <text x="6" y="10" font-family="'JetBrains Mono',monospace" font-size="7" fill="rgba(0,229,255,0.4)" letter-spacing="1.5">KWIKSET CUT DEPTH</text>
+  <text x="297" y="30" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="20" fill="rgba(0,229,255,0.55)" letter-spacing="2">KWIKSET</text>
 
-  <!--
-    Kwikset depths 1–7, ~0.058" per step.
-    Measured from key spine: depth 1=0.836", depth 7=0.485"
-    Key blank height: 0.850"
-    Scale: 68px (y=14→y=82) = 0.850" → 80.0 px/in
-    Bar heights: 67, 62, 58, 53, 48, 44, 39 px
-    Bar width 34px, gap 7px, 7 bars = 280px, left margin 11px.
-    X starts: 11, 52, 93, 134, 175, 216, 257
-  -->
+  <!-- Depth 1 — 68px -->
+  <rect x="11"  y="14" width="34" height="68" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="8"  y1="14" x2="48"  y2="14" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="28"  y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">1</text>
 
-  <!-- Key blank top edge (faint dashed line at y=14 = 0.850") -->
-  <line x1="11" y1="14" x2="291" y2="14" stroke="rgba(0,229,255,0.15)" stroke-width="0.75" stroke-dasharray="3,3"/>
+  <!-- Depth 2 — 63px -->
+  <rect x="52"  y="19" width="34" height="63" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="49" y1="19" x2="89"  y2="19" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="69"  y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">2</text>
 
-  <!-- Depth 1 — 0.836" — height 67px -->
-  <rect x="11"  y="15" width="34" height="67" fill="rgba(0,229,255,0.55)" rx="1"/>
-  <line x1="8"  y1="15" x2="48"  y2="15" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="28"  y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(0,229,255,0.75)">1</text>
+  <!-- Depth 3 — 59px -->
+  <rect x="93"  y="23" width="34" height="59" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="90" y1="23" x2="130" y2="23" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="110" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">3</text>
 
-  <!-- Depth 2 — 0.777" — height 62px -->
-  <rect x="52"  y="20" width="34" height="62" fill="rgba(0,229,255,0.55)" rx="1"/>
-  <line x1="49" y1="20" x2="89"  y2="20" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="69"  y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(0,229,255,0.75)">2</text>
+  <!-- Depth 4 — 54px -->
+  <rect x="134" y="28" width="34" height="54" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="131" y1="28" x2="171" y2="28" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="151" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">4</text>
 
-  <!-- Depth 3 — 0.719" — height 58px -->
-  <rect x="93"  y="24" width="34" height="58" fill="rgba(0,229,255,0.55)" rx="1"/>
-  <line x1="90" y1="24" x2="130" y2="24" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="110" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(0,229,255,0.75)">3</text>
+  <!-- Depth 5 — 49px -->
+  <rect x="175" y="33" width="34" height="49" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="172" y1="33" x2="212" y2="33" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="192" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">5</text>
 
-  <!-- Depth 4 — 0.660" — height 53px -->
-  <rect x="134" y="29" width="34" height="53" fill="rgba(0,229,255,0.55)" rx="1"/>
-  <line x1="131" y1="29" x2="171" y2="29" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="151" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(0,229,255,0.75)">4</text>
-
-  <!-- Depth 5 — 0.602" — height 48px -->
-  <rect x="175" y="34" width="34" height="48" fill="rgba(0,229,255,0.55)" rx="1"/>
-  <line x1="172" y1="34" x2="212" y2="34" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="192" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(0,229,255,0.75)">5</text>
-
-  <!-- Depth 6 — 0.544" — height 44px -->
+  <!-- Depth 6 — 44px -->
   <rect x="216" y="38" width="34" height="44" fill="rgba(0,229,255,0.55)" rx="1"/>
   <line x1="213" y1="38" x2="253" y2="38" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="233" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(0,229,255,0.75)">6</text>
+  <text x="233" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">6</text>
 
-  <!-- Depth 7 — 0.485" — height 39px -->
-  <rect x="257" y="43" width="34" height="39" fill="rgba(0,229,255,0.55)" rx="1"/>
-  <line x1="254" y1="43" x2="294" y2="43" stroke="#00e5ff" stroke-width="1.5"/>
-  <text x="274" y="92" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="7.5" fill="rgba(0,229,255,0.75)">7</text>
+  <!-- Depth 7 — 40px -->
+  <rect x="257" y="42" width="34" height="40" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="254" y1="42" x2="294" y2="42" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="274" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">7</text>
 
   <!-- Baseline — lay key spine here -->
   <line x1="0" y1="82" x2="302" y2="82" stroke="#00e5ff" stroke-width="2"/>

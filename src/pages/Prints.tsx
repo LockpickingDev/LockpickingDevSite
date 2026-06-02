@@ -734,7 +734,7 @@ export default function Prints() {
         <meta property="og:url" content="https://lockpicking.dev/prints" />
         <meta property="og:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
         <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants." />
-        <meta property="og:image" content="https://lockpicking.dev/brand/og-prints.svg" />
+        <meta property="og:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="LockpickingDev 3D printable locksport models" />
@@ -743,7 +743,7 @@ export default function Prints() {
         <meta name="twitter:url" content="https://lockpicking.dev/prints" />
         <meta name="twitter:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
         <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple variants." />
-        <meta name="twitter:image" content="https://lockpicking.dev/brand/og-prints.svg" />
+        <meta name="twitter:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
@@ -829,13 +829,13 @@ export default function Prints() {
               </p>
             </div>
             <div className="prints-platform-btns">
-              <a href="https://makerworld.com/en/@LockpickingDev" target="_blank" rel="noreferrer" className="covert-link-btn">
+              <a href="https://makerworld.com/en/@LockpickingDev/upload" target="_blank" rel="noreferrer" className="covert-link-btn">
                 MakerWorld →
               </a>
               <a href="https://www.thingiverse.com/LockpickingDev/designs" target="_blank" rel="noreferrer" className="covert-link-btn">
                 Thingiverse →
               </a>
-              <a href="https://www.printables.com/@LockpickingDev" target="_blank" rel="noreferrer" className="covert-link-btn">
+              <a href="https://www.printables.com/@LockpickingD_4932772/models" target="_blank" rel="noreferrer" className="covert-link-btn">
                 Printables →
               </a>
             </div>

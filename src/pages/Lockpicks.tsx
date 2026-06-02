@@ -133,7 +133,7 @@ export default function Lockpicks() {
         <meta property="og:url" content="https://lockpicking.dev/lockpicks" />
         <meta property="og:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta property="og:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
-        <meta property="og:image" content="https://lockpicking.dev/brand/og-lockpicks.svg" />
+        <meta property="og:image" content="https://lockpicking.dev/brand/og-lockpicks.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:site_name" content="LockpickingDev" />
@@ -141,7 +141,7 @@ export default function Lockpicks() {
         <meta name="twitter:url" content="https://lockpicking.dev/lockpicks" />
         <meta name="twitter:title" content="Custom Lockpick Collection - LockpickingDev" />
         <meta name="twitter:description" content="Over 100 handmade custom lockpicks in spring steel, titanium, and brass. Available for purchase via Covert Instruments." />
-        <meta name="twitter:image" content="https://lockpicking.dev/brand/og-lockpicks.svg" />
+        <meta name="twitter:image" content="https://lockpicking.dev/brand/og-lockpicks.png" />
       </Helmet>
 
       {lightboxItem && <Lightbox item={lightboxItem} onClose={closeLightbox} />}
