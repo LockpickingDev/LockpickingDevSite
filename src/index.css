@@ -260,7 +260,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   .nav-hamburger { display: flex; }
   .nav-cta { padding: 0.45rem 1rem; font-size: 0.75rem; }
   section { padding: 5.5rem 2rem; }
-  .ev2-section { padding: 5rem 1.5rem; }
   .about-two-col { grid-template-columns: 1fr; gap: 2.5rem; }
   .timeline-item { grid-template-columns: 1fr; }
   .timeline-meta { border-right: none; border-bottom: 1px solid var(--border); }
@@ -269,7 +268,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 }
 @media(max-width:600px) {
   section { padding: 4rem 1.5rem; }
-  .ev2-section { padding: 4rem 1.5rem; }
   .services-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .t-form-row { grid-template-columns: 1fr; }
@@ -401,8 +399,8 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 .ev2-rest-name { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
 .ev2-rest-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gray); letter-spacing: 0.04em; }
 .ev2-rest-desc { font-size: 0.875rem; color: var(--light-gray); line-height: 1.65; }
-@media(max-width:900px) { .ev2-top3 { grid-template-columns: 1fr; } }
-@media(max-width:600px) { .ev2-rest-row { grid-template-columns: 1fr; gap: 0.5rem; } }
+@media(max-width:900px) { .ev2-top3 { grid-template-columns: 1fr; } .ev2-section { padding: 5rem 1.5rem; } }
+@media(max-width:600px) { .ev2-rest-row { grid-template-columns: 1fr; gap: 0.5rem; } .ev2-section { padding: 4rem 1.5rem; } }
 
 @media(max-width:700px) {
   .event-row { grid-template-columns: 1fr; }
