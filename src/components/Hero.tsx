@@ -16,8 +16,7 @@ export default function Hero() {
           ONLINE · ST. LOUIS, MO · TRAVEL AVAILABLE
         </div>
         <h1>
-          <span className="cyan">Lockpicking</span>Dev
-          <span className="hero-cursor" />
+          <span className="cyan">Lockpicking</span><span style={{ whiteSpace: 'nowrap' }}>Dev<span className="hero-cursor" /></span>
         </h1>
         <p className="hero-subtitle">
           Gateway Locksport Founder · Security Educator · Event Specialist
