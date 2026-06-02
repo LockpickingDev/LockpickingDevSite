@@ -178,7 +178,7 @@ const MODELS: PrintModel[] = [
     name: 'Full Euro Cylinder Pin Tumbler Stand',
     desc: 'Display stand for full-length euro cylinders (90mm). Pin tumbler profile.',
     group: 'Lock Display Stands',
-    image: '/3dprinting/FullEuroCylinderPinTumbler/FullEuroCylinderPinTumbler.JPG',
+    image: '/3dprinting/FullEuroCylinderPinTumbler/FullEuroCylinderPinTumbler.jpg',
     variant: stdMatrix('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler'),
   },
   {
