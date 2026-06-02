@@ -49,7 +49,7 @@ const LOCKSPORTERS: Locksporter[] = [
   { 
     name: 'LockpickingLawyer', 
     type: 'YouTube', 
-    desc: 'Straight to the point. No BS. If a lock has a weakness, LPL exposes it and show you exactly how fast it fails. There’s a reason people check his channel before buying anything.', 
+    desc: 'Straight to the point. No BS. If a lock has a weakness, LPL exposes it and shows you exactly how fast it fails. There’s a reason people check his channel before buying anything.', 
     url: 'https://www.youtube.com/@lockpickinglawyer'
   },
   { 
@@ -73,6 +73,7 @@ interface Video {
 
 // Add recommended videos from other creators here.
 // { id: 'YOUTUBE_VIDEO_ID', title: 'Video_Title' },
+// { id: 'YOUTUBE_VIDEO_ID', title: 'Video Title' },
 const RECOMMENDED_VIDEOS: Video[] = [
   { id: 'efI3GrhT1wM', title: 'Lock Noob - ULTIMATE Lock Disassembly and Re-Assembly Guide' },
   { id: 'mK8TjuLDoMg', title: '"Jiggle Test" and the Four Fundamental Pin States' },
@@ -193,7 +194,7 @@ export default function Resources() {
             <p className="lab-section-desc">
               Places I buy from and would recommend to any picker looking for quality tools.
             </p>
-            <div className="locksporters-grid">
+            <div className="companies-grid">
               {COMPANIES.map((c, i) => (
                 <div key={i} className="locksporter-card">
                   <div className="locksporter-type" style={{ color: 'var(--green)' }}>
@@ -304,6 +305,17 @@ export default function Resources() {
           <p className="lab-section-desc">
             Picks from the channel - techniques, challenges, and builds I'm proud of.
           </p>
+          <div className="lab-channel-link">
+            <span>See everything →</span>
+            <a
+              href="https://www.youtube.com/@LockpickingDev"
+              target="_blank"
+              rel="noreferrer"
+              className="cyan-link"
+            >
+              youtube.com/@LockpickingDev
+            </a>
+          </div>
 
           <div className="videos-grid">
             {visibleMy.map((v, i) => (
@@ -335,17 +347,6 @@ export default function Resources() {
             )
           )}
 
-          <div className="lab-channel-link">
-            <span>See everything →</span>
-            <a
-              href="https://www.youtube.com/@LockpickingDev"
-              target="_blank"
-              rel="noreferrer"
-              className="cyan-link"
-            >
-              youtube.com/@LockpickingDev
-            </a>
-          </div>
         </div>
       </section>
     </>

@@ -453,8 +453,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 .video-placeholder-icon { font-size: 2.5rem; color: var(--border); }
 .video-placeholder-text { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; text-align: center; padding: 0 1rem; line-height: 1.6; }
 .video-placeholder-text code { color: var(--cyan); background: rgba(0,229,255,0.08); padding: 0.1rem 0.4rem; border-radius: 2px; }
-.video-caption { padding: 0.6rem 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--light-gray); background: rgba(0,0,0,0.25); border-top: 1px solid var(--border); }
-.lab-channel-link { display: flex; align-items: center; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--gray); }
+.video-caption { padding: 0.6rem 0.75rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--light-gray); background: rgba(0,0,0,0.25); border-top: 1px solid var(--border); }.lab-channel-link { display: flex; align-items: center; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--gray); }
 .date-picker-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
 /* CALENDAR DATE PICKER */
@@ -516,10 +515,19 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 .show-more-btn { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; margin-top: 1.25rem; background: transparent; border: 1px solid var(--border); color: var(--light-gray); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; padding: 0.75rem; cursor: pointer; transition: all 0.2s; }
 .show-more-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
 
+/* COMPANIES GRID */
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
 /* LOCKSPORTERS GRID */
 .locksporters-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
@@ -541,6 +549,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 
 @media(max-width:900px) {
   .videos-grid { grid-template-columns: 1fr; }
+  .companies-grid { grid-template-columns: 1fr; }
   .locksporters-grid { grid-template-columns: 1fr; }
 }
 @media(max-width:960px) {

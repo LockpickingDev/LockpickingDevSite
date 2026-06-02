@@ -807,6 +807,12 @@ export default function Prints() {
             Original 3D printable designs built for the locksport community.
             Download the STL, print it, use it. No cost, no catch.
           </p>
+          <p className="lab-desc">
+            Free for personal use under CC BY-NC 4.0. If you'd like to sell prints or use these
+            designs commercially,{' '}
+            <a href="mailto:lockpicking.dev@gmail.com" className="cyan-link">reach out</a>
+            {' '}and we can work something out.
+          </p>
         </div>
       </section>
 
@@ -823,14 +829,14 @@ export default function Prints() {
               </p>
             </div>
             <div className="prints-platform-btns">
+              <a href="https://makerworld.com/en/@LockpickingDev" target="_blank" rel="noreferrer" className="covert-link-btn">
+                MakerWorld →
+              </a>
               <a href="https://www.thingiverse.com/LockpickingDev/designs" target="_blank" rel="noreferrer" className="covert-link-btn">
                 Thingiverse →
               </a>
               <a href="https://www.printables.com/@LockpickingDev" target="_blank" rel="noreferrer" className="covert-link-btn">
                 Printables →
-              </a>
-              <a href="https://makerworld.com/en/@LockpickingDev" target="_blank" rel="noreferrer" className="covert-link-btn">
-                MakerWorld →
               </a>
             </div>
           </div>
