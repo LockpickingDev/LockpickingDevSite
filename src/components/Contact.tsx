@@ -1,4 +1,5 @@
 import { useState, type FormEvent, type ChangeEvent } from 'react'
+import emailjs from '@emailjs/browser'
 import DatePicker from './DatePicker'
 
 const TIMES: string[] = []
@@ -50,6 +51,8 @@ interface Errors {
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState('')
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [honeypot, setHoneypot] = useState('')
   const [lastSubmit, setLastSubmit] = useState(0)
@@ -93,7 +96,7 @@ export default function Contact() {
     }
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault()
 
     // Honeypot: bots fill hidden fields, humans don't
@@ -108,12 +111,32 @@ export default function Contact() {
       return
     }
 
-    // TODO: send payload to your backend or email service (e.g. Formspree, EmailJS).
-    // Server-side validation and rate limiting must also be applied there.
-    buildPayload()
+    const payload = buildPayload()
+    setSending(true)
+    setSendError('')
 
-    setLastSubmit(Date.now())
-    setSubmitted(true)
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: payload.name,
+          from_email: payload.email,
+          group_size: payload.groupSize || 'Not specified',
+          event_type: payload.eventType || 'Not specified',
+          preferred_date: payload.preferredDate || 'Not specified',
+          preferred_time: payload.preferredTime || 'Not specified',
+          message: payload.message || '(no message)',
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      setLastSubmit(Date.now())
+      setSubmitted(true)
+    } catch {
+      setSendError('Something went wrong — please try again or reach out directly via social media.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -235,7 +258,10 @@ export default function Contact() {
                     {errors.message && <div className="t-error">{errors.message}</div>}
                   </div>
 
-                  <button type="submit" className="t-submit">Send Request</button>
+                  {sendError && <div className="t-error t-error--global">{sendError}</div>}
+                  <button type="submit" className="t-submit" disabled={sending}>
+                    {sending ? 'Sending…' : 'Send Request'}
+                  </button>
                 </form>
               )}
             </div>
