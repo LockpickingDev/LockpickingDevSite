@@ -40,7 +40,7 @@ body {
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a { color: var(--light-gray); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; transition: color 0.2s; }
 .nav-links a:hover { color: var(--cyan); }
-.nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; color: var(--bg); background: var(--cyan); padding: 0.5rem 1.25rem; text-decoration: none; transition: box-shadow 0.2s; }
+.nav-cta { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 700; color: var(--bg); background: var(--cyan); padding: 0.5rem 1.25rem; text-decoration: none; transition: box-shadow 0.2s; text-align: center; }
 .nav-cta:hover { box-shadow: 0 0 20px var(--cyan-glow); }
 .nav-right { display: flex; align-items: center; gap: 0.75rem; }
 .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 36px; height: 36px; background: none; border: 1px solid var(--border); cursor: pointer; padding: 0; flex-shrink: 0; }
@@ -258,7 +258,9 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   .nav { padding: 1rem 1.5rem; }
   .nav-links { display: none; }
   .nav-hamburger { display: flex; }
+  .nav-cta { padding: 0.45rem 1rem; font-size: 0.75rem; }
   section { padding: 5.5rem 2rem; }
+  .ev2-section { padding: 5rem 1.5rem; }
   .about-two-col { grid-template-columns: 1fr; gap: 2.5rem; }
   .timeline-item { grid-template-columns: 1fr; }
   .timeline-meta { border-right: none; border-bottom: 1px solid var(--border); }
@@ -267,6 +269,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 }
 @media(max-width:600px) {
   section { padding: 4rem 1.5rem; }
+  .ev2-section { padding: 4rem 1.5rem; }
   .services-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .t-form-row { grid-template-columns: 1fr; }
@@ -287,7 +290,8 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 
 @media(max-width:400px) {
   .nav { padding: 0.875rem 1rem; }
-  .nav-cta { padding: 0.45rem 0.875rem; font-size: 0.72rem; }
+  .nav-cta { padding: 0.4rem 0.6rem; font-size: 0.7rem; }
+  .nav-right { gap: 0.5rem; }
   .hero { padding: 5.5rem 1.25rem 2rem; }
   .hero-tag { font-size: 0.62rem; }
   .hero-buttons { flex-direction: column; align-items: center; }
