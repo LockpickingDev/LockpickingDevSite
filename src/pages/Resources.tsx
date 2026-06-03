@@ -64,6 +64,18 @@ const LOCKSPORTERS: Locksporter[] = [
     desc: 'Detailed, methodical, and incredibly informative. If you want to understand high-security locks at a deeper level, this is a great place to start.', 
     url: 'https://www.youtube.com/@ArtichokeTwoThousand'
   },
+  { 
+    name: 'HelpfulLockpicker', 
+    type: 'YouTube', 
+    desc: 'The name says it all. A wide range of informative content covering many locksport topics, all presented in an approachable and easy-to-understand way.', 
+    url: 'https://www.youtube.com/@HelpfulLockPicker'
+  },
+  { 
+    name: 'Lock Manipulator', 
+    type: 'YouTube', 
+    desc: 'A channel focused on safe lock manipulation techniques and tools, including the creation of open-source tools for learning and practice.', 
+    url: 'https://www.youtube.com/@lockmanipulator'
+  }
 ]
 
 interface Video {
@@ -73,17 +85,17 @@ interface Video {
 
 // Add recommended videos from other creators here.
 // { id: 'YOUTUBE_VIDEO_ID', title: 'Video_Title' },
-// { id: 'YOUTUBE_VIDEO_ID', title: 'Video Title' },
 const RECOMMENDED_VIDEOS: Video[] = [
   { id: 'efI3GrhT1wM', title: 'Lock Noob - ULTIMATE Lock Disassembly and Re-Assembly Guide' },
-  { id: 'mK8TjuLDoMg', title: '"Jiggle Test" and the Four Fundamental Pin States' },
+  { id: 'mK8TjuLDoMg', title: 'Naswek - "Jiggle Test" and the Four Fundamental Pin States' },
   { id: 'yc7uQC5hYwQ', title: 'Lock Pickers United - Throwback Thursday 8: The Jiggle Test' },
   { id: '9O-CJEwcQnY', title: 'LockPickingLawyer - [188] My Approach to Lock Picking Tension' },
+  { id: 'fffL-kmmi4E', title: 'HelpfulLockpicker - How Key Bitting Affects Lock Picking and Your Lock\'s Security' },
   { id: 'vTc1srjQUVw', title: 'LockPickingLawyer - [82] How To Pick Locks With Paracentric Keyways' },
   { id: 'Jpjf2pjQeoY', title: 'Lock Pickers United - Mentorship Monday 8: How to Pick Security Pins' },
   { id: 'Cqd9DPrgi3g', title: 'LockPickingLawyer - [1428] Inside Perspective: Picking Spool Pins' },
   { id: 'muPJjTBuYHY', title: 'LockPickingLawyer - [1432] Inside Perspective: Picking Serrated Pins' },
-  { id: 'x_dWcmezdeE', title: 'LockPickingLawyer - [97] Picking Serrated Pins By Sound' },
+  { id: 'SlvQEv_qRb0', title: 'HelpfulLockpicker - How To Master Serrated Driver Pins | Learn To Identify and Set Underset Pins' },
   { id: 'Y3ciLPPeSfc', title: 'Artichoke2000 - (23) The Theory of Picking Tapered Drivers' },
   { id: 'xDZHoTb0NP8', title: 'Artichoke2000 - (34) The Theory of Picking Barrel Drivers - Twins Part 3' },
   { id: 'EVS4tEZW5iU', title: 'Artichoke2000 - (21) The Theory of Picking Gin Spool Drivers - Gin Series Part 1' },
@@ -97,13 +109,15 @@ const RECOMMENDED_VIDEOS: Video[] = [
   { id: '5Q4WK4n-7BI', title: 'Tony Virelli - Duplicating a key at Menards using a 3D printed key!' },
 ]
 
+// { id: 'YOUTUBE_VIDEO_ID', title: 'Video Title' },
+// { id: 'j036yjyKlmQ', title: 'How to Pick Handcuffs with a Bobby Pin' },
 const MY_VIDEOS: Video[] = [
   { id: '3mShtKSY5tY', title: 'Making Custom Lockpicks Part 1' },
+  { id: 'PS-8U_dcTzs', title: 'How-To Pick Handcuffs with a Bobby Pin in 3 minutes 🔓' },
+  { id: 'xe-fdHeNf5o', title: 'Mul-T-Lock Interactive with Serrated Drivers Picked and Gutted' },
   { id: 'xhBGZLzKN-Q', title: 'PAX West 2025 Workshop - Lockpicking in Video Games: How Realistic is it?' },
-  { id: 'j036yjyKlmQ', title: 'How to Pick Handcuffs with a Bobby Pin' },
   { id: 'JwEFbeoMijg', title: '100 Lockpicking Hiking Locations Compilation' },
   { id: 'i7gy1KSPJqg', title: 'Assa 600 Picked and Gutted' },
-  { id: 'xe-fdHeNf5o', title: 'Mul-T-Lock Interactive with Serrated Drivers Picked and Gutted' },
   { id: 'x_nAQ5e6CrY', title: 'Mul-T-Lock Interactive Plus + NE10G Padlock Picked and Gutted' },
   { id: 'BkpNt4auWRs', title: 'Assa Desmo Picked and Gutted' },
   { id: 'hqdmQIjxE-k', title: 'How to Make Multi-Dong Picks (Honest Dong Shi Handle w Multipick tips)' },
