@@ -497,9 +497,9 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 .picks-section-alt { background: var(--bg3); }
 
 .covert-banner {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 2.5rem;
   flex-wrap: wrap;
   padding: 1.75rem 2rem;

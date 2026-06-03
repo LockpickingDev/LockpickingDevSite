@@ -322,32 +322,6 @@ const MODELS: PrintModel[] = [
     variant: { kind: 'single', url: stl('5xEuroDisplay', '5x Euro Display Bottom.stl') },
   },
 
-  // ── Lock Display Stands - Key Holders ───────────────────────────────────
-  {
-    id: 'key-holder',
-    name: 'Key Holder',
-    desc: 'Key holder in three sizes. Hook on left, center, or right.',
-    group: 'Lock Display Stands',
-    image: '',
-    variant: {
-      kind: 'matrix',
-      rows: ['Small', 'Medium', 'Large'],
-      cols: ['Left', 'Center', 'Right'],
-      rowLabel: 'SIZE',
-      colLabel: 'HOOK SIDE',
-      files: {
-        Small:  { Left: stl('KeyHolder', 'Key Holder - Small Left.stl'),  Center: stl('KeyHolder', 'Key Holder - Small.stl'),  Right: stl('KeyHolder', 'Key Holder - Small Right.stl')  },
-        Medium: { Left: stl('KeyHolder', 'Key Holder - Medium Left.stl'), Center: stl('KeyHolder', 'Key Holder - Medium.stl'), Right: stl('KeyHolder', 'Key Holder - Medium Right.stl') },
-        Large:  { Left: stl('KeyHolder', 'Key Holder - Large Left.stl'),  Center: stl('KeyHolder', 'Key Holder - Large.stl'),  Right: stl('KeyHolder', 'Key Holder - Large Right.stl')  },
-      },
-      variantImages: {
-        Small:  { Left: img('KeyHolder', 'Key Holder - Small Left.stl'),  Center: img('KeyHolder', 'Key Holder - Small.stl'),  Right: img('KeyHolder', 'Key Holder - Small Right.stl')  },
-        Medium: { Left: img('KeyHolder', 'Key Holder - Medium Left.stl'), Center: img('KeyHolder', 'Key Holder - Medium.stl'), Right: img('KeyHolder', 'Key Holder - Medium Right.stl') },
-        Large:  { Left: img('KeyHolder', 'Key Holder - Large Left.stl'),  Center: img('KeyHolder', 'Key Holder - Large.stl'),  Right: img('KeyHolder', 'Key Holder - Large Right.stl')  },
-      },
-    },
-  },
-
   // ── Pick Handles ────────────────────────────────────────────────────────
   {
     id: 'pick-handles',
@@ -728,12 +702,12 @@ export default function Prints() {
     <>
       <Helmet>
         <title>Free 3D Printable Locksport Models - Lock Display Stands &amp; More | LockpickingDev</title>
-        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants - community staples used at meetups worldwide." />
+        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 21 models with multiple size and positioning variants - community staples used at meetups worldwide." />
         <link rel="canonical" href="https://lockpicking.dev/prints" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/prints" />
         <meta property="og:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
-        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants." />
+        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 21 models with multiple size and positioning variants." />
         <meta property="og:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -750,14 +724,14 @@ export default function Prints() {
           "@id": "https://lockpicking.dev/prints",
           "url": "https://lockpicking.dev/prints",
           "name": "Free 3D Printable Locksport Models - LockpickingDev",
-          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple size and positioning variants.",
+          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 21 models with multiple size and positioning variants.",
           "publisher": { "@id": "https://lockpicking.dev/#business" },
           "author": { "@id": "https://lockpicking.dev/#person" },
           "isPartOf": { "@id": "https://lockpicking.dev/#website" },
           "mainEntity": {
             "@type": "ItemList",
             "name": "3D Printable Locksport Models",
-            "numberOfItems": 22,
+            "numberOfItems": 21,
             "itemListElement": [
               { "@type": "ListItem", "position": 1,  "name": "Padlock Stand - Large Flat",         "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 2,  "name": "Padlock Stand - Medium Flat",        "url": "https://lockpicking.dev/prints" },
@@ -776,11 +750,10 @@ export default function Prints() {
               { "@type": "ListItem", "position": 15, "name": "Miwa Mortise Stand",                 "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 16, "name": "Mogul Cylinder Stand",               "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 17, "name": "5x Euro Display Base",               "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 18, "name": "Wall-Mount Key Holder",              "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 19, "name": "Pick Handles w/ Knurl",              "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 20, "name": "Impressioning Key Line Guides",      "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 21, "name": "Zip Tie Cuff Adaptors",              "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 22, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" }
+              { "@type": "ListItem", "position": 18, "name": "Pick Handles w/ Knurl",              "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 19, "name": "Impressioning Key Line Guides",      "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 20, "name": "Zip Tie Cuff Adaptors",              "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 21, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" }
             ]
           }
         })}</script>
