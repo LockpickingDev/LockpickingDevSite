@@ -29,7 +29,7 @@ for (const file of files) {
   const tmp = file + '.tmp'
 
   try {
-    const img = sharp(file)
+    const img = sharp(file).rotate()
     if (ext === '.png') {
       await img.png({ compressionLevel: 9, effort: 10 }).toFile(tmp)
     } else {
