@@ -48,10 +48,53 @@ const photoImages = [
   },
 ]
 
+// Circuit trace SVG overlay — mirrors the D25 business card background (seeded RNG, 32px grid)
+function circuitTracesSVG(w, h) {
+  const grid = 32
+  let s = 73
+  function rng() { s = ((s * 1664525 + 1013904223) >>> 0); return s / 0xFFFFFFFF }
+
+  const els = []
+
+  // Top-left radial glow (matches d5f .glow-tl)
+  els.push(`<defs><radialGradient id="g" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="scale(420)"><stop offset="0%" stop-color="#00e5ff" stop-opacity="0.10"/><stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/></radialGradient></defs>`)
+  els.push(`<rect width="${w}" height="${h}" fill="url(#g)"/>`)
+
+  // Horizontal segments
+  for (let gy = grid; gy <= h - grid; gy += grid) {
+    let x = 0
+    while (x < w) {
+      const segW = (Math.floor(rng() * 4) + 1) * grid
+      if (rng() < 0.62) els.push(`<line x1="${x}" y1="${gy}" x2="${Math.min(x + segW, w)}" y2="${gy}" stroke="#00e5ff" stroke-opacity="0.20" stroke-width="1.5" stroke-linecap="round"/>`)
+      x += segW + (rng() < 0.35 ? grid : 0)
+    }
+  }
+
+  // Vertical segments
+  for (let gx = grid; gx <= w - grid; gx += grid) {
+    let y = 0
+    while (y < h) {
+      const segH = (Math.floor(rng() * 3) + 1) * grid
+      if (rng() < 0.50) els.push(`<line x1="${gx}" y1="${y}" x2="${gx}" y2="${Math.min(y + segH, h)}" stroke="#00e5ff" stroke-opacity="0.20" stroke-width="1.5" stroke-linecap="round"/>`)
+      y += segH + (rng() < 0.3 ? grid : 0)
+    }
+  }
+
+  // Node dots
+  for (let nx = grid; nx < w; nx += grid) {
+    for (let ny = grid; ny < h; ny += grid) {
+      if (rng() < 0.16) els.push(`<circle cx="${nx}" cy="${ny}" r="3" fill="#00e5ff" fill-opacity="0.40"/>`)
+    }
+  }
+
+  return Buffer.from(`<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">${els.join('')}</svg>`)
+}
+
 // Logo + text OG images (Home, Resources)
 const logoImages = [
   {
     out: 'public/brand/og-home.png',
+    circuit: true,
     lines: [
       { x: 430, y: 210, size: 16, color: '#00e5ff', text: 'lockpicking.dev' },
       { x: 430, y: 300, size: 58, color: '#ffffff', weight: 'bold', text: 'LockpickingDev' },
@@ -91,16 +134,15 @@ const logoResized = await sharp(logoPath)
   .png()
   .toBuffer()
 
-for (const { out, lines } of logoImages) {
-  await sharp({
-    create: { width: W, height: H, channels: 4, background: { r: 10, g: 15, b: 15, alpha: 255 } },
-  })
-    .composite([
-      // Logo centered vertically on the left side
-      { input: logoResized, left: 80, top: Math.round((H - LOGO_SIZE) / 2) },
-      // Border + text overlay
-      { input: textOverlay({ opacity: 0, lines }), blend: 'over' },
-    ])
+for (const { out, lines, circuit } of logoImages) {
+  const bg = circuit ? { r: 6, g: 10, b: 14, alpha: 255 } : { r: 10, g: 15, b: 15, alpha: 255 }
+  const composites = [
+    ...(circuit ? [{ input: circuitTracesSVG(W, H), blend: 'over' }] : []),
+    { input: logoResized, left: 80, top: Math.round((H - LOGO_SIZE) / 2) },
+    { input: textOverlay({ opacity: 0, lines }), blend: 'over' },
+  ]
+  await sharp({ create: { width: W, height: H, channels: 4, background: bg } })
+    .composite(composites)
     .png()
     .toFile(path.join(root, out))
   console.log(`  generated: ${out}`)
