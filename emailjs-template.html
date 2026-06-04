@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Session Request</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f5;font-family:'Segoe UI',Arial,sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f5;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
+
+          <!-- Header -->
+          <tr>
+            <td style="background-color:#0a0a0f;border-radius:8px 8px 0 0;padding:28px 36px;text-align:center;">
+              <p style="margin:0;font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#00bcd4;">LockpickingDev</p>
+              <h1 style="margin:8px 0 0;font-size:22px;font-weight:700;color:#ffffff;">New Session Request</h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color:#ffffff;padding:36px;">
+
+              <!-- Intro -->
+              <p style="margin:0 0 24px;font-size:15px;color:#374151;line-height:1.6;">
+                You have a new booking inquiry from <strong>{{from_name}}</strong>. Details are below.
+              </p>
+
+              <!-- Details card -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;margin-bottom:24px;">
+                <tr>
+                  <td style="padding:20px 24px;">
+
+                    <table width="100%" cellpadding="0" cellspacing="0">
+
+                      <tr>
+                        <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;">
+                          <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;">From</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:6px 0 16px;">
+                          <span style="font-size:15px;color:#111827;font-weight:600;">{{from_name}}</span><br/>
+                          <a href="mailto:{{from_email}}" style="font-size:14px;color:#00bcd4;text-decoration:none;">{{from_email}}</a>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style="padding:8px 0;border-bottom:1px solid #e5e7eb;">
+                          <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;">Event Details</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding:12px 0 0;">
+                          <table width="100%" cellpadding="0" cellspacing="0">
+                            <tr>
+                              <td style="padding:4px 0;width:40%;font-size:13px;color:#6b7280;vertical-align:top;">Event Type</td>
+                              <td style="padding:4px 0;font-size:13px;color:#111827;font-weight:500;">{{event_type}}</td>
+                            </tr>
+                            <tr>
+                              <td style="padding:4px 0;width:40%;font-size:13px;color:#6b7280;vertical-align:top;">Group Size</td>
+                              <td style="padding:4px 0;font-size:13px;color:#111827;font-weight:500;">{{group_size}}</td>
+                            </tr>
+                            <tr>
+                              <td style="padding:4px 0;width:40%;font-size:13px;color:#6b7280;vertical-align:top;">Preferred Date</td>
+                              <td style="padding:4px 0;font-size:13px;color:#111827;font-weight:500;">{{preferred_date}}</td>
+                            </tr>
+                            <tr>
+                              <td style="padding:4px 0;width:40%;font-size:13px;color:#6b7280;vertical-align:top;">Preferred Time</td>
+                              <td style="padding:4px 0;font-size:13px;color:#111827;font-weight:500;">{{preferred_time}}</td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Message -->
+              <p style="margin:0 0 8px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6b7280;">Message</p>
+              <div style="background-color:#f9fafb;border:1px solid #e5e7eb;border-left:3px solid #00bcd4;border-radius:0 6px 6px 0;padding:16px 20px;">
+                <p style="margin:0;font-size:14px;color:#374151;line-height:1.7;white-space:pre-wrap;">{{message}}</p>
+              </div>
+
+              <!-- Reply prompt -->
+              <p style="margin:28px 0 0;font-size:13px;color:#6b7280;text-align:center;line-height:1.6;">
+                Hit <strong style="color:#374151;">Reply</strong> in your email client to respond directly to
+                <strong style="color:#374151;">{{from_name}}</strong> at
+                <a href="mailto:{{from_email}}" style="color:#00bcd4;text-decoration:none;">{{from_email}}</a> —
+                your reply will include this inquiry as context.
+              </p>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color:#f4f4f5;border-top:1px solid #e5e7eb;border-radius:0 0 8px 8px;padding:20px 36px;text-align:center;">
+              <p style="margin:0;font-size:12px;color:#9ca3af;">
+                Sent via the contact form at <strong>lockpicking.dev</strong>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

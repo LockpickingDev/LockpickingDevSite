@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 302 98" preserveAspectRatio="none">
+  <rect width="302" height="98" fill="#080c10"/>
+
+  <text x="297" y="30" text-anchor="end" font-family="'JetBrains Mono',monospace" font-size="20" fill="rgba(0,229,255,0.55)" letter-spacing="2">MASTER</text>
+
+  <!-- Depth 0 — 57px -->
+  <rect x="8"   y="25" width="30" height="57" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="6"  y1="25" x2="40"  y2="25" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="23"  y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">0</text>
+
+  <!-- Depth 1 — 54px -->
+  <rect x="44"  y="28" width="30" height="54" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="42" y1="28" x2="76"  y2="28" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="59"  y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">1</text>
+
+  <!-- Depth 2 — 51px -->
+  <rect x="80"  y="31" width="30" height="51" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="78" y1="31" x2="112" y2="31" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="95"  y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">2</text>
+
+  <!-- Depth 3 — 48px -->
+  <rect x="116" y="34" width="30" height="48" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="114" y1="34" x2="148" y2="34" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="131" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">3</text>
+
+  <!-- Depth 4 — 45px -->
+  <rect x="152" y="37" width="30" height="45" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="150" y1="37" x2="184" y2="37" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="167" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">4</text>
+
+  <!-- Depth 5 — 42px -->
+  <rect x="188" y="40" width="30" height="42" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="186" y1="40" x2="220" y2="40" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="203" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">5</text>
+
+  <!-- Depth 6 — 38px -->
+  <rect x="224" y="44" width="30" height="38" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="222" y1="44" x2="256" y2="44" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="239" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">6</text>
+
+  <!-- Depth 7 — 35px -->
+  <rect x="260" y="47" width="30" height="35" fill="rgba(0,229,255,0.55)" rx="1"/>
+  <line x1="258" y1="47" x2="292" y2="47" stroke="#00e5ff" stroke-width="1.5"/>
+  <text x="275" y="94" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(0,229,255,0.75)">7</text>
+
+  <!-- Baseline — lay key spine here -->
+  <line x1="0" y1="82" x2="302" y2="82" stroke="#00e5ff" stroke-width="2"/>
+</svg>

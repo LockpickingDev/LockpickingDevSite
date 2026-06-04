@@ -2,10 +2,13 @@ const EVENTS = [
   'DEF CON',
   'Microsoft Blue Hat Security Conference',
   'Microsoft Zero Day Quest',
+  'ShmooCon',
+  'LayerOne',
   'BSides Kansas City',
   'BSides Seattle',
   'HushCon Seattle',
   'PAX West',
+  'Super MAGFest',
   "UMSL Women's Hackathon",
 ]
 

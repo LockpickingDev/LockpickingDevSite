@@ -28,7 +28,7 @@ export default function Footer() {
             </a>
           </li>
         </ul>
-        <div className="footer-copy">© 2025 LockpickingDev</div>
+        <div className="footer-copy">© 2026 LockpickingDev</div>
       </div>
     </footer>
   )

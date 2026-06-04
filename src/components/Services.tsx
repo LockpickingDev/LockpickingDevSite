@@ -6,6 +6,7 @@ interface Tier {
   size: string
   price: string
   isContact?: boolean
+  bookNow?: boolean
   features: string[]
   featured?: boolean
 }
@@ -18,6 +19,7 @@ const TIERS: Tier[] = [
     tagline: 'Perfect for date nights, friend groups & small celebrations',
     size: 'Up to 5 people',
     price: '300',
+    bookNow: true,
     features: ['Hands-on personal instruction', 'All picks & locks provided', '~2 hour session'],
   },
   {
@@ -83,7 +85,7 @@ export default function Services() {
                 href="#contact"
                 className={`service-cta${t.featured ? '' : ' service-cta-outline'}`}
               >
-                {t.isContact ? 'Get in Touch' : t.featured ? 'Book Now' : 'Get a Quote'}
+                {t.isContact ? 'Get in Touch' : (t.featured || t.bookNow) ? 'Book Now' : 'Get a Quote'}
               </a>
             </div>
           ))}

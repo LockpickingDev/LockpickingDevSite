@@ -16,8 +16,7 @@ export default function Hero() {
           ONLINE · ST. LOUIS, MO · TRAVEL AVAILABLE
         </div>
         <h1>
-          <span className="cyan">Lockpicking</span>Dev
-          <span className="hero-cursor" />
+          <span className="cyan">Lockpicking</span><span style={{ whiteSpace: 'nowrap' }}>Dev<span className="hero-cursor" /></span>
         </h1>
         <p className="hero-subtitle">
           Gateway Locksport Founder · Security Educator · Event Specialist
@@ -25,6 +24,17 @@ export default function Hero() {
         <p className="hero-desc">
           Private lessons, corporate team-building, and full lockpicking villages for conferences,
           conventions, and events. Groups of 5 to 500.
+        </p>
+        <p className="hero-press">
+          Interviewed and featured in{' '}
+          <a
+            href="https://www.seattletimes.com/seattle-news/this-group-meets-twice-a-month-in-seattle-to-practice-picking-locks/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            The Seattle Times
+          </a>{' '}
+          for work in the locksport community, including organizing and teaching meetups.
         </p>
         <div className="hero-buttons">
           <a href="#contact" className="btn-terminal btn-primary-t">Book a Session</a>
