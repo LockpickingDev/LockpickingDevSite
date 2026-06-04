@@ -105,6 +105,7 @@ const logoImages = [
   },
   {
     out: 'public/brand/og-resources.png',
+    circuit: true,
     lines: [
       { x: 430, y: 210, size: 16, color: '#00e5ff', text: 'lockpicking.dev' },
       { x: 430, y: 300, size: 58, color: '#ffffff', weight: 'bold', text: 'Resources' },
