@@ -361,7 +361,7 @@ const MODELS: PrintModel[] = [
     name: 'Padlock Stand - Giant Concave',
     desc: 'Padlock display stand for oversized padlocks with a curved body like the Master Lock 19.',
     group: 'Uncommon Display Stands',
-    image: img('PadlockConcaveGiant', 'Concave Giant Padlock.stl'),
+    image: '/3dprinting/PadlockConcaveGiant/Concave Giant Padlock.jpeg',
     variant: { kind: 'single', url: stl('PadlockConcaveGiant', 'Concave Giant Padlock.stl') },
   },
   {
