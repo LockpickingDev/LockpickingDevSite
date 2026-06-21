@@ -132,7 +132,7 @@ const MODELS: PrintModel[] = [
     id: 'padlock-medium',
     name: 'Padlock Stand - Medium Flat',
     desc: 'Padlock display stands for medium sized padlocks with a flat style body.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/PadlockMedium/PadlockMedium.jpg',
     variant: stdMatrix('PadlockMedium', 'Medium Padlock', undefined, {
       label: 'Base (no key slot)',
@@ -143,7 +143,7 @@ const MODELS: PrintModel[] = [
     id: 'padlock-large',
     name: 'Padlock Stand - Large Flat',
     desc: 'Padlock display stands for large sized padlocks with a flat style body.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/PadlockLarge/PadlockLarge.png',
     variant: stdMatrix('PadlockLarge', 'Large Padlock', undefined, {
       label: 'Base (no key slot)',
@@ -154,7 +154,7 @@ const MODELS: PrintModel[] = [
     id: 'padlock-concave-medium',
     name: 'Padlock Stand - Medium Concave',
     desc: 'Padlock display stands for medium sized padlocks with a curved body.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/PadlockConcaveMedium/PadlockConcaveMedium.jpg',
     variant: stdMatrix('PadlockConcaveMedium', 'Concave Medium', undefined, {
       label: 'Base (no key slot)',
@@ -165,7 +165,7 @@ const MODELS: PrintModel[] = [
     id: 'padlock-concave-large',
     name: 'Padlock Stand - Large Concave',
     desc: 'Padlock display stands for large sized padlocks with a curved body.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/PadlockConcaveLarge/PadlockConcaveLarge.jpg',
     variant: stdMatrix('PadlockConcaveLarge', 'Concave Large', undefined, {
       label: 'Base (no key slot)',
@@ -177,31 +177,40 @@ const MODELS: PrintModel[] = [
     id: 'full-euro-cylinder',
     name: 'Full Euro Cylinder Pin Tumbler Stand',
     desc: 'Display stand for full-length euro cylinders (90mm). Pin tumbler profile.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/FullEuroCylinderPinTumbler/FullEuroCylinderPinTumbler.jpg',
-    variant: stdMatrix('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler'),
+    variant: stdMatrix('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler', undefined, {
+      label: 'Base (no key slot)',
+      url: stl('FullEuroCylinderPinTumbler', 'Full Euro Cylinder Pin Tumbler Base.stl'),
+    }),
   },
   {
     id: '3030-euro-cylinder',
     name: '30/30 Euro Cylinder Pin Tumbler Stand',
     desc: 'Display stand for 30/30 length euro cylinders (65mm). Pin tumbler profile.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/3030EuroCylinderPinTumbler/3030EuroCylinderPinTumbler.JPG',
-    variant: stdMatrix('3030EuroCylinderPinTumbler', '30 30 Euro Cylinder Pin Tumbler'),
+    variant: stdMatrix('3030EuroCylinderPinTumbler', '30 30 Euro Cylinder Pin Tumbler', undefined, {
+      label: 'Base (no key slot)',
+      url: stl('3030EuroCylinderPinTumbler', '30 30 Euro Cylinder Pin Tumbler Base.stl'),
+    }),
   },
   {
     id: 'half-euro-cylinder',
     name: 'Half Euro Cylinder Pin Tumbler Stand',
     desc: 'Display stand for half-length euro cylinders (40mm). Pin tumbler profile.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/HalfEuroCylinderPinTumbler/HalfEuroCylinderPinTumbler.JPG',
-    variant: stdMatrix('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler'),
+    variant: stdMatrix('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler', undefined, {
+      label: 'Base (no key slot)',
+      url: stl('HalfEuroCylinderPinTumbler', 'Half Euro Cylinder Pin Tumbler Base.stl'),
+    }),
   },
   {
     id: 'euro-dimple',
     name: 'Euro Dimple Cylinder Stand',
     desc: 'Display stand for euro-profile dimple locks. Choose by cylinder length and keyhole dimensions for a precise fit.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/EuroCylinderDimple/EuroCylinderDimple.jpg',
     variant: {
       kind: 'matrix',
@@ -251,7 +260,7 @@ const MODELS: PrintModel[] = [
     id: '6-pin-oval',
     name: '6-Pin Oval Stand',
     desc: 'Display stand for 6-pin oval profile cylinders.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/6PinOval/6PinOval.jpg',
     variant: stdMatrix('6PinOval', '6 Pin Oval'),
   },
@@ -259,23 +268,15 @@ const MODELS: PrintModel[] = [
     id: '7-pin-oval',
     name: '7-Pin Oval Stand',
     desc: 'Display stand for 7-pin oval cylinders.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/7PinOval/7PinOval.JPG',
     variant: stdMatrix('7PinOval', '7 Pin Oval', ['Medium', 'Large']),
-  },
-  {
-    id: '178mm-oval',
-    name: '17.8mm Oval Stand',
-    desc: 'Display stand for the 17.8mm oval cylinder format.',
-    group: 'Lock Display Stands',
-    image: '/3dprinting/17_8mmOval/17_8mmOval.jpg',
-    variant: stdMatrix('17_8mmOval', '17.8mm Oval', ['Medium', 'Large']),
   },
   {
     id: '6-pin-mortise',
     name: '6-Pin Mortise Stand',
     desc: 'Display stand for 6-pin mortise cylinders.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/6PinMortise/6PinMortise.jpg',
     variant: stdMatrix('6PinMortise', '6 pin Mortise'),
   },
@@ -283,51 +284,109 @@ const MODELS: PrintModel[] = [
     id: '7-pin-mortise',
     name: '7-Pin Mortise Stand',
     desc: 'Display stand for 7-pin mortise cylinders.',
-    group: 'Lock Display Stands',
+    group: 'Common Display Stands',
     image: '/3dprinting/7PinMortise/7PinMortise.JPG',
     variant: stdMatrix('7PinMortise', '7 pin Mortise'),
   },
+  {
+    id: 'kik',
+    name: 'Key-in-Knob (KiK) Stand',
+    desc: 'Display stand sized for key-in-knob (KiK) lock cylinders.',
+    group: 'Common Display Stands',
+    image: '/3dprinting/KiK/KiK.JPG',
+    variant: stdMatrix('KiK', 'KiK Display', undefined, {
+      label: 'Base (no key slot)',
+      url: stl('KiK', 'KiK Base.stl'),
+    }),
+  },
+  {
+    id: '5x-euro-display',
+    name: '5× Euro Display Base',
+    desc: 'Base for displaying five euro cylinders side by side. Great for showcasing a collection.',
+    group: 'Common Display Stands',
+    image: '/3dprinting/5xEuroDisplay/5xEuroDisplay.JPG',
+    variant: { kind: 'single', url: stl('5xEuroDisplay', '5x Euro Display Bottom.stl') },
+  },
 
-  // ── Lock Display Stands - Specialty ─────────────────────────────────────
+  // ── Uncommon Display Stands ─────────────────────────────────────────────
+  {
+    id: '178mm-oval',
+    name: '17.8mm Oval Stand',
+    desc: 'Display stand for the 17.8mm oval cylinder format.',
+    group: 'Uncommon Display Stands',
+    image: '/3dprinting/17_8mmOval/17_8mmOval.jpg',
+    variant: stdMatrix('17_8mmOval', '17.8mm Oval', ['Medium', 'Large']),
+  },
   {
     id: 'miwa-mortise',
     name: 'Miwa Mortise Stand',
     desc: 'Display stand for Miwa mortise cylinders. Single variant with offset key position.',
-    group: 'Lock Display Stands',
-    image: '/3dprinting/MiwaMortise/MiwaMortise.JPG',
+    group: 'Uncommon Display Stands',
+    image: '/3dprinting/MiwaMortise/Miwa Display Stand - Medium Key - Offset Right.jpeg',
     variant: { kind: 'single', url: stl('MiwaMortise', 'Miwa Display Stand - Medium Key - Offset Right.stl') },
   },
   {
     id: 'mogul-cylinder',
     name: 'Mogul Cylinder Stand',
     desc: 'Display stand for the Mogul cylinder profile. Single variant with offset key position.',
-    group: 'Lock Display Stands',
+    group: 'Uncommon Display Stands',
     image: '/3dprinting/MogulCylinder/MogulCylinder.jpg',
     variant: { kind: 'single', url: stl('MogulCylinder', 'Mogul Cylinder Display Stand - Key Offset Right.stl') },
   },
   {
-    id: 'kik',
-    name: 'Key-in-Knob (KiK) Stand',
-    desc: 'Display stand sized for key-in-knob (KiK) lock cylinders.',
-    group: 'Lock Display Stands',
-    image: '/3dprinting/KiK/KiK.JPG',
-    variant: stdMatrix('KiK', 'KiK Display'),
+    id: 'fichet',
+    name: 'Fichet Display Stand',
+    desc: 'Display stand for Fichet locks.',
+    group: 'Uncommon Display Stands',
+    image: '/3dprinting/Fichet/Fichet Display.jpeg',
+    variant: { kind: 'single', url: stl('Fichet', 'Fichet Display.stl') },
   },
   {
-    id: '5x-euro-display',
-    name: '5× Euro Display Base',
-    desc: 'Base for displaying five euro cylinders side by side. Great for showcasing a collection.',
-    group: 'Lock Display Stands',
-    image: '/3dprinting/5xEuroDisplay/5xEuroDisplay.JPG',
-    variant: { kind: 'single', url: stl('5xEuroDisplay', '5x Euro Display Bottom.stl') },
+    id: 'goal',
+    name: 'Goal Display Stand',
+    desc: 'Display stands for Japanese style Goal and Miwa locks.',
+    group: 'Uncommon Display Stands',
+    image: '/3dprinting/Goal/Goal Big Display - Small Key.jpeg',
+    variant: {
+      kind: 'list',
+      files: [
+        { label: 'Small Display - Small Key', url: stl('Goal', 'Goal Small Display - Small Key.stl'), image: '/3dprinting/Goal/Goal Small Display - Small Key.jpeg' },
+        { label: 'Small Display - Med Key',   url: stl('Goal', 'Goal Small Display - Med Key.stl'),    image: '/3dprinting/Goal/Goal Small Display - Med Key.jpeg' },
+        { label: 'Big Display - Small Key',   url: stl('Goal', 'Goal Big Display - Small Key.stl'),   image: '/3dprinting/Goal/Goal Big Display - Small Key.jpeg' },
+      ],
+    },
+  },
+  {
+    id: 'padlock-concave-giant',
+    name: 'Padlock Stand - Giant Concave',
+    desc: 'Padlock display stand for oversized padlocks with a curved body like the Master Lock 19.',
+    group: 'Uncommon Display Stands',
+    image: '/3dprinting/PadlockConcaveGiant/Concave Giant Padlock.jpeg',
+    variant: { kind: 'single', url: stl('PadlockConcaveGiant', 'Concave Giant Padlock.stl') },
+  },
+  {
+    id: 'robur',
+    name: 'Robur Display Stand',
+    desc: 'Display stand for Robur cylinders.',
+    group: 'Uncommon Display Stands',
+    image: '/3dprinting/Robur/Robur Display Stand.jpeg',
+    variant: { kind: 'single', url: stl('Robur', 'Robur Display Stand.stl') },
+  },
+  {
+    id: 'west-916-917',
+    name: 'West 916/917 Display Stand',
+    desc: 'Display stand for West 916/917 cylinders.',
+    group: 'Uncommon Display Stands',
+    image: '/3dprinting/West916917/West 916 917.jpeg',
+    variant: { kind: 'single', url: stl('West916917', 'West 916 917.stl') },
   },
 
-  // ── Pick Handles ────────────────────────────────────────────────────────
+  // ── Tools & Accessories ─────────────────────────────────────────────────
   {
     id: 'pick-handles',
     name: 'Pick Handles w/ Knurl',
     desc: 'Handles for the common metal-handled picks, 0.025" picks without handles, wiper blade picks, Law Lock Tools, and Southord pocket pen picks.',
-    group: 'Pick Handles',
+    group: 'Tools & Accessories',
     image: '/3dprinting/PickHandlesWKnurl/PickHandlesWKnurl.JPG',
     variant: {
       kind: 'list',
@@ -342,8 +401,6 @@ const MODELS: PrintModel[] = [
       ],
     },
   },
-
-  // ── Tools & Accessories ─────────────────────────────────────────────────
   {
     id: 'impressioning-guides',
     name: 'Impressioning Key Line Guides',
@@ -384,8 +441,8 @@ const MODELS: PrintModel[] = [
 ]
 
 const GROUPS = [
-  'Lock Display Stands',
-  'Pick Handles',
+  'Common Display Stands',
+  'Uncommon Display Stands',
   'Tools & Accessories',
 ]
 
@@ -702,12 +759,12 @@ export default function Prints() {
     <>
       <Helmet>
         <title>Free 3D Printable Locksport Models - Lock Display Stands &amp; More | LockpickingDev</title>
-        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 21 models with multiple size and positioning variants - community staples used at meetups worldwide." />
+        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple size and positioning variants - community staples used at meetups worldwide." />
         <link rel="canonical" href="https://lockpicking.dev/prints" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/prints" />
         <meta property="og:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
-        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 21 models with multiple size and positioning variants." />
+        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple size and positioning variants." />
         <meta property="og:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -716,7 +773,7 @@ export default function Prints() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/prints" />
         <meta name="twitter:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
-        <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 22 models with multiple variants." />
+        <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple variants." />
         <meta name="twitter:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -724,14 +781,14 @@ export default function Prints() {
           "@id": "https://lockpicking.dev/prints",
           "url": "https://lockpicking.dev/prints",
           "name": "Free 3D Printable Locksport Models - LockpickingDev",
-          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 21 models with multiple size and positioning variants.",
+          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple size and positioning variants.",
           "publisher": { "@id": "https://lockpicking.dev/#business" },
           "author": { "@id": "https://lockpicking.dev/#person" },
           "isPartOf": { "@id": "https://lockpicking.dev/#website" },
           "mainEntity": {
             "@type": "ItemList",
             "name": "3D Printable Locksport Models",
-            "numberOfItems": 21,
+            "numberOfItems": 26,
             "itemListElement": [
               { "@type": "ListItem", "position": 1,  "name": "Padlock Stand - Large Flat",         "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 2,  "name": "Padlock Stand - Medium Flat",        "url": "https://lockpicking.dev/prints" },
@@ -750,10 +807,15 @@ export default function Prints() {
               { "@type": "ListItem", "position": 15, "name": "Miwa Mortise Stand",                 "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 16, "name": "Mogul Cylinder Stand",               "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 17, "name": "5x Euro Display Base",               "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 18, "name": "Pick Handles w/ Knurl",              "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 19, "name": "Impressioning Key Line Guides",      "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 20, "name": "Zip Tie Cuff Adaptors",              "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 21, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" }
+              { "@type": "ListItem", "position": 18, "name": "Fichet Display Stand",               "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 19, "name": "Goal Display Stand",                 "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 20, "name": "Padlock Stand - Giant Concave",       "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 21, "name": "Robur Display Stand",                "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 22, "name": "West 916/917 Display Stand",         "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 23, "name": "Pick Handles w/ Knurl",              "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 24, "name": "Impressioning Key Line Guides",      "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 25, "name": "Zip Tie Cuff Adaptors",              "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 26, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" }
             ]
           }
         })}</script>
