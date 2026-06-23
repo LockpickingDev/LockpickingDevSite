@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm ls *)",
+      "Bash(node nav-test.mjs)",
+      "Bash(timeout 90 npx -y playwright@1.61.0 install chromium chromium-headless-shell)"
+    ]
+  }
+}
