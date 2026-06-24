@@ -13,8 +13,11 @@ export default function Home() {
 
   useEffect(() => {
     if (!hash) return
-    const el = document.querySelector(hash)
-    if (el) el.scrollIntoView({ behavior: 'smooth' })
+    const id = requestAnimationFrame(() => {
+      const el = document.querySelector(hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    })
+    return () => cancelAnimationFrame(id)
   }, [hash])
 
   return (
