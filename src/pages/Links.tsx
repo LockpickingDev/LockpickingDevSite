@@ -85,6 +85,18 @@ const LINKS: LinkItem[] = [
       </svg>
     ),
   },
+  {
+    platform: 'Donate',
+    handle: 'Enjoying the content? Toss a tip my way',
+    url: 'https://account.venmo.com/u/LockpickingDevEvents',
+    color: '#3D95CE',
+    icon: (
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <rect x="4" y="4" width="20" height="20" rx="5" fill="#3D95CE"/>
+        <text x="14" y="19" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="14" fill="white">V</text>
+      </svg>
+    ),
+  },
 ]
 
 export default function Links() {
