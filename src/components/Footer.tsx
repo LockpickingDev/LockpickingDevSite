@@ -27,6 +27,11 @@ export default function Footer() {
               Gateway Locksport
             </a>
           </li>
+          <li>
+            <a href="https://account.venmo.com/u/LockpickingDevEvents" target="_blank" rel="noreferrer">
+              Donate
+            </a>
+          </li>
         </ul>
         <div className="footer-copy">© 2026 LockpickingDev</div>
       </div>
