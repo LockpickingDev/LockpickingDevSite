@@ -116,7 +116,6 @@ const MY_VIDEOS: Video[] = [
   { id: 'PS-8U_dcTzs', title: 'How-To Pick Handcuffs with a Bobby Pin in 3 minutes 🔓' },
   { id: 'xe-fdHeNf5o', title: 'Mul-T-Lock Interactive with Serrated Drivers Picked and Gutted' },
   { id: 'xhBGZLzKN-Q', title: 'PAX West 2025 Workshop - Lockpicking in Video Games: How Realistic is it?' },
-  { id: 'JwEFbeoMijg', title: '100 Lockpicking Hiking Locations Compilation' },
   { id: 'i7gy1KSPJqg', title: 'Assa 600 Picked and Gutted' },
   { id: 'x_nAQ5e6CrY', title: 'Mul-T-Lock Interactive Plus + NE10G Padlock Picked and Gutted' },
   { id: 'BkpNt4auWRs', title: 'Assa Desmo Picked and Gutted' },
