@@ -34,6 +34,7 @@ interface PrintModel {
   desc: string
   group: string
   image: string
+  images?: string[]
   variant: ModelVariant
 }
 
@@ -307,6 +308,20 @@ const MODELS: PrintModel[] = [
     image: '/3dprinting/5xEuroDisplay/5xEuroDisplay.JPG',
     variant: { kind: 'single', url: stl('5xEuroDisplay', '5x Euro Display Bottom.stl') },
   },
+  {
+    id: '10x-tiered-euro-display',
+    name: '10× Tiered Euro Display',
+    desc: 'Tiered base for displaying ten euro cylinders at once. Available solid or with a storage area.',
+    group: 'Common Display Stands',
+    image: '/3dprinting/10xTieredEuroDisplay/10xTieredEuroDisplaySolid.jfif',
+    variant: {
+      kind: 'list',
+      files: [
+        { label: 'Solid',             url: stl('10xTieredEuroDisplay', '10x Tiered Euro Display solid.stl'),          image: '/3dprinting/10xTieredEuroDisplay/10xTieredEuroDisplaySolid.jfif' },
+        { label: 'With Storage Area', url: stl('10xTieredEuroDisplay', '10x Tiered Euro Display w storage area.stl'), image: '/3dprinting/10xTieredEuroDisplay/10xTieredEuroDisplayWStorageArea.jfif' },
+      ],
+    },
+  },
 
   // ── Uncommon Display Stands ─────────────────────────────────────────────
   {
@@ -402,6 +417,15 @@ const MODELS: PrintModel[] = [
     },
   },
   {
+    id: 'swappable-door-knob-mount',
+    name: 'Swappable Door Knob Mount',
+    desc: 'Mount for swapping between different door knob/lock hardware for practice.',
+    group: 'Tools & Accessories',
+    image: '/3dprinting/SwappableDoorKnobMount/SwappableDoorKnobMountDoor.jfif',
+    images: ['/3dprinting/SwappableDoorKnobMount/SwappableDoorKnobMount.jfif'],
+    variant: { kind: 'single', url: stl('SwappableDoorKnobMount', 'Swappable Door Knob Mount.stl') },
+  },
+  {
     id: 'impressioning-guides',
     name: 'Impressioning Key Line Guides',
     desc: 'Precision line guides for key impressioning. Covers C83, SC1/SC4, and Y1/Y2 key profiles.',
@@ -422,7 +446,13 @@ const MODELS: PrintModel[] = [
     desc: 'Compact tray for organizing lock pins during rekeying or pinning sessions.',
     group: 'Tools & Accessories',
     image: '/3dprinting/MiniPinningTray/MiniPinningTray.JPG',
-    variant: { kind: 'single', url: stl('MiniPinningTray', 'Mini Pinning Tray.stl') },
+    variant: {
+      kind: 'list',
+      files: [
+        { label: 'V1', url: stl('MiniPinningTray', 'Mini Pinning Tray.stl'),    image: '/3dprinting/MiniPinningTray/MiniPinningTray.JPG' },
+        { label: 'V2', url: stl('MiniPinningTray', 'Mini Pinning Tray v2.stl'), image: '/3dprinting/MiniPinningTray/MiniPinningTrayv2.jfif' },
+      ],
+    },
   },
   {
     id: 'zip-tie-cuff',
@@ -687,12 +717,36 @@ function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void
     setDisplayImg(img ?? model.image)
   }
 
+  const gallery = [model.image, ...(model.images ?? [])].filter(Boolean)
+  const galleryIdx = Math.max(0, gallery.indexOf(displayImg))
+
+  function showGalleryOffset(offset: number) {
+    const next = (galleryIdx + offset + gallery.length) % gallery.length
+    setDisplayImg(gallery[next])
+  }
+
   return (
     <div className="lightbox-backdrop" onClick={onClose} role="dialog" aria-modal="true">
       <button className="lightbox-close" onClick={onClose} aria-label="Close">✕</button>
       <div className="version-modal" onClick={e => e.stopPropagation()}>
         <div className="version-modal-header">{model.name}</div>
-        <img src={displayImg} alt={model.name} className="version-modal-img" />
+        <div className="version-modal-img-wrap">
+          <img src={displayImg} alt={model.name} className="version-modal-img" />
+          {gallery.length > 1 && (
+            <>
+              <button
+                className="version-modal-img-arrow version-modal-img-arrow--left"
+                onClick={e => { e.stopPropagation(); showGalleryOffset(-1) }}
+                aria-label="Previous image"
+              >‹</button>
+              <button
+                className="version-modal-img-arrow version-modal-img-arrow--right"
+                onClick={e => { e.stopPropagation(); showGalleryOffset(1) }}
+                aria-label="Next image"
+              >›</button>
+            </>
+          )}
+        </div>
         {v.kind === 'matrix' && (
           <MatrixContent v={v} selectedCell={selectedCell} onSelect={handleMatrixSelect} selectedBase={selectedBase} onSelectBase={handleBaseSelect} sizes={sizes} />
         )}
@@ -710,8 +764,8 @@ function ModelModal({ model, onClose }: { model: PrintModel; onClose: () => void
 // ── Card ───────────────────────────────────────────────────────────────────
 
 function variantBadge(v: ModelVariant): string {
-  if (v.kind === 'single') return 'SINGLE FILE'
-  if (v.kind === 'list')   return `${v.files.length} FILES`
+  if (v.kind === 'single') return 'SINGLE VERSION'
+  if (v.kind === 'list')   return `${v.files.length} VERSIONS`
   return `${v.rows.length * v.cols.length} VERSIONS`
 }
 
@@ -737,7 +791,7 @@ function PrintCard({ model, onOpen }: { model: PrintModel; onOpen?: () => void }
         <div className="print-card-name">{model.name}</div>
         <div className="print-card-desc">{model.desc}</div>
         <div className="print-card-cta">
-          {v.kind === 'list' ? 'Browse files →' : v.kind === 'single' ? 'Download STL →' : 'Choose version →'}
+          {v.kind === 'list' ? 'Browse versions →' : v.kind === 'single' ? 'Download STL →' : 'Choose version →'}
         </div>
       </div>
     </button>
@@ -759,12 +813,12 @@ export default function Prints() {
     <>
       <Helmet>
         <title>Free 3D Printable Locksport Models - Lock Display Stands &amp; More | LockpickingDev</title>
-        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple size and positioning variants - community staples used at meetups worldwide." />
+        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple size and positioning variants - community staples used at meetups worldwide." />
         <link rel="canonical" href="https://lockpicking.dev/prints" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/prints" />
         <meta property="og:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
-        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple size and positioning variants." />
+        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple size and positioning variants." />
         <meta property="og:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -773,7 +827,7 @@ export default function Prints() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/prints" />
         <meta name="twitter:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
-        <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple variants." />
+        <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple variants." />
         <meta name="twitter:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -781,14 +835,14 @@ export default function Prints() {
           "@id": "https://lockpicking.dev/prints",
           "url": "https://lockpicking.dev/prints",
           "name": "Free 3D Printable Locksport Models - LockpickingDev",
-          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 26 models with multiple size and positioning variants.",
+          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple size and positioning variants.",
           "publisher": { "@id": "https://lockpicking.dev/#business" },
           "author": { "@id": "https://lockpicking.dev/#person" },
           "isPartOf": { "@id": "https://lockpicking.dev/#website" },
           "mainEntity": {
             "@type": "ItemList",
             "name": "3D Printable Locksport Models",
-            "numberOfItems": 26,
+            "numberOfItems": 28,
             "itemListElement": [
               { "@type": "ListItem", "position": 1,  "name": "Padlock Stand - Large Flat",         "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 2,  "name": "Padlock Stand - Medium Flat",        "url": "https://lockpicking.dev/prints" },
@@ -815,7 +869,9 @@ export default function Prints() {
               { "@type": "ListItem", "position": 23, "name": "Pick Handles w/ Knurl",              "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 24, "name": "Impressioning Key Line Guides",      "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 25, "name": "Zip Tie Cuff Adaptors",              "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 26, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" }
+              { "@type": "ListItem", "position": 26, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 27, "name": "10x Tiered Euro Display",           "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 28, "name": "Swappable Door Knob Mount",         "url": "https://lockpicking.dev/prints" }
             ]
           }
         })}</script>

@@ -677,9 +677,30 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   max-height: calc(90vh - 2rem);
 }
 .version-modal-header { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--cyan); margin-bottom: 0.65rem; }
-.version-modal-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-bottom: 0.75rem; }
+.version-modal-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
 /* .version-modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; margin-bottom: 0.75rem; } */
 .version-modal-label { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--light-gray); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+
+.version-modal-img-wrap { position: relative; margin-bottom: 0.75rem; }
+.version-modal-img-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0,229,255,0.35);
+  background: rgba(10,14,20,0.65);
+  color: var(--cyan);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.version-modal-img-arrow:hover { background: rgba(10,14,20,0.85); border-color: var(--cyan); }
+.version-modal-img-arrow--left { left: 0.5rem; }
+.version-modal-img-arrow--right { right: 0.5rem; }
 
 .version-matrix { display: grid; gap: 0.4rem; }
 .version-matrix-axis-header { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--cyan); text-align: center; padding-bottom: 0.2rem; letter-spacing: 0.08em; }
