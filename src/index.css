@@ -677,8 +677,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   max-height: calc(90vh - 2rem);
 }
 .version-modal-header { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--cyan); margin-bottom: 0.65rem; }
-.version-modal-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
-/* .version-modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; margin-bottom: 0.75rem; } */
+.version-modal-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
 .version-modal-label { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; color: var(--light-gray); letter-spacing: 0.1em; margin-bottom: 0.4rem; }
 
 .version-modal-img-wrap { position: relative; margin-bottom: 0.75rem; }
@@ -770,10 +769,10 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
   border: 1px solid var(--border);
   padding: 0.55rem 0.25rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.15rem;
+  gap: 0.35rem;
   width: 100%;
   cursor: pointer;
   transition: border-color 0.2s, color 0.2s, background 0.2s;
@@ -794,9 +793,8 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 }
 .version-sel-btn--active .version-sel-size { color: rgba(0,255,136,0.8); }
 
-/* Base row button - spans all columns, horizontal layout */
+/* Base row button - spans all columns */
 .version-sel-btn--base {
-  flex-direction: row;
   justify-content: flex-start;
   gap: 0.5rem;
   padding: 0.55rem 0.75rem;
@@ -843,11 +841,16 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 .list-sel-btn--active .list-sel-size { color: rgba(0,255,136,0.8); }
 .list-sel-icon { font-weight: 700; color: var(--gray); white-space: nowrap; }
 
-/* Download section below the selector */
+/* Download section below the selector - sticky so it stays visible while the
+   version grid/list scrolls, instead of getting pushed off the bottom of the screen */
 .modal-dl-section {
+  position: sticky;
+  bottom: 0;
   margin-top: 0.75rem;
   padding-top: 0.75rem;
   border-top: 1px solid var(--border);
+  background: var(--bg2);
+  box-shadow: 0 -0.75rem 0.75rem -0.25rem var(--bg2);
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
