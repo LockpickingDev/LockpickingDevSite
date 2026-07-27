@@ -303,7 +303,7 @@ const MODELS: PrintModel[] = [
   {
     id: '5x-euro-display',
     name: '5× Euro Display Base',
-    desc: 'Base for displaying five euro cylinders side by side. Great for showcasing a collection.',
+    desc: 'Base for displaying five euro cylinders.',
     group: 'Common Display Stands',
     image: '/3dprinting/5xEuroDisplay/5xEuroDisplay.JPG',
     variant: { kind: 'single', url: stl('5xEuroDisplay', '5x Euro Display Bottom.stl') },
@@ -311,7 +311,7 @@ const MODELS: PrintModel[] = [
   {
     id: '10x-tiered-euro-display',
     name: '10× Tiered Euro Display',
-    desc: 'Tiered base for displaying ten euro cylinders at once. Available solid or with a storage area.',
+    desc: 'Tiered base for displaying ten euro cylinders. Available solid or with a storage area in the back.',
     group: 'Common Display Stands',
     image: '/3dprinting/10xTieredEuroDisplay/10xTieredEuroDisplaySolid.jfif',
     variant: {
@@ -417,12 +417,24 @@ const MODELS: PrintModel[] = [
     },
   },
   {
+    id: 'lockpick-stand',
+    name: 'Lockpick Stand',
+    desc: 'Stand for organizing and displaying lockpicks.',
+    group: 'Tools & Accessories',
+    image: '/3dprinting/LockpickStand/Lockpick Stand.jfif',
+    images: [img('LockpickStand', 'Lockpick Stand.stl')],
+    variant: { kind: 'single', url: stl('LockpickStand', 'Lockpick Stand.stl') },
+  },
+  {
     id: 'swappable-door-knob-mount',
     name: 'Swappable Door Knob Mount',
     desc: 'Mount for swapping between different door knob/lock hardware for practice.',
     group: 'Tools & Accessories',
     image: '/3dprinting/SwappableDoorKnobMount/SwappableDoorKnobMountDoor.jfif',
-    images: ['/3dprinting/SwappableDoorKnobMount/SwappableDoorKnobMount.jfif'],
+    images: [
+      '/3dprinting/SwappableDoorKnobMount/SwappableDoorKnobMount.jfif',
+      img('SwappableDoorKnobMount', 'Swappable Door Knob Mount.stl'),
+    ],
     variant: { kind: 'single', url: stl('SwappableDoorKnobMount', 'Swappable Door Knob Mount.stl') },
   },
   {
@@ -813,12 +825,12 @@ export default function Prints() {
     <>
       <Helmet>
         <title>Free 3D Printable Locksport Models - Lock Display Stands &amp; More | LockpickingDev</title>
-        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple size and positioning variants - community staples used at meetups worldwide." />
+        <meta name="description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 29 models with multiple size and positioning variants - community staples used at meetups worldwide." />
         <link rel="canonical" href="https://lockpicking.dev/prints" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/prints" />
         <meta property="og:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
-        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple size and positioning variants." />
+        <meta property="og:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 29 models with multiple size and positioning variants." />
         <meta property="og:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -827,7 +839,7 @@ export default function Prints() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://lockpicking.dev/prints" />
         <meta name="twitter:title" content="Free 3D Printable Locksport Models | LockpickingDev" />
-        <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple variants." />
+        <meta name="twitter:description" content="Download free STL files for 3D printed lock display stands, pick handles, and locksport tools. 29 models with multiple variants." />
         <meta name="twitter:image" content="https://lockpicking.dev/brand/og-prints.png" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -835,14 +847,14 @@ export default function Prints() {
           "@id": "https://lockpicking.dev/prints",
           "url": "https://lockpicking.dev/prints",
           "name": "Free 3D Printable Locksport Models - LockpickingDev",
-          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 28 models with multiple size and positioning variants.",
+          "description": "Free STL files for 3D printed lock display stands, pick handles, and locksport tools. 29 models with multiple size and positioning variants.",
           "publisher": { "@id": "https://lockpicking.dev/#business" },
           "author": { "@id": "https://lockpicking.dev/#person" },
           "isPartOf": { "@id": "https://lockpicking.dev/#website" },
           "mainEntity": {
             "@type": "ItemList",
             "name": "3D Printable Locksport Models",
-            "numberOfItems": 28,
+            "numberOfItems": 29,
             "itemListElement": [
               { "@type": "ListItem", "position": 1,  "name": "Padlock Stand - Large Flat",         "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 2,  "name": "Padlock Stand - Medium Flat",        "url": "https://lockpicking.dev/prints" },
@@ -871,7 +883,8 @@ export default function Prints() {
               { "@type": "ListItem", "position": 25, "name": "Zip Tie Cuff Adaptors",              "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 26, "name": "Mini Pinning Tray",                  "url": "https://lockpicking.dev/prints" },
               { "@type": "ListItem", "position": 27, "name": "10x Tiered Euro Display",           "url": "https://lockpicking.dev/prints" },
-              { "@type": "ListItem", "position": 28, "name": "Swappable Door Knob Mount",         "url": "https://lockpicking.dev/prints" }
+              { "@type": "ListItem", "position": 28, "name": "Swappable Door Knob Mount",         "url": "https://lockpicking.dev/prints" },
+              { "@type": "ListItem", "position": 29, "name": "Lockpick Stand",                    "url": "https://lockpicking.dev/prints" }
             ]
           }
         })}</script>
