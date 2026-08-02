@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async'
 // Example: { src: 'path', caption: 'words' }
 const MY_PICKS = [
   { src: '/mycustompicks/2022 Spring Picks (1).JPG', caption: '2022 Spring Picks' },
-  { src: '/mycustompicks/Goth Chicks.JPG', caption: 'Goth Chicks' },
+  { src: '/mycustompicks/Goth Chicks.JPG', caption: 'The Goths' },
   { src: '/mycustompicks/Brass Dimple Picks for Multipick Flags.jpg', caption: 'Brass Dimple Picks for Multipick Flags' },
   { src: '/mycustompicks/2019 Spring - First Batch of Lock Picks Ever Made.JPG', caption: '2019 Spring Picks - First Batch made' },
   { src: '/mycustompicks/2020 Spring Picks.JPG', caption: '2020 Spring Picks' },
@@ -127,7 +127,7 @@ export default function Lockpicks() {
     <>
       <Helmet>
         <title>Custom Lockpicks - Handmade Collection | LockpickingDev</title>
-        <meta name="description" content="Over 100 handmade custom lockpicks by LockpickingDev - spring steel, titanium, brass, and more. Available for purchase via Covert Instruments. Plus picks gifted from the locksport community." />
+        <meta name="description" content="Over 100 handmade custom lockpicks by LockpickingDev - wood, acrylic, brass, aluminum, resin, bone, and more. Available for purchase via Covert Instruments. Plus picks gifted from the locksport community." />
         <link rel="canonical" href="https://lockpicking.dev/lockpicks" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://lockpicking.dev/lockpicks" />
@@ -206,7 +206,7 @@ export default function Lockpicks() {
           <div className="section-divider" />
           <p className="lab-section-desc">
             Over 100 custom lockpicks made by hand over the years - from functional
-            daily carries to artistic pieces. Spring steel, titanium, brass, and more.
+            daily carries to artistic pieces. Wood, acrylic, brass, aluminum, resin, bone, and more.
           </p>
           <div className="picks-grid">
             {visibleMine.map((item, i) => <PickCard key={i} item={item} onOpen={openLightbox} />)}
