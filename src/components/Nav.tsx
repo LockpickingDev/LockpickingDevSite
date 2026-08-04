@@ -45,7 +45,7 @@ export default function Nav() {
       <ul className="nav-links">
         <li><a href={a('about')} onClick={goToSection('about')}>About</a></li>
         <li><a href={a('clearance')} onClick={goToSection('clearance')}>Record</a></li>
-        <li><a href={a('services')} onClick={goToSection('services')}>Services</a></li>
+        {/* <li><a href={a('services')} onClick={goToSection('services')}>Services</a></li> */}
         <li><a href={a('contact')} onClick={goToSection('contact')}>Contact</a></li>
         <li><Link to="/resources" className={onResources ? 'nav-link-active' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Resources</Link></li>
         <li><Link to="/lockpicks" className={onLockpicks ? 'nav-link-active' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Lockpicks</Link></li>
@@ -71,7 +71,7 @@ export default function Nav() {
         <div className="nav-mobile-menu">
           <a href={a('about')} className="nav-mobile-link" onClick={goToSection('about')}>About</a>
           <a href={a('clearance')} className="nav-mobile-link" onClick={goToSection('clearance')}>Record</a>
-          <a href={a('services')} className="nav-mobile-link" onClick={goToSection('services')}>Services</a>
+          {/* <a href={a('services')} className="nav-mobile-link" onClick={goToSection('services')}>Services</a> */}
           <a href={a('contact')} className="nav-mobile-link" onClick={goToSection('contact')}>Contact</a>
           <Link to="/resources" className={`nav-mobile-link${onResources ? ' nav-link-active' : ''}`} onClick={() => { close(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Resources</Link>
           <Link to="/lockpicks" className={`nav-mobile-link${onLockpicks ? ' nav-link-active' : ''}`} onClick={() => { close(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Lockpicks</Link>
