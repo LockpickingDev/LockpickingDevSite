@@ -5,7 +5,7 @@ import Hero from '../components/Hero'
 import EventsStrip from '../components/EventsStrip'
 import About from '../components/About'
 import EventsGrid from '../components/EventsGrid'
-import Services from '../components/Services'
+// import Services from '../components/Services'
 import Reviews from '../components/Reviews'
 import Contact from '../components/Contact'
 
@@ -45,7 +45,7 @@ export default function Home() {
       <EventsStrip />
       <About />
       <EventsGrid />
-      <Services />
+      {/* <Services /> */}
       <Reviews />
       <Contact />
     </>
