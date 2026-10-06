@@ -10,6 +10,15 @@ interface LinkItem {
 
 const LINKS: LinkItem[] = [
   {
+    platform: 'LPU Midwest Open',
+    handle: 'Lockpickers United lockpicking competition',
+    url: 'https://www.gatewaylocksport.com/competition',
+    color: '#c0c0c0',
+    icon: (
+      <img src="/icons/LPU%20Logo.png" alt="Lockpickers United" width="28" height="28" style={{ objectFit: 'contain' }} />
+    ),
+  },
+  {
     platform: 'YouTube',
     handle: '@LockpickingDev',
     url: 'https://www.youtube.com/@LockpickingDev',
