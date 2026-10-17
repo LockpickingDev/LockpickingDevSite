@@ -410,8 +410,15 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 3
 .ev2-desc { font-size: 0.875rem; color: var(--light-gray); line-height: 1.65; margin: 0; flex: 1; }
 .ev2-watch { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #3b82f6; text-decoration: none; margin-top: 0.75rem; display: inline-block; transition: opacity 0.2s; }
 .ev2-watch:hover { opacity: 0.75; }
-.ev2-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #f59e0b; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); padding: 0.2rem 0.6rem; display: inline-flex; align-items: center; gap: 0.35rem; margin-top: 0.75rem; align-self: flex-start; }
-.ev2-badge::before { content: '★'; }
+.ev2-talks { display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; margin-top: 0.75rem; }
+.ev2-talks .ev2-watch { margin-top: 0; }
+.ev2-card--cyan { --ev2-accent: var(--cyan); }
+.ev2-card--amber { --ev2-accent: #f59e0b; }
+.ev2-card--blue { --ev2-accent: #3b82f6; }
+.ev2-years { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.6rem; }
+.ev2-year { --chip: var(--ev2-accent, var(--cyan)); font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 500; color: var(--chip); border: 1px solid color-mix(in srgb, var(--chip) 35%, transparent); background: color-mix(in srgb, var(--chip) 8%, transparent); padding: 0.15rem 0.45rem; font-variant-numeric: tabular-nums; }
+.ev2-year-count { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--light-gray); margin-top: 0.25rem; }
+.ev2-year-count b { color: var(--white); }
 .ev2-rest { border-top: 1px solid var(--border); }
 .ev2-rest-row { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border); align-items: start; }
 .ev2-rest-name { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
